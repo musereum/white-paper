@@ -154,55 +154,44 @@ a = \mathbb{Y}[2]
 Для сокращения и/или удобства прочтения математической нотации вводятся следующие соглашения и функции:
 
 \textbf{Поиск индекса в множестве} – $\mathcal{I}$:
-\begin{equation}
-\begin{aligned}
-\text{Let } a \text{ is a set of values: } \\
-a = {100, 200, 300} \\
-f(v, x) = \{i \ | \ i \in \mathbb{N},  i > |v|, v_i = x \} \\
-\mathcal{I}(v, x) = \begin{cases}
+\begin{align}
+&\ \text{Let } a \text{ is a set of values: } \nonumber\\
+a =&\ {100, 200, 300} \nonumber\\
+f(v, x) =&\ \{i \ | \ i \in \mathbb{N},  i > |v|, v_i = x \} \\
+\mathcal{I}(v, x) =&\ \begin{cases}
 	min(f(v,x)), & \text{if } |f(v, x)| > 0 \\
 	-1, & \text{overwise}
 \end{cases}
 \\
 \\
-r1 = \mathcal{I}(a, 200) = 1 \\
-r2 = \mathcal{I}(a, 400) = -1 \\
-\end{aligned}
-\end{equation}
+r1 = &\ \mathcal{I}(a, 200) = 1\nonumber \\
+r2 = &\ \mathcal{I}(a, 400) = -1
+\end{align}
 
 \textbf{Определения именованного кортежа} – $\mathcal{O}$:
-\begin{equation}
-\begin{aligned}
-\text{Let } a \text{ is a set of names: } \\
-a = \{name, age, height\} \\
-\text{and let } b \text{ is a set of indexes: } \\
-b = \{0, 1, 2\} = \{x \ | \ x \in \mathbb{N}, x < |a|\} \\
-\\
-\text{finaly } r \text{ is a target named tuple, where} \\
-r = \mathcal{O}(a) = \mathcal{O}(name, age, height) \\ 
-r = \{x_i \ | \ i \in  a, x_i = 0 \} \\
-\end{aligned}
-\end{equation}
+\begin{align}
+&\ \text{Let } a \text{ is a set of names: } \nonumber\\
+a =&\ \{name, age, height\} \nonumber\\
+&\ \text{and let } b \text{ is a set of indexes: } \nonumber\\
+b =&\ \{0, 1, 2\} = \{x \ | \ x \in \mathbb{N}, x < |a|\} \\
+& \nonumber\\
+&\ \text{finaly } r \text{ is a target named tuple, where} \nonumber\\
+r =&\ \mathcal{O}(a) = \mathcal{O}(name, age, height) \\ 
+r =&\ \{x_i \ | \ i \in  a, x_i = 0 \}
+\end{align}
 
 \textbf{Определения кортежа события} – $\mathcal{E}$:\hfill\null\linebreak
 События специальный именнованный кортеж, содержащий в себе кроме целевых данных, общие для любого события: \code{event}, \code{txHash}, \code{txIndex}, \code{blockHash}, \code{blockHeight}, \code{address}.
-\begin{equation}
-\begin{aligned}
-\text{Let } a \text{ is a set of default event fields: } \\
-a = \{event, \\
-txHash, \\
-txIndex, \\
-blockHash, \\
-blockHeight, \\
-address\} \\
-\text{Let } b \text{ is a set of extra event fields: } \\
-b = \{asset, index\} \\
-\\
-\text{finaly } e \text{ is a target event tuple, where} \\
-r = \mathcal{E}(b) \\
-r = \mathcal{O}(\{asset, index\} \ \cup \ a)
-\end{aligned}
-\end{equation}
+\begin{align}
+&\ \text{Let } a \text{ is a set of default event fields: } \nonumber\\
+a =&\ \{event, txHash, txIndex, blockHash, blockHeight, address\} \nonumber\\
+&\ \text{Let } b \text{ is a set of extra event fields: } \nonumber\\
+b =&\ \{asset, index\} \nonumber\\
+&\ \nonumber\\
+&\ \text{finaly } e \text{ is a target event tuple, where} \nonumber\\
+r =&\ \mathcal{E}(b) \\
+r =&\ \mathcal{O}(\{asset, index\} \ \cup \ a)
+\end{align}
 %\end{multicols}
 
 \pagebreak
@@ -1259,30 +1248,24 @@ Soundchain является первым проектом направленны
 	\item генерируется список выплат роялти из выделенного объема Musereum Foundation
 \end{itemize}
 \end{multicols}
-\begin{equation}
-\end{equation}
-\begin{align*}
-& \text {Let } n \text{ is a moment of time and} \\
-& \text{Let } r \text{ is a money available to pay-per-play for} \\
-& \text{Set of plays } a \text{ , where } a_i \text{ is a tuple:}  \\
+\begin{align}
+& \text {Let } n \text{ is a moment of time and} \nonumber\\
+& \text{Let } r \text{ is a money available to pay-per-play for} \nonumber\\
+& \text{Set of plays } a \text{ , where } a_i \text{ is a tuple:}  \nonumber\\
 a = &\{a_i \ | \ \forall i \in a, a_i \equiv \mathcal{O}[listener, asset, times, sign] \} \\
 b = &\{b_i \ | \ \forall i \in a, b_i = f_{pay}(a_i), b_i \in (0; 1) \} \\ 
-c = &\sum\limits^{|b|}_{i=0} b_i \\
-d = &\frac{r}{c} \\
-& \\
-& \text{Finaly } p \text{ is a set of payments: } \\
-p = &\{ p_i \ | \ \forall i \in b, p_i = d * b_i \} \\
-r = &\sum\limits^{|p|}_{i=0} p_i
-\end{align*}
+c = &\sum\limits^{|b|}_{i=0} b_i, \quad d = \frac{r}{c} \\
+& \nonumber\\
+& \text{Finaly } p \text{ is a set of payments: } \nonumber\\
+p = &\{ p_i \ | \ \forall i \in b, p_i = d * b_i \}, \quad r = \sum\limits^{|p|}_{i=0} p_i
+\end{align}
 
 Остается определить, что такое функция $f_{pay}$. Результат функции зависит от двух переменных: коэффициента слушателя и коэффициента лейбла: 
 
-\begin{equation}
-\end{equation}
-\begin{align*}
+\begin{align}
 f_{pay}(a) = min(&f_{listenerCoef}(a)),\\
 						 &f_{labelCoef}(\delta^{R}_{labels}(a_{asset}))
-\end{align*}
+\end{align}
 
 Коэффициет слушателя определяет насколько платформа доверяет данному слушателю:
 \begin{enumerate}
