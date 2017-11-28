@@ -636,33 +636,58 @@ Youtube 						& \multicolumn{2}{p{0.48\linewidth}}{\YoutubePay} \\
 \end{tabular}
 \end{table}
 
-\chapter{Техническое описание платформы}
-\section{Обзор}
+\chapter{Platform Overview}
+\label{platform}
+\begin{multicols}{2}
+Musereum Platform is a system of digital products to solve core industry problem which described above.
+
+Core platform products is:
+\begin{itemize}
+	\item \textbf{Decentralized Ledger}: Our decentralized ledger based on Ethereum source code, but with different consensus algorithm to avoid incurring transaction fees compare to Ethereum main-net.
+	\item \textbf{Decentralized Virtual Machine} with cheap computation power. Move forward from PoW (see \hyperref[tech-blockchain]{Blockchain} to detail) allow to decrease cost of computation power and utilize decentralized network to solve more complex tasks such as \textit{searching}, \textit{indexing}, \textit{loop} over data.
+	\item \textbf{Decentralized Content Network}: The current industry solutions  delivers their musical content from centralized content networks. In order to deliver on the promise as laid out in the business objectives, one deliverable is that of a decentralized system wherein many ecosystem participants could run nodes of the system and use consensus algorithms to synchronize
+with one another.
+	\item \textbf{Cryptocurrency}: The introduction of a cryptocurrency would enable a common exchange of value across all ecosystem participants globally. It would also serve to equalize the playing field and set a benchmark for services provided.
+	\item \textbf{Transparent Rights Registry}:
+	\item \textbf{Decentralized Exchange}:
+	\item \textbf{Decentralized Marketplace}:
+\end{itemize}
+\end{multicols}
+\section{Инструменты}
+
+\section{Идентификация и персонализация}
+
+\section{Roles}
+\label{platform-roles}
+
+
+\chapter{Technical Description of Platform}
+\section{Overview}
 \label{tech-review}
 \begin{multicols}{2}
-Задачи протокола «Musereum» необходимо разделить на составляющие:
+Musereum protocol tasks can be divided into the folllowing components:
 \begin{itemize}
-\item Обеспечение единого состояния системы без необходимости централизации вычислений для обеспечения отказоустойчивости;
-\item Децентрализованное хранилище большого объема данных без возможности цензуры путем блокировки единого (централизованного) источника данных;
-\item Предоставление доказательства целостности системы для аудирования исторических изменений;
-\item Интерфейс внесения изменений в будущее состояние системы.
+\item Providing unified system state without central computing for reliable operation;
+\item Decentralized big data storage that is censor-proof due to inability to block a unified (centralized) data source;
+\item Providing proof of system integrity for change history auditing;
+\item Interface for making changes in the future state of the system.
 \end{itemize}
 \vfill\null
 \columnbreak
-Ведение и изменение единого состояния системы «Musereum» без необходимости централизации вычислений гарантируется использованием концепции «блокчейн» с использованием виртуальной машины Ethereum (EVM) \textit{(Подробнее в \hyperref[tech-blockchain]{Блокчейн})}.
-Для хранение большого объема данных (аудио-треки, метаданные, текстовое и графическое описание) утилизируется технология «IPFS» \textit{(Подробнее в \hyperref[tech-storage]{Децентрализованное хранилище.})}
+Application of the "Blockchain concept" using Ethereum Virtual Machine (EVM) provides monitoring and changing single state of Musereum system without the need to use centralized computing (see \hyperref[tech-blockchain]{Blockchain} for detail). IPFS technology is applied to store big data volumes (audio tracks, metadata, text and graphical description) \textit{(see \hyperref[tech-storage]{Decentralized Storage} for more detail)}.
+
 \end{multicols}
 \pagebreak
-\subsection{Соглашение о наименовании}
+\subsection{Naming convention}
 \label{tech-review-naming}
 \begin{multicols}{2}
-Здесь и далее по тексту все сущности с определенным содержанием или интерфейсом будут закреплять за собой краткое математическое наименование с общим правилом: \textit{заглавная латинская буква, но не N, B, Z}, например: 
+Here and elsewhere all entities with defined content or interface will get a short mathematical name with a common rule: \textit{capital latin letter except for N, B, Z}, e. g:
 
 \begin{equation}
 Y \ \text{is Notary}
 \end{equation}
 
-Все глобально определенные контракты будут закреплять за собой строчный греческий символ, например, контракт управления списком нотариусов – $\nu$ и специальную запись ассоциированную с конкретным функционалом контракта: 
+All globally defined contracts will be assigned to a lowercase Greek symbol, e. g. Notary Registry Contract – $\nu$ and a special record associated with certain function of the contract:
 
 \begin{equation}
 \nu \ \text{is Notary Registry Contract}
@@ -673,23 +698,24 @@ Y \ \text{is Notary}
 %\vfill\null
 %\columnbreak
 
-Множества всех известных сущностей определяются как \textit{принятое наименование сущности в black-board записи, но не $\mathbb{N}, \mathbb{B}, \mathbb{Z}$}, например: список нотариусов:
+Sets of all known entities are defined as accepted entity name in a blackboard record except for $\mathbb{N}, \mathbb{B}, \mathbb{Z}$, e. g.: list of notaries:
+
 \begin{equation}
 \mathbb{Y} \ \text{is set of all known Notaries}
 \end{equation}
 
-$\mathbb{N}$ – множество всех целых чисел в диапазоне $(0; 2^{256} - 1)$. $\mathbb{N}_1$ – подмножество $\mathbb{N}$ без 0.
+$\mathbb{N}$ – set of all integers within the range $(0; 2^{256} - 1)$. $\mathbb{N}_1$ – subset $\mathbb{N}$ without 0.
 
-$\mathbb{Z}$ – множество всех целых чисел в диапазоне $(-2^{255}; +2^{255} - 1)$. 
+$\mathbb{Z}$ – set of all integers within the range $(-2^{255}; +2^{255} - 1)$.
 
-$\mathbb{B}$ – множество всех байтов $(0; 255)$. 
+$\mathbb{B}$ – is a set of all bytes $(0; 255)$. 
 
-$\mathbb{X}^{i}$ – множество размерности $i$ где каждый элемент множества пренадлежит $\mathbb{X}$, например:
+$\mathbb{X}^{i}$ – is a set of dimension $i$ where every set member belongs to $\mathbb{X}$, e.g.:
 \begin{equation}
 \mathbb{B}^{32} \text{ is a set of } \mathbb{B} \text{ with size } 32
 \end{equation}
 
-Получение элемента множества может быть записано двумя способами: подстрочным индексом или в квадратных скобках:
+Obtaining the set member can be described in two ways: with a subindex or in square brackets:
 \begin{equation}
 \begin{aligned}
 \mathbb{Y}_2 = \mathbb{Y}[2] \\
@@ -697,12 +723,12 @@ $\mathbb{X}^{i}$ – множество размерности $i$ где каж
 \end{aligned}
 \end{equation}
 
-Внешние данные представлены в формулах как элементы множества $\Gamma$ с удобно читаемыми наименованиями (или сокращениями если это оговорено), например: глобальное время в UNIX формате:
+External data is represented in the formulae as members of set $\Gamma$with readable names (or abbreviations if mentioned), e. g.: Global time in UNIX format:
 \begin{equation}
 \Gamma_{time} \ \text{is world time variable}
 \end{equation}
 
-Все временные переменные в формулах записываются как строчная латинская буква, например:
+All \hlc{temporal} variables in formulae are written as latin letters, e. g.:
 \begin{equation}
 \begin{aligned}
 \text{Let } a \text{ is a second notary in list of notaries} \\
@@ -711,14 +737,14 @@ a = \mathbb{Y}[2]
 \end{equation}
 \end{multicols}
 
-\subsection{Математические функции и символы}
+\subsection{Mathematical functions and symbols}
 \label{tech-review-math}
 %\begin{multicols}{2}
-Во всех формулах используется $|\mathbb{Y}|$ как операция взятия количества элементов множества $\mathbb{Y}$.
+All formulae apply $|\mathbb{Y}|$ as an operator of number of $\mathbb{Y}$-set elements.
 
-Для сокращения и/или удобства прочтения математической нотации вводятся следующие соглашения и функции:
+The following conventions and functions are applied to reduce and/or make a mathematical notation readable:
 
-\textbf{Поиск индекса в множестве} – $\mathcal{I}$:
+\textbf{Search index in set} – $\mathcal{I}$:
 \begin{align}
 &\ \text{Let } a \text{ is a set of values: } \nonumber\\
 a =&\ {100, 200, 300} \nonumber\\
@@ -733,7 +759,7 @@ r1 = &\ \mathcal{I}(a, 200) = 1\nonumber \\
 r2 = &\ \mathcal{I}(a, 400) = -1
 \end{align}
 
-\textbf{Определения именованного кортежа} – $\mathcal{O}$:
+\textbf{\hlc{Determining} named tuple} – $\mathcal{O}$:
 \begin{align}
 &\ \text{Let } a \text{ is a set of names: } \nonumber\\
 a =&\ \{name, age, height\} \nonumber\\
@@ -745,8 +771,8 @@ r =&\ \mathcal{O}(a) = \mathcal{O}(name, age, height) \\
 r =&\ \{x_i \ | \ i \in  a, x_i = 0 \}
 \end{align}
 
-\textbf{Определения кортежа события} – $\mathcal{E}$:\hfill\null\linebreak
-События специальный именнованный кортеж, содержащий в себе кроме целевых данных, общие для любого события: \code{event}, \code{txHash}, \code{txIndex}, \code{blockHash}, \code{blockHeight}, \code{address}.
+\textbf{\hlc{Determining} event tuple } – $\mathcal{E}$:\hfill\null\linebreak
+Special defined tuple containing target data and general data for every event: \code{event}, \code{txHash}, \code{txIndex}, \code{blockHash}, \code{blockHeight}, \code{address}.
 \begin{align}
 &\ \text{Let } a \text{ is a set of default event fields: } \nonumber\\
 a =&\ \{event, txHash, txIndex, blockHash, blockHeight, address\} \nonumber\\
@@ -760,52 +786,52 @@ r =&\ \mathcal{O}(\{asset, index\} \ \cup \ a)
 %\end{multicols}
 
 \pagebreak
-\section{Архитектура платформы}
+\section{Platform architecture}
 \label{tech-arch}
 \begin{multicols}{2}
-Основная задача платформы предоставить пользователям возможность для:
+The primary aim of the platform is to provide users with capabilities to:
 \begin{enumerate}
-\item Чтения и интерпретации данных 
-\item Внесения изменений
-\item Поиска данных
-\item Аудита и получения доказательства отсутствия фальсификации данных
+\item Read and interpret data
+\item \hlc{Commit} changes
+\item Search data
+\item Audit and receive proof of data \hlc{integrity}
 \end{enumerate}
-Для предоставления всех вышеуказанных возможностей платформа разделена на логические слои: 
+The platform is divided into the following logic layers in order to provide above-mentioned capabilities:
 \begin{itemize}
-	\item \hyperref[tech-arch-underlayer]{Хранение и учет}
+	\item \hyperref[tech-arch-underlayer]{Storage and \hlc{ledger}}
 	\begin{itemize}
 		\item \hyperref[tech-blockchain]{Blockchain}
-		\item \hyperref[tech-storage]{Децентрализованное хранилище}
+		\item \hyperref[tech-storage]{Decentralized storage}
 	\end{itemize}
-	\item \hyperref[tech-arch-connect]{Слой доступа на чтение и запись}
+	\item \hyperref[tech-arch-connect]{Read and write \hlc{layer}}
 	\begin{itemize}
-		\item \hyperref[tech-arch-connect-nodes]{Публичные узлы}
-		\item \hyperref[tech-arch-connect-validators]{Узлы нотариусы}
+		\item \hyperref[tech-arch-connect-nodes]{Public nodes}
+		\item \hyperref[tech-arch-connect-validators]{Notary nodes}
 	\end{itemize}
-	\item \hyperref[tech-arch-interfaces]{Интерфейс взаимодействия}
+	\item \hyperref[tech-arch-interfaces]{Interaction interfaces}
 	\begin{itemize}
-		\item \hyperref[tech-arch-interfaces-dapp]{Децентрализованные приложения}
+		\item \hyperref[tech-arch-interfaces-dapp]{Decentralized application}
 		\item \hyperref[tech-arch-interfaces-api]{Application Programming Interface}
 	\end{itemize}
 \end{itemize}
 \end{multicols}
 
-\def\Interface{Интерфейс взаимодействия}
-\def\Connect{Слой доступа}
-\def\Underlayer{Слой хранения и учета}
+\def\Interface{Interaction Interface}
+\def\Connect{Access layer}
+\def\Underlayer{Storage and ledger layer}
 
-\def\DApps{Децентрализованные приложения}
+\def\DApps{Decentralized Applications}
 \def\Api{API}
-\def\Requests{Прямые запросы}
+\def\Requests{Direct \hlc{requests}}
 
 \def\RPC{Musereum RPC}
-\def\Nodes{Публичные узлы}
-\def\Notaries{Нотариусы}
+\def\Nodes{Public nodes}
+\def\Notaries{Notaries}
 \def\EVM{Ethereum Virtual Machine}
-\def\Blockchain{Blockchain реестр}
+\def\Blockchain{Blockchain ledger}
 \def\IPFS{IPFS}
-\def\ReadWrite{Чтение и запись}
-\def\ReadOnly{Только чтение}
+\def\ReadWrite{Read and write}
+\def\ReadOnly{Read only}
 
 \begin{center}
 \begin{tikzpicture}[node distance=1.5cm]
@@ -894,64 +920,67 @@ r =&\ \mathcal{O}(\{asset, index\} \ \cup \ a)
 \end{tikzpicture} 
 \end{center}
 
-\subsection{Слой хранения и учета}
+\subsection{Storage and record layer}
 \label{tech-arch-underlayer}
 \begin{multicols}{2}
-Базовым слоем платформы является слой хранения и учета. Задача слоя предоставить возможность ведения децентрализованного реестра состояний («блокчейн») и децентрализованное хранения большого объема данных.
+Storage and record layer is the basic layer of the platform. The layer provides capability to keep a decentralized state ledger (blockchain) and to store big amounts of data.
 
-Каждый элемент слоя: блокчейн, хранилище, виртуальная машина, распределены по сети (узлам) и каждый желающий может создать свою, локальную копию. 
+Every layer element: blockchain, storage and virtual machine are distributed among the network (nodes) and everyone can create a personal local copy.
 \end{multicols}
-\subsection{Слой доступа}
+\subsection{Access layer}
 \label{tech-arch-connect}
 \begin{multicols}{2}
-Задачи слоя доступа: предоставление, по запросу, информации из базового слоя и получение запросов об изменении.
+Access layer application: providing data from the basic layer on request and receiving change requests.
 
-Создание узла для организации дополнительной точки доступа никак не ограничивается платформой и доступно любому желающему. Данная особенность выгодно отличает платформу Musereum от других, централизованных музыкальных платформ:
+Creating a node for an additional access point is not limited and available for anyone. This feature is a benefit that distinguishes Musereum platform from other centralized music platforms:
+
 \begin{itemize}
-	\item Гарантирует 100\% up-time сети
-	\item Устойчивость сети к цензуре
-	\item Возможность заинтересованным сторонам создать собственную, локальную копию сети, а не доверять полученной информации от третьих лиц
+	\item It provides 100\% network up-time
+	\item It is Censor-proof
+	\item Stakeholders can create a personal local copy of the network without necessity to trust third parties
 \end{itemize}
 \end{multicols}
 \pagebreak
-\subsection{Слой интерфейсов взаимодействия}
+\subsection{Interaction interface layer}
 \label{tech-arch-interfaces}
 \begin{multicols}{2}
-Верхним слоем платформы является слой интерфейсов взаимодействия. Задача слоя получать пользовательский ввод и формировать из него понятные для протокола запросы. Запросы делятся на два типа: чтение и запись.
+Interaction interface layer is the top layer of the platform. The layer receives user input and generates requests applicable with protocol. Requests are divided into two types: read and write.
 
-Платформа не накладывает каких-либо ограничений на чтение данных из блокчейна и децентрализованного хранилища. Единственное требование – формирования запроса в соответствии с соглашением об API.
+Reading data from the blockchain and the decentralized storage is not limited. The only requirement is to form a request according to API agreement.
 
-Для записи (изменения состояния, сохранении данных) от клиента требуется предоставление валидной подписи запроса основанной на его уникальном приватном ключе и соблюдение других требований к записи (наличие прав, денежных средств для оплаты работы протокола и другие).
+In order to write (changing state, saving data), a user must provide valid request signature based on his or her unique private key as well as follow other writing requirements (rights, funds for protocol operation etc.).
 
-Для создания запроса не требуется организации собственной точки доступа (синхронизации узла с сетью) и в качестве клиента может выступать server-less приложение на web-технологиях \textit{(подробнее в \hyperref[tech-apps]{Децентрализованные приложения})}
+It is not required for an organization to have its own access point (synchronize a node with the network) in order to make a request; a serverless web-application can be used as a client \textit{(see \hyperref[tech-apps]{Decentralized applications} for detail)}.
+
 \end{multicols}
-\section{Блокчейн}
+\section{Blockchain}
 \label{tech-blockchain}
 \begin{multicols}{2}
-Протокол «Musereum» открытый, публичный, но требующий разрешения на производство блоков основанный на протоколе «Ethereum». Консенсус по единому состоянию сети в децентрализованной структуре производителей блоков достигается использованием алгоритма Proof-of-Authority (далее PoA). Для достижения консенсуса через PoA требуется:
+Musereum protocol is an open public blockchain that requires permission to generate blocks and is based on Ethereum protocol. Consensus for a single network state in a decentralized block generator structure is achieved by Proof-of-Authority (hereafter PoA) algorithm. Achieving consensus through PoA requires:
 \begin{enumerate}
-\item Общеизвестный список нотариусов ($\mathbb{Y}$) с разрешением на производство блоков;
-\item Контракт управления списком нотариусов ($\nu$).
+\item A common list of notaries ($\mathbb{Y}$) permitted to generate blocks;
+\item Notary Registry Contract ($\nu$).
 \end{enumerate}
-Изменение списка нотариусов (исключение, назначение нотариусов) изменяется контрактом управления по результатам голосования текущих нотариусов (большинством). 
+The list of notaries can be changed (excluding / appointing notaries) by Notary Registry Contract based on results of active notary voting (majority).
 
-\textit{Для первичного назначения составляется список из 12 нотариусов.}
+\textit{Initially, 12 notaries are listed.}
 
-Задача нотариуса: 
+Notary \hlc{duties}: 
 \begin{enumerate}
-\item проверить поступившие транзакции участников системы,
-\item собрать в единый блок изменения общего состояния,
-\item заверять своей уникальной подписью собранный блок.
+\item Validate transactions received from system participants,
+\item \hlc{Write changed state to a new block},
+\item \hlc{Sign block chain} with a personal crypto-signature.
 \end{enumerate}
-Для соблюдения консенсуса, в протокол вводится внешняя конcтанта $\Gamma_{step}$, определяющая количество секунд в одном временном шаге или время между блоками. Musereum определяет константу $\Gamma_{step}$ как 5, или 1 блок раз в пять секунд.
+
+In order to maintain consensus, an external constant $\Gamma_{step}$ is introduced, it defines the number of seconds in one time step or time between blocks. Musereum defines constant $\Gamma_{step}$ as 5 or 1 block every five seconds.
 \begin{equation}
 \Gamma_{step} = 5
 \end{equation}
-По соглашению с алгоритмом консенсуса PoA, нотариус наделен правом создать один блок ($K$) за $a$ временных штампов $\Gamma_{time}$. Где $a$ равно количеству нотариусов:
+According to PoA consensus algorithm, a notary has the right to generate one block ($K$) in $a$ \hlc{timestamps} $\Gamma_{time}$. If $a$ is a number of notaries:
 \begin{equation}
 a = |\mathbb{Y}|
 \end{equation}
-Выбор индекса нотариуса $i$ из множества $\mathbb{Y}$ для создания блока на штамп времени $b$ происходит по формуле: 
+Notary index $i$ is selected from set $\mathbb{Y}$ to create a block on time stamp $b$according to the formula: 
 \begin{equation}
 b = \frac{\Gamma_{time}}{\Gamma_{step}},  \quad b \in \mathbb{N} 
 \end{equation}
@@ -959,64 +988,59 @@ b = \frac{\Gamma_{time}}{\Gamma_{step}},  \quad b \in \mathbb{N}
 i = b \ mod \ a
 \end{equation}
 \end{multicols}
-\subsection{Выбор версии}
+\subsection{Version selection}
 \label{tech-blockchain-score}
-\begin{multicols}{2}
-В случаях если нотариусы не могут прийти к общему (единому) состоянию системы и происходит «форк» (от англ. вилка) – появляются две или более цепочки блоков ($\mathbb{K}$), сеть определяет вес ($\beta_{score}(\mathbb{K}_c)$) каждой из цепочек исходя из количества нотариусов участвующих в создании блоков:
-\begin{equation}
-h = |\mathbb{K}_c| \quad h \ \text{is length of blockchain}
-\end{equation}
-\begin{equation}
-\beta_{score}(\mathbb{K}_c) = \Gamma_{u128max} * h - m
-\end{equation}
-Сеть всегда выбирает цепочку с большим весом по $\beta_{score}$.
-\end{multicols}
-\subsection{Финализация блока}
+%\begin{multicols}{2}
+In case if notaries fail to achieve global (single) system state and a fork or creating two or more blockchains takes place ($\mathbb{K}$), the network defines the score ($\beta_{score}(\mathbb{K}_c)$) of every  chain based on the number of notaries participating in \hlc{chain creation}:	
+%\vfill\null\columnbreak
+\begin{align}
+h &= |\mathbb{K}_c| & \quad h \ \text{is length of blockchain} \\
+\beta_{score}(\mathbb{K}_c) &= \Gamma_{u128max} * h - m
+\end{align}
+The network always selects the chain with the highest score according to $\beta_{score}$.
+%\end{multicols}
+\subsection{Block finalization}
 \label{tech-blockchain-fin}
-\begin{multicols}{2}
-По консенсусу необратимым считается блок в цепочке после которого более 50\% нотариусов создали 2 или более блока.
+% \begin{multicols}{2}
+According to consensus, the block in the chain after which more than 50\% of notaries have generated 2 or more blocks is considered irreversable.
 
-Таким образом минимальное время полного подтверждения блока ($C$) будет:
+Thus, the minimal time for complete block validation ($C$) is:
 \begin{equation}
 C = 2 * \Gamma_{step} * |\mathbb{Y}|
 \end{equation}
-\textit{Или 120 секунд при изначальных настройках протокола: 12 нотариусов и блок раз в пять секунд}
-\end{multicols}
+\textit{Or 120 seconds with default protocol settings: 12 notaries with 1 block every five seconds}
+% \end{multicols}
 \subsection{Свидетельство сделки}
 \label{tech-blockchain-confirmation}
 \begin{multicols}{2}
-Для совершения любого действия требующего изменения состояния системы от пользователя требуется формирования транзакции ($T$) подписанной уникальной крипто-подписью ($T_{sign}$). 
+In order to do any activity that requires changing system state, user must form a transaction ($T$) signed with a unique cryptographic signature ($T_{sign}$). 
 
-Наличие крипто-подписи гарантирует сети, что транзакция была создана владельцем учетной записи и является изъявлением воли владельца.
+The crypto-signature is a warrant for the network that proves owner's will to create a transaction using creator's account. 
 
-Нотариус очередь которого формировать блок проверяет валидность транзакции и исполняет связанный код:
+The notary in turn to generate a block checks the validity of a transaction and executes the related code:
 \begin{enumerate}
-\item Отправитель имеет право на формирование транзакции к данному адресу – $\rho_{allowTx}(T_{from}, T_{to})$ (подробнее в \hyperref[tech-blockchain-rules]{Правила взаимодействия с EVM}		)
-\item Транзакция соответствует формальным признакам –  $\rho_{initialValid}(T)$
-\item Проверка подписи владельца учетной записи –  $\rho_{checkSign}(T)$
-\item Наличие на счету ETM токенов для оплаты аванса работы вычислительной машины – $\rho_{upFront}(T)$
-\item Выполнение связанного кода EVM не вызвало исключения – $\rho_{exception}(\rho_{execute}(T))$
+\item Sender has the right to create a transaction for the given address – $\rho_{allowTx}(T_{from}, T_{to})$ \textit{(see \hyperref[tech-blockchain-rules]{EVM Interaction Rules} for detail)}
+\item Transaction meets formal criteria – $\rho_{initialValid}(T)$
+\item Checking account owner's signature – $\rho_{checkSign}(T)$
+\item Checking sufficient amount of tokens on ETM account to pay in advance for computer operation – $\rho_{upFront}(T)$
+\item Execution of related	EVM code	did not 	throw an exception $\rho_{exception}(\rho_{execute}(T))$
 \end{enumerate}
 \end{multicols}
-\begin{equation}
-\begin{tabular}{ r l }
-$\rho_{success}(T) =$ & $\rho_{allowTx}(T_{from}, T_{to}) > 0 \ \wedge $ \\
- \ & $\rho_{initialValid}(T) > 0 \ \wedge $ \\
- \ & $\rho_{checkSign}(T) > 0 \ \wedge $ \\
- \ & $\rho_{upFront}(T) > 0 \ \wedge $ \\
- \ & $\rho_{exception}(\rho_{execute}(T)) = 0 $
-\end{tabular}
-\end{equation}
+\begin{align}
+\rho_{success}(T) = 	&\rho_{allowTx}(T_{from}, T_{to}) &> 0 \ \wedge \\
+ 								&\rho_{initialValid}(T) &> 0 \ \wedge \\
+								&\rho_{checkSign}(T) &> 0 \ \wedge \\
+								&\rho_{upFront}(T) &> 0 \ \wedge \\
+ 								&\rho_{exception}(\rho_{execute}(T)) &= 0
+\end{align}
 \begin{multicols}{2}
-Убедившись в валидности транзакции нотариус упаковывает транзакцию в блоки оповещает сеть о блоке и изменении состояния сети ($\mathbb{W}_h$).
+Having validated the transaction, notary packs the transaction in blocks and informs the network about the block and change of the network state ($\mathbb{W}_h$).
 \begin{equation}
 \mathbb{W}_h = \rho_{state}(\mathbb{W}_{h-1}, \mathbb{K}_h)
 \end{equation}
-Другие нотариусы получают блок, проверяют ($\rho_{success}(T)$) и принимают решение о принятии его в цепочку. Создавая блок над $\mathbb{K}_h$ нотариус подтверждает его валидность и всех вложенных в него транзакций.
-
-Таким образом количество заверяющих подписей у транзакции может быть от 1 до $|\mathbb{Y}|$.
-
-Минимальное время получения $|\mathbb{Y}|$ подписей:
+Other notaries receive the block, check it ($\rho_{success}(T)$) and take decision to accept it to the chain. By creating a block on $\mathbb{K}_h$ the notary validates the block and all included transactions.
+Thus, the transaction may have from 1 to $|\mathbb{Y}|$ validating signatures.
+Minimal time for receiving $|\mathbb{Y}|$ signatures:
 \begin{equation}
 a = \Gamma_{step} * |\mathbb{Y}|
 \end{equation}
@@ -1041,131 +1065,113 @@ Musereum публикует в Ethereum Classic:
 \end{enumerate}
 \end{multicols}
 
-\subsection{Вознаграждение за производство блоков}
+\vfill\null\pagebreak
+
+\subsection{Block Generation Reward}
 \label{tech-blockchain-reward}
 \begin{multicols}{2}
-Вознаграждение за блок ($R$) состоит из двух частей: новой эмиссии и комиссий за совершенные действия.
- 
-В платформе Musereum эмиссия новых токенов ETM происходит в процессе создания блока. Размер эмиссии фиксирован – 3 ETM за каждый блок.
+Block reward ($R$) consists of two parts: new emission and activity fees.
 
-Размер комиссии за совершенные действия высчитывается для каждой транзакции отдельно. Отправитель указывает в транзакции стоимость единицы сложности ($T_{gasPrice}$) которую он готов потратить в качестве компенсации работы сети. 
+Musereum platform implies emission of new ETM tokens by creation of a block. Emission is limited to 3 ETM per block.
 
-Финальная комиссия высчитывается по формуле:
+Amount of activity fee is calculated independently for each transaction. The sender indicates in transaction difficulty unit price ($T_{gasPrice}$) that he or she is ready to spend to compensate network operation.
+
+Final 	fee is calculated according to formula:
 \begin{equation}
 x = T_{gasPrice} * \rho_{dificulty}(\rho_{execute}(T))
 \end{equation}
 
-Общее вознагражение за блок:
-\begin{equation}
-\begin{aligned}
-\text{Let } a \text{ is a list of transactions of block } \mathbb{K}_h \\
-a = \mathbb{K}[h]_{transactions} \\
-\mathbb{R}_h = 3 + \sum\limits_{i=0}^{|a|} a_i
-\end{aligned}
-\end{equation}
+Total block reward:
+\begin{align}
+&\text{Let } a \text{ is a list of transactions of block } \mathbb{K}_h \\
+a &= \mathbb{K}[h]_{transactions} \\
+\mathbb{R}_h &= 3 + \sum\limits_{i=0}^{|a|} a_i
+\end{align}
 \end{multicols}
 
-\subsubsection{Распределение вознаграждения}
+\subsubsection{Reward distribution}
 \label{tech-blockchain-reward-distribution}
-В отличие от протокола Ethereum и Bitcoin, в сети Musereum нету майнеров и основную ценность создают артисты, выбирающие Musereum платформой для выпуска и дистрибуции своих произведений.
+Apart from Ethereum and Bitcoin protocols, Musereum network has no miners – the primary value is created by artists who select Musereum platform for publication and distribution of music.
 
-Musereum высоко ценит вклад артистов в создание ценности и направляет большую часть награды за блок на субсидирование артистов.
+Musereum highly appreciates artitsts' contribution to platform integrity and it sends the most part of block reward to fund artists.
 
-Общая схема распределения:
+General distribution pattern:
+
+\def\Musereum{Musereum}
+\def\Development{Platform Development}
+\def\Infrastructure{Infrastructure}
+
+\begin{figure}[h]
+\centering
+\caption{Block reward distribution}
+\vspace{20pt}
+\begin{tikzpicture}[scale=3]
+
+\newcounter{c}
+\newcounter{d}
+\foreach \p/\t in {
+	80/\Musereum,
+	10/\Development, 
+	10/\Infrastructure}
+  {
+    \setcounter{c}{\value{d}}
+    \addtocounter{d}{\p}
+    \slice{\thec/100*360}
+          {\thed/100*360}
+          {\p\%}{\t}
+  }
+
+\end{tikzpicture}
+\end{figure}
+
 \begin{itemize}
-	\item 90\% – Musereum Foundation:
+	\item 80\% – Musereum:
 	\begin{itemize}
-		\item 70\% – программы субсидирования артистов, например, \hyperref[tech-apps-soundchain-payperplay]{Pay-per-Play}
-		\item 20\% – программа субсидирования аффилированных специалистов: регистраторы музыкальных активов, аудиторы смарт-контрактов
-		\item 10\% – программы вознаграждения: Fans Bounty, Clipmaker Bounty и т.д.
+		\item 90\% – SoundChain Trust \textit{(see more in \hyperref[tech-apps-soundchain-payperplay]{Pay-per-Play})}
+		\item 10\% – bounty programs: Fans Bounty, Clipmaker Bounty and etc.
 	\end{itemize}
-	\item 10\% – Производители блоков
+	\item 10\% – Platform Development Foundation
+	\item 10\% – \hlc{Network Infrastructure}
+	\begin{itemize}
+		\item 25\% – Notaries / Validators
+		\item 25\% – \hlc{Keepers}
+		\item 25\% – Affilated specialists (\hlc{registrators} and smart-contract auditors)
+		\item 25\% – Oracles
+	\end{itemize}
 \end{itemize}
 
-% Nodes
-\def\Notaries{Нотариусы}
-\def\Musereum{Musereum Foundation}
-\def\Artists{Артисты}
-\def\Specialists{Специалисты}
-\def\Bounties{«Баунти»}
 
-\begin{center}
-\begin{tikzpicture}[node distance=0pt]
-	
-\node(NotariesPart) [
-		rect,
-		anchor=west,
-		minimum width=0.1*\textwidth,
-		label=below:{\Notaries}
-	] {};
-	
-\node(MusereumPart) [
-		rect,
-		right=0pt of NotariesPart.east,
-		anchor=west,
-		minimum width=0.9*\textwidth+1pt,
-		minimum height=1.2cm,
-		yshift=.1cm,
-		label=above:{\Musereum}
-	] {};
-	
-\node(ArtistsPart) [
-		rect,
-		below=0pt of NotariesPart.east,
-		anchor=west,
-		minimum width=0.9*0.7*\textwidth
-	] {\Artists};
-\node(SpecialistsPart) [
-		rect,
-		below=0pt of ArtistsPart.east,
-		anchor=west,
-		minimum width=0.9*0.2*\textwidth
-	] {\Specialists};
-\node(BountyPart) [
-		rect,
-		below=0pt of SpecialistsPart.east,
-		anchor=west,
-		minimum width=0.9*0.1*\textwidth,
-		label=below:{\Bounties}
-	] {};
-
-\end{tikzpicture} 
-\end{center}
 \subsection{Виртуальная машина Ethereum}
 \label{tech-blockchain-evm}
 \subsection{Смарт-контракты Ethereum}
 \label{tech-blockchain-contracts}
 
-\subsection{Правила Musereum по взаимодействию с EVM}
+\subsection{Musereum rules for EVM interaction}
 \label{tech-blockchain-rules}
 \begin{multicols}{2}
-Для повышения безопасности участников платформы работа со смарт-контрактами EVM в Musereum отличается от таковой в родительской сети Ethereum.
+In order to improve security of platform participants, interaction with EVM smart contracts in Musereum differs from that in parental Ethereum network.
 
-Загрузить смарт-контракт в сеть может любой участник сети, но такой смарт-контракт получается статус $P_{development}$ и взаимодействовать с ним могут только аффилированные адреса учетных записей сети. Изначально это адрес пользовательской учетной записи с которой был загружен контракт.
+Any member of the network can upload a smart contract to the network, but such smart contract has $P_{development}$ status and it is available for interaction with affiliated addresses of network accounts. Initially this address belongs to the account of the user who uploaded the contract.
 
-Правила взаимодействия со смарт-контрактами регулируются смарт-контрактом разрешений: $\rho$.
+Smart contract interaction rules are regulated by allowance smart contract: $\rho$.
 
-Любой вызов смарт-контракта изначально запрашивает разрешение на совершение данного вызова – $\rho_{allowTx}(T_{from}, T_{to})$
+Any smart contract call initially requests allowance to make the call – $\rho_{allowTx}(T_{from}, T_{to})$
 \end{multicols}
-\begin{equation}
-a = \rho_{stateOf}(T_{to})
-\end{equation}
-\begin{equation}
-b = \rho_{affilateWith}(T_{to})
-\end{equation}
-\begin{equation}
-\rho_{allowTx}(T_{from}, T_{to}) = \begin{cases}1, & \text{if } a = P_{production} \\ 1, & \text{if } a = P_{development} \wedge T_{from} \in b \\ 0, & \text{overwise} \end{cases}
-\end{equation}
-Для получения статуса $P_{production}$ автор смарт-контракта обязан предоставить на проверку исходный код смарт-контракта и пройти процедуру проверки \textit{(подробнее в \hyperref[tech-apps-contracts-registry]{Реестр смарт-контрактов})}
+\begin{align}
+a &= \rho_{stateOf}(T_{to}) \nonumber\\
+b &= \rho_{affilateWith}(T_{to}) \nonumber\\
+\rho_{allowTx}(T_{from}, T_{to}) &= \begin{cases}1, & \text{if } a = P_{production} \\ 1, & \text{if } a = P_{development} \wedge T_{from} \in b \\ 0, & \text{overwise} \end{cases}
+\end{align}
+The author of a smart contract must provide source code for a check and pass the checking procedure in order to get $P_{production}$ status \textit{(see for details \hyperref[tech-apps-contracts-registry]{Smart Contract Registry})}
 
 % Nodes
 \def\Owner{Владелец контракта}
 \def\Blockchain{Блокчейн}
 \def\Registry{Реестр контрактов}
-\def\LoadByteCode{Загрузка байткода в блокчейн}
-\def\LoadSourceCode{Загрузка исходного кода}
-\def\ValidationEnded{Код прошел проверку?}
-\def\ChangeStatus{Смена состояния смарт-контракта}
+\def\LoadByteCode{Uploading byte code to blockchain}
+\def\LoadSourceCode{Uploading source code}
+\def\ValidationEnded{Code \hlc{Validation is} passed?}
+\def\ChangeStatus{Changing smart contract state}
 
 \begin{center}
 \begin{tikzpicture}[node distance=1.5cm]
@@ -1217,7 +1223,7 @@ b = \rho_{affilateWith}(T_{to})
 
 \section{Децентрализованные приложения}
 \label{tech-apps}
-Децентрализованные приложения Musereum реализуют код для слоя учета и хранения и код для интерфейса взаимодействия. Протокол позволяет взаимодействовать приложениям между собой.
+Musereum DApps implement the code for record and storage layer as well as the interaction interface code. The protocol allows DApps to interact.
 
 \subsection{Governance dApp}
 \label{tech-apps-governance}
@@ -1228,80 +1234,85 @@ b = \rho_{affilateWith}(T_{to})
 \subsection{Contract Registry}
 \label{tech-apps-contracts-registry}
 \begin{multicols}{2}
-Децентрализованное приложение для регистрации смарт-контрактов платформы и их учета. 
+The DApp for registering and recording smart contracts of the platform.
 
-Смарт-контракт приложения позволяет получить:
+The DApp smart contract allows to receive:
 \begin{enumerate}
-	\item Список всех зарегистрированных смарт-контрактов
-	\item Получить состояние контракта ассоциированное с адресом:
+	\item The list of all registered smart contracts
+	\item Smart contract state associated with the address:
 	\begin{enumerate}
-		\item \code{Unknown} – неизвестное состояние (по умолчанию для неизвестных для Contract Registry адресов)
-		\item \code{Development} – смарт-контракт зарегистрирован, но находится в разработке (взаимодействие доступно только аффилированным пользователям)
-		\item \code{Production} – смарт-контракт зарегистрирован и доступен для взаимодействия всем желающим
-		\item \code{Halt} – смарт-контракт зарегистрирован, но отключен (по решению автора) 
-		\item \code{Suspend} – смарт-контракт зарегистрирован, но отключен (по решению аудиторов)
+		\item \code{Unknown} – unknown state (default for unknown addresses in \hlc{Contract Registry })
+		\item \code{Development} – smart contract is registered but currently is under development (interaction is allowed for affiliated users only)
+		\item \code{Production} – smart contract is registered and \hlc{ready to interact}
+		\item \code{Halt} – smart contract is registered but halted (by author's decision)
+		\item \code{Suspend} – smart contract is registered but suspended (by auditor's decision)
 	\end{enumerate}
-\item Получить ссылку на репозиторий с исходным кодом
-\item Получить ссылку на ABI JSON для взаимодействия со смарт-контрактом
-\item Получить список аффилированных аудиторов
-\item Получить экземпляр голосования \textit{(подробнее в \hyperref[tech-apps-voting]{VotingdApp})} для принятия решения о смене статуса
+\item A link to a source code repository
+\item A link to ABI JSON for smart contract interaction
+\item The list of affiliated auditors
+\item A ballot \hlc{instance} to take decision about changing the state \textit{(see \hyperref[tech-apps-voting]{VotingDApp} for detail)}
 \end{enumerate}
 \end{multicols}
-\subsubsection{Исходный код и проверка смарт-контракта}
+\subsubsection{Source code and smart contract checking}
 \label{tech-apps-contracts-validate}
 \begin{multicols}{2}
-Валидация смарт-контрактов происходит в трех направлениях:
+Smart contracts are validated in three ways:
 \begin{itemize}
-	\item Валидация исходного кода на:
+	\item Source code validation for:
 		\begin{enumerate}
-			\item Наличие уязвимостей
-			\item Соответствие заявленной бизнес-логики
-			\item Отсутствие алгоритмических ошибок
+			\item Vulnerabilities 
+			\item Compliance with stated business logic
+			\item Absence of algorithmic errors
 		\end{enumerate}
-	\item Соответствие праву юрисдикций в которых работает платформа Musereum
-	\item Соответствие концепции Musereum
+	\item Compliance with law applicable to Musereum platform
+	\item Compliance with Musereum concept
 \end{itemize}
 \vfill\null
 \columnbreak
-Для одобрения смарт-контракта необходимо единогласное согласие от всех аффилированных аудиторов по трем направлениям. 
+In order to approve a smart contract, all affiliated auditors must have a unanimous consent for all three points.
 
-Отслеживать ход валидации можно в \hyperref[tech-apps-voting]{Voting dApp} в соответсвующей \code{ContractValidationBallot}.
+Validation process can be monitored in \hyperref[tech-apps-voting]{Voting dApp} in corresponding\code{ContractValidationBallot}.
 \end{multicols}
 \subsection{Musereum Name System (MNS)}
 \label{tech-apps-mns}
 \begin{multicols}{2}
-Реестр ассоциированных имен к адресам в платформе Musereum? требуется для предоставления доступа к актуальным версиям приложений протокола без необходимости запоминать внутренний адрес (20 символьный hex-адрес).
+The Ledger of names associated with addresses in Musereum platform is required to provide access to up-to-date protocol apps avoiding the necessity to remember the internal address (20-character hex-address).
 
-Запись об имени может создать любой пользователь сети для произвольного адреса. Количество имен для адреса никак не ограничено. 
+Name record can be created by any network user for a random address. Number of names for the address is unlimited.
 
-Для защиты от нецелевого использования имен, за регистрацию нового имени взимается плата в ETM равная текущей стоимости.
+In order to protect names from improper use, the registration of a new name is charged in ETM according to the current price.
 
-Запись об имени является производным от MNS смарт-контрактом: \code{NameRecordContract}.
+Name record is a MNS-derived smart contract: \code{NameRecordContract}.
 
-Смарт-контракт содержит информацию о владельце имени и ассоциированном адресе в сети и предоставляет возможности:
+The smart contract contains the data about the name owner and associated network address and provides the following capabilities:
+\begin{itemize}
+	\item for the owner to change the associated address;
+	\item for the owner to change the owner (transfer of right)
+\end{itemize} 
 
-Смены владельцем ассоциированного адреса – 
-Смены владельцем владельца (уступление прав) – 
-MNS накладывает ограничения на доступные имена:
-Длина имени не может превышать 20 символов (или менее при non-ASCII символах)
-Длина имени не может быть менее 4-х символов
+MNS limits available names: 
+\begin{itemize}
+	\item Name length cannot exceed 20 characters (or less if non-ASCII characters are used) 
+	\item Name length cannot be shorter than 4 characters
+\end{itemize}
 \end{multicols}
-\subsubsection{Интерфейс взаимодействия}
+\subsubsection{Interaction interface}
 \label{tech-apps-mns-api}
 \code{mapping (address => address) names} – ($\eta_{names}$)\hfill\null\linebreak
-Ассоциативный список адрессов к адрессам смарт-контрактов регистрации имени
+List of addresses associated with addresses of name registration smart contracts
 
 \code{uint price} – ($\eta_{price}$)\hfill\null\linebreak
-Стоимость регистрации имени в токенах ETM
+Name registration price in ETM tokens
 
 \code{event NewName(address indexed name, byte20 ascii)} – ($\eta_{NewName}$)\hfill\null\linebreak
-Журнал событий регистрации новых имен
+\hlc{Event log} of new name registration
 
 \code{event AssociateWith(address indexed name, address indexed target)} – ($\eta_{AssociateWith}$)\hfill\null\linebreak
-Журнал событий ассоциирования адреса со смарт-контрактом регистрации имени
+Event log of address associating with name registration smart contract
 
 \code{function buyName(byte20 acsii) payable} – ($\eta_{buy}$)\hfill\null\linebreak
-Метод покупки имени. Возвращает \code{address} если покупка прошла успешно и \code{throw} при ошибке.
+Method to buy name. Returns \code{address} if the buying is successful and \code{throw} in case of error.
+
 \begin{equation}
 \eta_{buy}(s) = \begin{cases}
 	throw, & \text{if } s \in \eta_{NewName} \\ 
@@ -1311,19 +1322,20 @@ MNS накладывает ограничения на доступные име
 \end{cases}
 \end{equation}
 
-\paragraph{Смарт-контракт NameRecord}– ($\eta'$)
+\paragraph{Smart-contract NameRecord}– ($\eta'$)
 
 \code{address owner} – ($\eta'_{owner}$)\hfill\null\linebreak
-Текущий владелец имени
+Current name owner
 
 \code{byte20 ascii} – ($\eta'_{ascii}$)\hfill\null\linebreak
-Зарегистрированное имя
+Registered name (typicaly is 20 ASCII letter)
 
 \code{address target} – ($\eta'_{target}$)\hfill\null\linebreak
-Текущая ассоциация с адресом на платформе Musereum
+Current association with address on Musereum platform
 
 \code{function associate(address target)} – ($\eta'_{associate}$)\hfill\null\linebreak
-Изменить ассоциацию имени на новый адрес. Возвращает \code{true} если прошло успешно и \code{throw} при ошибке.
+Change name association to the new address. Returns \code{true} if successful and \code{throw} in case of error.
+ 
 \begin{equation}
 \eta'_{associate}(a) = \begin{cases}
 	throw, & \text{if } T_{from} \neq \eta'_{owner} \\
@@ -1335,18 +1347,20 @@ MNS накладывает ограничения на доступные име
 \subsection{Voting dApp}
 \label{tech-apps-voting}
 \begin{multicols}{2}
-Приложение децентрализованного голосования состоит из связанных элементов:
+Voting DApp consists of connected elements:
 \begin{itemize}
 	\item \code{BallotsManager} ($\phi$)\hfill\null\linebreak
-	реестр голосований
+	Ballots registry
 	\item \code{Ballot} ($\pi$)\hfill\null\linebreak
-	абстрактный смарт-контракт голосования
+	Abstract voting smart-contract
 	\item \code{VotingRightsToken} ($\phi^\tau$) \hfill\null\linebreak
-	специализированный токен выдаваемый участникам голосования для доказательства своих прав на участие в голосовании
-	\item Интерфейса взаимодействия с голосованиями
+	Token issued to voting participants to prove the voting right
+	\item \textbf{Voting \hlc{GUI}}\hfill\null\linebreak
+	\hlc{Web interface to interact with a ballots}
 \end{itemize}
 \vfill\null\columnbreak
-Для создания голосования инициатор предложения должен сформировать валидный \code{Ballot} – смарт-контракт ведущий учет голосов и реализующий \code{applyProposal} метод для изменения состояния в соответствии с предложением. 
+In order to create a voting, the offer initiator must create a valid \code{Ballot}– a smart contract counting the votes and implementing \code{applyProposal} method to change the state based on the offer.
+ 
 \end{multicols}
 
 \begin{center}
@@ -1388,28 +1402,28 @@ MNS накладывает ограничения на доступные име
 \subsubsection{Смарт-контракт Ballot}
 \label{tech-apps-voting-ballot}
 \begin{multicols}{2}
-Абстрактный смарт-контракт описывающий требования к финальной реализации предложений для голосования.
+An abstract smart contract describing the requirements for final implementation of voting offers.
 
 \code{address votingToken} – ($\pi_{token}$)\hfill\null\linebreak
-Ассоциированный с голосованием токен наделяющий держателя правом голоса
+A voting-associated token providing the holder with the voting right.
 
 \code{function vote(bool)} – ($\pi_{vote}$)\hfill\null\linebreak
-Внешний метод для записи решения, вызывающего метод.
+External method to write the decision requesting the method.
 
 \code{function applyProposal()} – ($\pi_{apply}$)\hfill\null\linebreak
-Абстрактный метод применения предложения по факту успешного голосования. Реализуется в дочерних смарт-контрактах.
+Abstract application method based on the successful voting. It is implemented in child smart contracts.
 
 \code{uint agreeVotesCount} – ($\pi_{agree}$)\hfill\null\linebreak
-Количество токенов переданных для принятия решения.
+Number of tokens transferred for accepting the decision.
 
 \code{uint rejectVotesCount} – ($\pi_{reject}$)\hfill\null\linebreak
-Количество токенов переданных для отклонения решения.
+Number of tokens transferred for rejecting the decision.
 
 \code{uint endTime} – ($\pi_{end}$)\hfill\null\linebreak
-Время завершения голосования.
+Voting ending time.
 
 \code{function isEnded()}  - ($\pi_{ended}$)\hfill\null\linebreak
-Возвращает $1$ если время для голосования закончилось и $0$ в других случаях.
+Returns 1 if voting time is over and 0 in other cases.
 \begin{equation}
 \pi_{ended} = \begin{cases}
 	1, & \text{if } \pi_{end} > \Gamma_{time} \\
@@ -1417,8 +1431,8 @@ MNS накладывает ограничения на доступные име
 \end{cases}
 \end{equation}
 
-\code{function voteMajorityRule()} – ($\pi_{rule}$)\hfill\null\linebreak
-Результат функции $f(x) = 1/x$ где $x$ это отношение голосов за принятие к общему количеству голосов достаточное для принятие решения:
+\code{function voteMajorityRule()} – ($\pi_{rule}$)\hfill\null\linebreak 
+\hlc{Result of function} $f(x) = 1/x$ where $x$ is the ratio of "for" votes to total number of votes sufficient for accepting the decision:
 \begin{equation}
 \pi_{rule} = \begin{cases}
 	\infty, & \text{if } x = 0 \\
@@ -1427,7 +1441,7 @@ MNS накладывает ограничения на доступные име
 \end{equation}
 
 \code{function compare()} – ($\pi_{compare}$)\hfill\null\linebreak
-Возвращает 1 если количество голосов за принятие решение удовлетворяет условия голосования для принятия решения.
+Returns 1 if number of votes for accepting the decision complies with voting conditions for accepting the decision.
 \begin{equation}
 \pi_{compare} = \begin{cases}
 	1, & \text{if }\pi_{agree} * \pi_{rule} > \pi_{agree} + \pi_{reject} \\
@@ -1436,7 +1450,7 @@ MNS накладывает ограничения на доступные име
 \end{equation}
 
 \code{function isSuccess()} – ($\pi_{success}$)\hfill\null\linebreak
-Возвращает 1 если голосование успешно завершено и 0 в других случаях.
+Returns 1 if voting is successful and 0 in other cases.
 \begin{equation}
 \pi_{success} = \begin{cases}
 	1, & \text{if } \pi_{ended} \wedge \pi_{compare} \\
@@ -1447,51 +1461,52 @@ MNS накладывает ограничения на доступные име
 \subsection{Musical Assets Registry}
 \label{tech-apps-assets}
 \begin{multicols}{2}
-Приложение регистрации музыкальных активов на платформе Musereum. Приложение состоит из:
+The application is used to register musical assets on Musereum platform. The DApp consists of:
 \begin{enumerate}
 	\item \code{MusicalAssetsRegistry} (MAR – $\psi$)\hfill\null\linebreak
-	Корневой смарт-контракт приложения. Выполняет функции фабрики и реестра.
+	Root	smart contract of the DApp. Performs factory and ledger functions.
 	\item \code{AssetContract} – ($\alpha$)\hfill\null\linebreak
-	Производимые в MAR смарт-контракты музыкальных активов.
-	\item Ассоциированные с \code{AssetContract}'ами смарт-контракты \hyperref[tech-apps-dal]{децентрализованных лейблов}
+	Musical asset smart contracts produced in MAR.
+	\item \hyperref[tech-apps-dal]{Decentralized labels} smart-contracts associated with \code{AssetContract}.
 	\item \code{AssetRegistryBallot} – ($\pi^{regAsset}$)
 	\item \code{AssetUnregistryBallot} – ($\pi^{unregAsset}$)
-	\item Интерфейса взаимодействия – веб-приложения в рамках Musereum Wallet
+	\item User Graphical Interface \hfill\null\linebreak
+	web-applications within Musereum Wallet
 \end{enumerate}
 \end{multicols}
-\subsubsection{Смарт-контракт MusicalAssetsRegistry}
+\subsubsection{Smart-contract MusicalAssetsRegistry}
 \label{tech-apps-assets-registry}
 \begin{multicols}{2}
-Задачи смарт-контракты: учет зарегистрированных музыкальных активов, создание заявок на регистрацию музыкального актива через голосование в \hyperref[tech-apps-voting]{Voting dApp}.
+Smart contract tasks: Recording registered musical assets, creating musical asset registration requests through voting in \hyperref[tech-apps-voting]{Voting dApp}.
 
-Голосование проходит среди авторизованных системой регистраторов. 
+Only system-authorized registrators participate in the voting.
 
-Реестр полностью публичный и предоставляет возможности для аудита данных всем участникам сети. 
+The ledger is fully public and is open for audit by any member of the network.
 
-Получение исторических данных возможно через создание запроса к контракту за журналом событий:
+History data is accessible by creating a contract request for the event log:
 \end{multicols}
 
 \code{event NewAsset(address indexed asset, uint indexed index)} – ($\psi_{NewAsset}$)\hfill\null\linebreak
-Возвращает журнал событий добавления музыкальных активов в реестр с присвоенными им индексами в реестре. 
-\textit{Событие создается в момент создание заявки на регистрацию, а не при прохождение регистрации.}
+Returns the musical asset adding event log  to the ledger with assigned index in the ledger.
+\textit{The event is triggered at the moment of creating registration request, not at the time of registration.}
 \begin{equation}
-\psi_{NewAsset} = \mathbb{E}[asset, index], \quad a \in \mathbb{A} \wedge i \in \mathbb{N}
+\psi_{NewAsset} = \mathcal{E}(asset, index), \quad a \in \mathbb{A} \wedge i \in \mathbb{N}
 \end{equation}
 
 \code{event RegistryAsset(address indexed asset, uint indexed index)} – ($\psi_{RegistryAsset}$)\hfill\null\linebreak
-Возвращает подмножество журнала событий $\psi_{NewAsset}$ ассоциированных к адресам активов успешно прошедших голосование за добавление в публичный реестр.
+Returns event log subset $\psi_{NewAsset}$ associated with asset addresses that have been successfully voted for adding to the public ledger.
 \begin{equation}
 \psi_{RegistryAsset} \subset \psi_{NewAsset}
 \end{equation}
 
 \code{event UnregistryAsset(address indexed asset, uint indexed index)} – ($\psi_{UnregistryAsset}$)\hfill\null\linebreak
-Возвращает подмножество $\psi_{RegistryAsset}$ для музыкальных активов удаленных из публичного реестра Musereum по решению сообщества.
+Returns subset $\psi_{RegistryAsset}$ for musical assets that have been deleted from Musereum public ledger based on the community decision.
 \begin{equation}
 \psi_{UnregistryAsset} \subset \psi_{RegistryAsset} \subset \psi_{NewAsset}
 \end{equation}
 
 \code{mapping (address => uint) assets} – ($\psi_{assets}(a)$)\hfill\null\linebreak
-Ассоциативный словарь добавленных в реестр музыкальных активов.
+Associated dictionary of musical assets added to the ledger. 
 \begin{equation}
 \psi_{assets}(a) = \begin{cases}
 	i, & \text{if } a \in \mathcal{S}(\psi_{NewAsset}, [{asset}]) \\
@@ -1500,41 +1515,38 @@ MNS накладывает ограничения на доступные име
 \end{equation}
 
 \code{address[] public assetsIndex} – ($\psi_{index}(i)$)\hfill\null\linebreak
-Список всех добавленных в реестр музыкальных активов. Индекс актива в списке равен индексу в ассоциативном словаре минус 1.
-\begin{equation}
-i = \psi_{assets}(a), \quad a \in \mathbb{A} \wedge i \in \mathbb{N}
-\end{equation}
-\begin{equation}
-\psi_{index}(i - 1) \equiv a, \quad \text{if } i > 0
-\end{equation}
+The list of all musical assets added to the ledger. Asset index in the list is equal to the associated dictionary index minus 1.
+\begin{align}
+i &= \psi_{assets}(a), &a \in \mathbb{A} \wedge i \in \mathbb{N} \\
+a &= \psi_{index}(i - 1), &\text{if } i > 0
+\end{align}
 
-\subsubsection{Смарт-контракт AssetContract}
+\subsubsection{Smart-contracts AssetContract}
 \label{tech-apps-assets-contract}
-Запись в блокчейне о зарегистрированном музыкальном активе. Содержит всю необходимую информацию для идентификации музыкального актива и определения природы актива.
+The blockchain record about registered musical asset. It contains all the data required to identify a musical asset and define the nature of the asset.
 
 \code{string name} – ($\alpha_{name}$)\hfill\null\linebreak
-Ассоциированное с активом имя
+Name associated with the asset
 
 \code{Multihash meta} – ($\alpha_{meta}$)\hfill\null\linebreak
-Хеш ассоциированной с активом мета-информацией (хранится в децентрализованном хранилище)
-\begin{equation}
-\alpha_{meta} = \mathcal{O}[hash, hashFunction, size],
-\end{equation}
-\begin{equation}
-\alpha_{meta}[hash] \in \mathbb{B}_{32} \wedge \alpha_{meta}[hashFunction] \in \mathbb{B} \wedge \alpha_{meta}[size] \in \mathbb{B}
-\end{equation}
+Hash \hlc{of} meta-date associated with the asset (stored in the decentralized storage)
+\begin{align}
+\alpha_{meta} &= \mathcal{O}(hash, hashFunction, size), &\alpha_{meta}[hash] &\in \mathbb{B}_{32} \ \wedge \\ 
+&&\alpha_{meta}[hashFunction] &\in \mathbb{B} \ \wedge \\
+&& \alpha_{meta}[size] &\in \mathbb{B}
+\end{align}
 
 \code{event SetAssetType(uint8 indexed typeId)} – ($\alpha_{SetAssetType}$)\hfill\null\linebreak
-Возвращает журнал событий определения типа актива, содержащее 	индекс перечисления типом активов (\code{AssetTypes} – $\alpha^{types}$).
+Returns the asset defining event log containing asset type listing index (\code{AssetTypes} – $\alpha^{types}$).
 \begin{equation}
 \alpha^{types} \in \mathbb{B}
 \end{equation}
 \begin{equation}
-\alpha_{SetAssetType} = \mathbb{E}[typeId], \quad i \in \alpha^{types}
+\alpha_{SetAssetType} = \mathcal{E}(typeId), \quad i \in \alpha^{types}
 \end{equation}
 
 \code{mapping (uint8 => bool) type} – ($\alpha_{type}(i)$)\hfill\null\linebreak
-Ассоциативный словарь типов актива.
+Associated dictionary of asset types.
 \begin{equation}
 \alpha_{type}(i) = \begin{cases}
 1, & \text{if } i \in \alpha_{SetAssetType} \\
@@ -1544,65 +1556,67 @@ i = \psi_{assets}(a), \quad a \in \mathbb{A} \wedge i \in \mathbb{N}
 
 \subsubsection{Смарт-контракт AssetRegistryBallot}
 \label{tech-apps-assets-regballot}
-Реализация Ballot смарт-контракта для проведения голосования за одобрение актива в реестре Musereum.
+Implementation of \code{Ballot} smart-contract to vote for accepting assets in Musereum ledger.
+
 \subsubsection{Смарт-контракт AssetUnregistryBallot}
 \label{tech-apps-assets-unregballot}
-Реализация Ballot смарт-контракта для проведения голосования об исключении актива из реестре Musereum.
+Implementation of \code{Ballot} smart-contract to vote for excluding assets from Musereum ledger.
+
 \subsection{Decentralized Autonomous Labels}
 \label{tech-apps-dal}
 \begin{multicols}{2}
-Децентрализованный автономный лейбл – это смарт-контракт управления ассоциированным с ним музыкальным активом. В возможности DAL входит:
+Decentralized autonomous label is a governing smart contract with associated musical asset. DAL is able to:
 \begin{enumerate}
-	\item Определение устава лейбла регулирующего правила принятия решений;
-	\item Выпуск и продажа лицензий на коммерческое использование связанного музыкального актива;
-	\item Аккумуляция и распределение дохода музыкального актива,
-	\item Распределение и учет прав на музыкальный актив с цифровым доказательство – токеном.
+	\item Define the label charter that regulates decision making rules;
+	\item Issue and sell licenses for commercial use of associated musical asset;
+	\item Accumulate and distribute musical asset income,
+	\item Distribution and recording the rights for a musical asset with a digital proof-token.
 \end{enumerate}
 
-Управление музыкальным активом происходит по принципу демократического голосования держателями токенов. 
+The musical asset is managed on the basis of a token holder democratic voting.
 
-Возможности DAL реализует набор смарт-контрактов:
+DAL capabilities are implemented with the set of smart contracts:
 \begin{itemize}
 	\item\code{DALRegistry} – ($\delta^R$)\hfill\null\linebreak
-	Реестр зарегистрированных децентрализованных автономных лейблов
+	The ledger of registered decentralized autonomous labels
 	\item\code{DALContract} – ($\delta$)\hfill\null\linebreak
-	Cмарт-контракт децентрализованного автономного лейбла
+	Smart-contract of a decentralized autonomous label
 	\item\code{DALToken} – ($\tau^\delta$)\hfill\null\linebreak
-	Смарт-контракт токена подтверждающего права держателя на участие в децентрализованном лейбле
-	\item Набор смарт-контрактов голосования реализации Ballot:
+	Smart-contract of a token proving the holder's right to participate in a decentralized label
+	\item \hlc{Set of voting smart-contracts} for \code{Ballot} implementation:
 	\begin{itemize}
 		\item\code{CharterChangeVotingRulesBallot}
-		Предложение по голосованию за смену правил голосования о внесении изменений в устав
+		Voting offer to change voting rules and make changes to the charter
 		\item\code{CharterChangeProposalBallot}\hfill\null\linebreak
-		Предложение по внесению изменений в устав
+		Offer to make changes to the charter
 		\item\code{AddLicenseBallot}\hfill\null\linebreak
-		Предложение по созданию новой лицензии
+		Offer to create a new license
 		\item\code{CloseLicenseBallot}\hfill\null\linebreak
-		Предложение о прекращении продажи лицензии
+		Offer to stop selling the license
 		\item\code{ReplaceLicenseBallot}\hfill\null\linebreak
-		Предложение о смене/внесению изменений в лицензию
+		Offer to replace/make changes to the license
 	\end{itemize}
 \item\code{DALAssetLicense} – ($\theta$)\hfill\null\linebreak
-Смарт-контракт лицензии на коммерческое использование
+License smart contract for commercial use
 \item\code{DALAssetLicenseRule} – ($\theta'$)\hfill\null\linebreak
-Производный от лицензии смарт-контракт ограничения использования
+License-derived smart contract to limit the use 
 \end{itemize}
 \end{multicols}
 \vfill\null\pagebreak
 \subsubsection{Смарт-контракт DALRegistry}
 \label{tech-apps-dal-registry}
-Реестр зарегистрированных автономных лейблов необходим для учета и доступа к лейблу управляющему ассоциированным музыкальным активом.
+The ledger of registered autonomous labels is required to keep record and provide access to the label for the manager of associated musical asset.
 
 \code{mapping (address => address) assetLabels} – ($\delta^R_{labels}(a)$)\hfill\null\linebreak
-Ассоциативный словарь созданных децентрализованных лейблов.
+Associated dictionary of created decentralized labels.
 
 \code{event CreateLabel(address indexed asset,}\hfill\null\linebreak
 \code{~~~~~~~~~~~~~~~~~~address indexed label,}\hfill\null\linebreak
 \code{~~~~~~~~~~~~~~~~~~uint indexed index)~~~} – ($\delta^R_{CreateLabel}$)\hfill\null\linebreak
-Возвращает множество событий создания децентрализованных лейблов. Событие включает в себя: адрес созданного лейбла, адресом ассоциированного музыкального актива и присвоенный лейблу индекс в реестре.
+Returns set of decentralized label creation events. The event consists of: Address of created label, address of associated musical asset and assigned ledger index of the label.
 \begin{equation}
 \begin{aligned}
-\delta^R_{CreateLabel} \in \mathcal{E}(asset, label, index) \\
+\delta^R_{CreateLabel} \in \mathcal{E}(asset, label, index)
 asset \in \mathcal{S}(\psi_{RegistryAsset}, [asset]) \subset \mathbb{A}^\alpha \ \wedge \\
 label \in \mathbb{A}^\delta \ \wedge \\
 index \in \mathbb{N}_1
@@ -1610,12 +1624,12 @@ index \in \mathbb{N}_1
 \end{equation}
 \code{event CreateLabelBallot(address indexed label,~} \hfill\null\linebreak
 \code{~~~~~~~~~~~~~~~~~~~~~~~~address indexed ballot)} – ($\delta^R_{CreateLabelBallot}$)\hfill\null\linebreak
-Возвращает множество событий создания голосований децентрализованными лейблами. 
+Returns set of decentralized label voting creation events.
 
-Событие включает в себя: адреса децентрализованного лейбла и адрес созданного голосования.
+The event consists of: Addresses of decentralized label and addresses of created voting.
 \begin{equation}
 \begin{aligned}
-\delta^R_{CreateLabelBallot} \in \mathbb{E}[label, ballot] \\
+\delta^R_{CreateLabelBallot} \in \mathcal{E}[label, ballot] \\
 label \in \mathcal{S}(\delta^R_{CreateLabel}, [label]) \subset \mathbb{A}^\delta \ \wedge \\
 ballot \in \mathcal{S}(\phi_{CreatedBallot}, [ballot]) \subset \mathbb{A}^\pi
 \end{aligned}
@@ -1623,7 +1637,8 @@ ballot \in \mathcal{S}(\phi_{CreatedBallot}, [ballot]) \subset \mathbb{A}^\pi
 \code{event FinishLabelVoting(address indexed label,~}\hfill\null\linebreak
 \code{~~~~~~~~~~~~~~~~~~~~~~~~address indexed ballot,}\hfill\null\linebreak
 \code{~~~~~~~~~~~~~~~~~~~~~~~~bool indexed result)~~~} – ($\delta^R_{FinishLabelVoting}$)\hfill\null\linebreak
-Возвращает подмножество $\delta^R_{CreateBallot}$ для завершенных  голосований с явным указанием успеха или провала предложения.
+Returns subset  $\delta^R_{CreateBallot}$ for complete	d voting with clear indication of success or failure of the offer.
+
 \begin{equation}
 \begin{aligned}
 f_Z(\mathbb{E}') = \{\mathbb{E}'_i : \ \forall \ \mathbb{E}'_i[ballot][ended] > 0 \} \\
@@ -1632,75 +1647,75 @@ f_Z(\mathbb{E}') = \{\mathbb{E}'_i : \ \forall \ \mathbb{E}'_i[ballot][ended] > 
 \end{equation}
 
 \code{event NewLabelLicense(address indexed label, address indexed license)} – ($\delta^R_{NewLicense}$)\hfill\null\linebreak
-Возвращает множество событий созданных децентрализованным лейблом лицензий.
+Returns set of events created by license decentralized label.
 
 \code{event RemoveLabelLicense(address indexed label, address indexed license)} – ($\delta^R_{RemoveLicense}$)\hfill\null\linebreak
-Возвращает подмножество $\delta^R_{NewLicense}$ для снятых с продажи лицензий.
+Returns subset $\delta^R_{NewLicense}$ for licenses removed from sale.
 
 \subsubsection{Смарт-контракт DALContract}
 \label{tech-apps-dal-label}
 \begin{multicols}{2}
-Смарт-контракт управления музыкальным активом. Управление активом и связанными сущностями происходит путем вынесения предложения на голосование с предварительным распределением \code{VotingRightsToken} всем участникам сообщества в соответствии с балансом связанного токена \code{DALToken}.
+Smart contract for managing musical asset. Asset and associated entities are managed through proposing an offer for voting with preliminary distribution of \code{VotingRightsToken}among all community participants based on the balance of associated \code{DALToken}.
  
-Децентрализованный лейбл создается автоматически по факту регистрации связанного актива в реестре \code{MusicalAssetsRegistry}.
+Decentralized label is created automatically based on the registration of the associated asset in the ledger \code{MusicalAssetsRegistry}.
 
-При создании децентрализованного лейбла выпускается 1,000,000,000 токенов подтверждения прав, для упрощения расчетов в связанных пользовательских интерфейсах фактическое число делится на $10^7$. 
+1,000,000,000 proof-tokens are issued upon creation of a decentralized label; at that, in order to simplify the calculations the actual number in associated user interfaces is divided by $10^7$. 
 
-Таким образом единоличный контроль лейблом эквивалентен 100.0000000 токенам, а минимальный голос в компании – 0.0000001\%.
+Thus, sole label ownership is equal to 100.0000000 tokens, the minimal vote in the company is 0.0000001\%.
 
-Права держателей токенов \code{DALToken}:
+\code{DALToken} holders' rights::
 \begin{enumerate}
-	\item Участие в распределении роялти
-	\item Участие в голосовании за принятие решений 
-	\item Уступление токенов другим участником платформы через обмен на иные токены или ETM
+	\item Participating in royalty distribution
+	\item Participating in voting for offers
+	\item Cession of tokens to other platform participants by exchanging for ETM or other tokens
 \end{enumerate}
 \end{multicols}
 \subsubsection{Смарт-контракт DALToken}
 \label{tech-apps-dal-token}
 \begin{multicols}{2}
-Токен децентрализованного лейбла является \hyperref[tech-blockchain-contracts]{ERC-20} совместимым токеном.
+Decentralized label token is a \hyperref[tech-blockchain-contracts]{ERC-20} compatible token.
 
-Для обеспечения работы системы распределения роялти в код стандартного ERC-20 токена добавленны необходимые изменения:
+Required changes are added to standard ERC-20 token code to provide operation of distribution system:
 \begin{enumerate}
-	\item Сохраняется one-to-one связь с ассоциированным лейблом в поле \code{address label}\vfill\null\columnbreak
-	\item Внесены требуемые для \hyperref[tech-apps-dal-royalty-optimization]{оптимизации алгоритма распределения} вызовы \code{withdrawRevenueFor()} в \code{transfer(...)} и \code{transferFrom(...)} функции для отправителя и получателя
-	\item Реализован метод \code{makeVoteToken()} для создания \code{VotingRightsToken}'а соответствующего текущим балансам
+	\item One-to-one link with associated label in \code{label} field is maintained
+	\item \code{withdrawRevenueFor()} calls in \code{transfer(...)} и \code{transferFrom(...)} functions for sender and receiver are introduced to \hyperref[tech-apps-dal-royalty-optimization]{improve distribution algorithm}
+	\item \code{makeVoteToken()} method is implemented to create \code{VotingRightsToken} associated with current balances
 \end{enumerate}
 \end{multicols}
-\subsubsection{Распределение роялти}
+\subsubsection{Royalty distribution}
 \label{tech-apps-dal-royalty}
 \begin{multicols}{2}
-Роялти – полученные в ходе коммерческой активности связанного музыкального актива единицы ETM на баланс связанного децентрализованного автономного лейбла.
+Royalty is ETM units received on the balance of linked decentralized autonomous label upon commercial activity of associated musical asset.
 
-Каждый участник лейбла в любой момент времени может реализовать свое право на получение доли роялти в соответствии с текущим количество токенов.
+Every label participant can implement the right to receive royalty share at any moment of time according to the current amount of tokens.
 \end{multicols}
 \begin{equation}
 \def\arraystretch{1.3}
 \begin{array}{@{}llll@{}}
 \toprule
-    & \multicolumn{2}{c@{}}{\text{Распределение роялти}} & \\
+    & \multicolumn{2}{c@{}}{\text{Royalty distribution}} & \\
 \cmidrule(l){2-3}
     & a = T_{from} & \text{Initial withdrawal transaction} & \\
     & d = \delta(T_{to}) & \text{DAL instance} & \\
     & r = \tau^\delta(d_{token}) & \text{Rights tokens of corresponding DAL} & \\
     & h = \mathbb{K}_n & \text{Height of latest block} & \\
     & b_h = r_{balanceOf}(a) & \text{Balance of DAL rights tokens at block } h & \\
-    & t_h = r_{totalSupply} & \text{Total supply of rights token (typicaly is } 10^9 \text{)} & \\
+    & t_h = r_{totalSupply} & \text{Total supply of rights token (typically is } 10^9 \text{)} & \\
     & s_h = \frac{b_h}{t_h} & \text{Stake of } a \text{ at moment } h & \\
-    & I_h = x & I_h \text{ Income of a DAL at moment } h & \\
+    & I_h = x & I_h \text{ income of a DAL at moment } h & \\
     & T_h = \sum\limits^{h}_{i=1} I_i & \text{Total lifetime income of DAL} & \\
     & W_h = s * (T_h - \sum\limits^{h-1}_{i=1} W_i) & \text{Available withdrawal amount at moment } h & \\
 \bottomrule
 \end{array}
 \end{equation}
-\subsubsection{Оптимизация алгоритма распределения}
+\subsubsection{Distribution algorithm optimization}
 \label{tech-apps-dal-royalty-optimization}
 \begin{multicols}{2}
-В целях оптимизации и устранения необходимости считать $W_h$ для каждого уникального $h$, в смарт-контракте вводится вспомогательный ассоциативный список \code{incomeAtLatestWithdraw(address => uint)}, сохраняющий значение в момент последнего вывода средств для ассоциированного адреса. 
+An additional associated list  \code{incomeAtLatestWithdraw(address => uint)} keeping the value at the moment of the latest fund withdrawal for associated address is introduced in the smart contract  to optimize it and avoid calculating $W_h$ for every unique $h$.
 
-Такой подход позволяет производить расчет роялти исключительно в момент когда этого требует бизнес-логика и только для связанных с ней держателей. 
+This method allows to calculate royalty only when it is required by business logic and only for associated holders.
 
-При уступлении прав третьему держателю (перевод токенов) автоматически запускается алгоритм расчета доступного роялти для текущего и будущего держателей.
+If rights are transferred to a third party (token transfer), it triggers automatic calculation algorithm of available royalty for the current and the future holder.
 \end{multicols}
 \subsubsection{Голосование за принятие решений}
 \label{tech-apps-dal-voting}
@@ -1711,29 +1726,30 @@ f_Z(\mathbb{E}') = \{\mathbb{E}'_i : \ \forall \ \mathbb{E}'_i[ballot][ended] > 
 \begin{multicols}{2}
 %Лицензии на базе смарт-контрактов привязываются к токенам трека и определяют характер использования композиции и ценовую политику, включая различные ценовые настройки в зависимости от географии использования. Коммерческие лицензии обладают сроком действия, задаваемым администратором. Перевыпуск лицензии по окончанию срока создается автоматически с теми же параметрами и отправляется запрос/уведомление акционерам трека. Если акционеры в течение определенного периода выразили свое несогласие, то администратор перевыпускает лицензии с другими параметрами. Консенсус достигается при согласии 51% держателей токенов на трек. Смарт-лицензия состоит из четырех элементов: юридического и простого текста, кода смарт-контракта, механизма API для чтения метаданных и встраивания продаж на сторонние платформы. Смарт-лицензии распределяют роялти между держателями токенов трека. 
 
-Лицензирование “Musereum” включает в себя возможность проведения следующих типов лицензирования/
+Musereum licensing has the capability to conduct the following types of licensing.
 
-Продажа лицензий на коммерческое использование связанного музыкального актива основная задача децентрализованного лейбла, а получение роялти за продажу основная мотивация существования.
-
+Sale of license for commercial use of associated musical asset is the primary task of a decentralized label, at that receiving royalty is the basic motivation for existence.
 Все лицензии выпускаются в виде экземпляря смарт-контракта \code{DALAssetLicense} через интерфей усправления \code{DALContract}. 
 
-Задача корневого контракта \code{DALAssetLicense} определить природу лицензии, правила приобретения и ограничения на характер использования. \code{DALAssetLicense} является контейнером и предоставляет держателю неограниченную лицензию на коммерческое использование, ограничения же описываются в прозводных смарт-контрактах: \code{DALAssetLicenseRule}.
+All licenses are issued as \hlc{an instance} of \code{DALAssetLicense} smart-contract through \code{DALContract} management interface.
+The task of \code{DALAssetLicense} root contract is to define the nature of license, acquisition rules and  limitations of use. \code{DALAssetLicense} is a container that provides holder with an unlimited license for commercial use, at that limitations are described in derivative smart contracts:
+ \code{DALAssetLicenseRule}.
 
 \end{multicols}
 \paragraph{DALAssetLicenseRule}\hfill\null\linebreak
 \begin{multicols}{2}
-Абстрактный смарт-контракт, определяющий ограничение родительской лицензии, существует 7 базовых типов ограничений:
+It is an abstract smart contract defining the limitation of a parental license; there are 7 basic types of limitations:
 \begin{enumerate}
-	\item \code{EnumerateRule} – органичение перечислением
-	\item \code{RangeRule} – ограничение диапазоном
-	\item \code{ValueRule} – ограничение значением
-	\item \code{AddressRule} – ограничение адрессом(ами)
-	\item \code{TextRule} – описательное ограничение 
-	\item \code{AllOfRule} – группирующее ограничение по типу: все из группы
-	\item \code{AnyOfRule} – группирующее ограничение по типу: любое из группы
+	\item \code{EnumerateRule} – enumerate limitation
+	\item \code{RangeRule} – range limitation
+	\item \code{ValueRule} – value limitation
+	\item \code{AddressRule} – address(es) limitation
+	\item \code{TextRule} – descriptive limitation
+	\item \code{AllOfRule} – grouping limitation according to type: all from the group
+	\item \code{AnyOfRule} – grouping limitation according to type: any from the group
 \end{enumerate}
 
-Финальная реализация ограничения может быть выбрана из предзаготовленных или создана под конкретную лицензию децентрализованным лейблом.
+Final limitation can be selected from ready options or it can be created by a decentralized label for a certain license.
 \end{multicols}
 
 \textbf{Сравнение ограничений}
@@ -1793,24 +1809,24 @@ f_z(a, b) = ||\{\top: a_{items}[i]_{fitWith}(b) = \top\}|| > 0
 \toprule
 \multicolumn{2}{c}{\code{EnumerateRule}} \\
 \midrule
-	\code{LocationRule} & Ограничение по географии использования и производные: \code{CountryRule} и \code{CityRule} \\
-	\code{ChannelRule} & Ограничение по канналу воспроизведения \\
-	\code{MediaRule} & Ограничение по типу носителя \\
-	\code{GenreRule} & Ограничение по жанру носителя (используется для кино, театра и т.д.) \\
-	\code{UsageRule} & Ограничение по типу использования \\
+	\code{LocationRule} & Geographical use limitation and derivatives: \code{CountryRule} and \code{CityRule} \\
+	\code{ChannelRule} & Playback channel limitation \\
+	\code{MediaRule} & Media type limitation \\
+	\code{GenreRule} & Media genre limitation (used for cinemas, theatres etc.) \\
+	\code{UsageRule} & Usage type limitation \\
 \bottomrule
 \toprule
 \multicolumn{2}{c}{\code{RangeRule}} \\
 \midrule
-	\code{PlayTimesRule} & Ограничение количеству/длительности \\ воспроизведения \\
-	\code{LifetimeRule} & Ограничение срока действия лицензии \\
-	\code{NumberOfCopyRule} & Ограничение по количеству копий \\
-	\code{PowerOfRule} & Ограничение по бюджету проекта и(или) доходу компании приобретателя \\
+	\code{PlayTimesRule} & Playback quantity/period limitation \\
+	\code{LifetimeRule} & Validity of license limitation \\
+	\code{NumberOfCopyRule} & Number of copies limitation \\
+	\code{PowerOfRule} & Project budget and (or) buyer income limitation \\
 \bottomrule
 \toprule
 \multicolumn{2}{c}{\code{ValueRule}} \\
 \midrule
-	\code{PriceRule} & Стоимость лицензии \\
+	\code{PriceRule} & License price \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1825,12 +1841,13 @@ f_z(a, b) = ||\{\top: a_{items}[i]_{fitWith}(b) = \top\}|| > 0
 \subsection{Soundchain}
 \label{tech-apps-soundchain}
 \begin{multicols}{2}
-Soundchain является первым проектом направленным на освоение \hyperref[tech-blockchain-reward]{Musereum Foundation}. Основная задача Soundchain начисление роялти децентрализованным лейблам за прослушивание музыкальных активов. 
+Soundchain is the first project that aims to embrace Musereum Foundation. The primary application of Soundchain is to allocate royalty to decentralized labels for listening to musical assets.
 
-Работу Soundchain определяет множество смарт-контрактов и интерфейсов взаимодействия, рассмотрим смарт-контракт PayPerPlay через который:
+Soundchain operation is determined by numerous smart-contracts and interaction interfaces, 
+consider PayPerPlay smart-contract that is used to:
 \begin{itemize}
-	\item учитывается каждое прослушивание музыкального актива
-	\item генерируется список выплат роялти из выделенного объема Musereum Foundation
+	\item record every listening to a musical asset;
+	\item generate the royalty payment list from selected Musereum Foundation Volume
 \end{itemize}
 \end{multicols}
 \begin{align}
@@ -1845,26 +1862,25 @@ c = &\sum\limits^{|b|}_{i=0} b_i, \quad d = \frac{r}{c} \\
 p = &\{ p_i \ | \ \forall i \in b, p_i = d * b_i \}, \quad r = \sum\limits^{|p|}_{i=0} p_i
 \end{align}
 
-Остается определить, что такое функция $f_{pay}$. Результат функции зависит от двух переменных: коэффициента слушателя и коэффициента лейбла: 
-
+Now we need to define what is $f_{pay}$ function. The function result depends on two variables: Listener ratio and label ratio:
 \begin{align}
 f_{pay}(a) = min(&f_{listenerCoef}(a)),\\
 						 &f_{labelCoef}(\delta^{R}_{labels}(a_{asset}))
 \end{align}
 
-Коэффициет слушателя определяет насколько платформа доверяет данному слушателю:
+Listener ratio determines how much trust the platform puts in the listener: 
 \begin{enumerate}
-	\item Персонификация учетной записи: ФИО, География;
-	\item Подтверждение телефонного номера (Proof-of-SMS);
-	\item Подтверждение географического происхождения: верификация документов;
-	\item Размер материальной заинтересованности в будущем платформы: количество ETM, количество и объем удерживаеных токенов децентрализованных огранизаций.
+	\item Account personification: Full name, location;
+	\item Phone number confirmation (Proof-of-SMS);
+	\item Geographical location confirmation: verification of documents;
+	\item The amount of financial incentive in the future of the platform: Amount of ETMs, amount of held tokens of a decentralized organizations.
 \end{enumerate}
 
-Коэфициент лейбла учитвает в подсчете:
+When calculating, label ratio takes into account:
 \begin{enumerate}
-	\item Совокупный доход с продажи лицензий ассоциированного актива;
-	\item Доход с продажи лицензий за последнюю неделю;
-	\item Искусственный коэфициент оценки лейбла SoundChain'ом (дополнительно депонирование средств, сжигание средств и т.д.)
+	\item License sale total revenue of associated asset;
+	\item License sale revenue for the latest week;
+	\item Soundchain artificial label evaluation ratio (additional depositing, fund burning etc.)
 \end{enumerate}
 \begin{equation}
 \end{equation}
