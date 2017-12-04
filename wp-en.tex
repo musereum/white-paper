@@ -1,6 +1,8 @@
 \documentclass[12pt]{report}
 \ProvidesPackage{musereum}
 
+\usepackage{graphicx}
+\graphicspath{ {images/} }
 \usepackage[T1]{fontenc}
 \usepackage{titlesec, blindtext, color}
 \definecolor{gray75}{gray}{0.75}
@@ -18,6 +20,7 @@
 \usepackage{tikz}
 \usetikzlibrary{calc,trees,positioning,arrows,chains,fit,shapes.geometric,%
     decorations.pathreplacing,decorations.pathmorphing,shapes,%
+    decorations.markings,%	
     matrix,shapes.symbols}
 
 
@@ -55,6 +58,13 @@
 \tikzstyle{rect} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black]
 \tikzstyle{check} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black]
 \tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{line} = [thick]
+\tikzstyle{vecArrow} = [thick, decoration={markings,mark=at position
+   1 with {\arrow[semithick]{open triangle 60}}},
+   double distance=1.4pt, shorten >= 5.5pt,
+   preaction = {decorate},
+   postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
+\tikzstyle{innerWhite} = [semithick, white,line width=1.4pt, shorten >= 4.5pt]
 
 \pgfdeclarelayer{background}
 \pgfdeclarelayer{foreground}
@@ -648,18 +658,35 @@ Core platform products is:
 	\item \textbf{Decentralized Content Network}: The current industry solutions  delivers their musical content from centralized content networks. In order to deliver on the promise as laid out in the business objectives, one deliverable is that of a decentralized system wherein many ecosystem participants could run nodes of the system and use consensus algorithms to synchronize
 with one another.
 	\item \textbf{Cryptocurrency}: The introduction of a cryptocurrency would enable a common exchange of value across all ecosystem participants globally. It would also serve to equalize the playing field and set a benchmark for services provided.
-	\item \textbf{Transparent Rights Registry}:
-	\item \textbf{Decentralized Exchange}:
-	\item \textbf{Decentralized Marketplace}:
+	\item \textbf{Transparent Rights Registry}: 
+	\item \textbf{Decentralized Exchange} without moment of authority to select what we trade and when. Any registered asset could to listing associated token as a tradable active.
+	\item \textbf{Decentralized Marketplace} for the monetization of creativity through the sale of licenses.
 \end{itemize}
 \end{multicols}
-\section{Инструменты}
 
-\section{Идентификация и персонализация}
+\section{Tools}
+\begin{multicols}{2}
+All of tools could be grouped by three categories:
+\begin{enumerate}
+	\item \textbf{Business and economy}. Core features provider here is \textit{Musereum Wallet}. Musereum Wallet is not just a wallet to hold and spend crypto-currency, it is default door to whole economy system of Musereum. 
+	\item \textbf{Entertainment and listening}. Implements as a services around Musereum such as Soundchain to listen music for free.
+	\item \textbf{Infrastructure}. Service and maintain level tools to monitoring, developing and auditing network. We are providing bunch of tools and services: blockchain explorer, deploy utilities, public http api and also.
+\end{enumerate}
+\end{multicols}
 
 \section{Roles}
 \label{platform-roles}
+In a nature of platform users could identify yourself with desired roles as well as delegate roles to others.
 
+Primary platform select next core roles:
+\begin{itemize}
+	\item \textbf{User} is the person who create an account on the platform and got permissions to hold and transfer ETM and interact with a musical catalog.
+	\item \textbf{Person} is the user who provide proof-of-personality to receive permissions to invest and trade with a musical assets.
+	\item \textbf{Artist} is a person with at least one registered musical asset on a platform. Should be at least person to register asset.
+	\item \textbf{Notary} is the person chosen for the production of blocks
+	\item \textbf{Affilated specialist} is the person chosen to do some important work for the platform. 
+	\item \textbf{Keeper} is the user provided storage to store musical content.
+\end{itemize}
 
 \chapter{Technical Description of Platform}
 \section{Overview}
@@ -1010,7 +1037,7 @@ C = 2 * \Gamma_{step} * |\mathbb{Y}|
 \end{equation}
 \textit{Or 120 seconds with default protocol settings: 12 notaries with 1 block every five seconds}
 % \end{multicols}
-\subsection{Свидетельство сделки}
+\subsection{Notary Witness}
 \label{tech-blockchain-confirmation}
 \begin{multicols}{2}
 In order to do any activity that requires changing system state, user must form a transaction ($T$) signed with a unique cryptographic signature ($T_{sign}$). 
@@ -1045,8 +1072,9 @@ Minimal time for receiving $|\mathbb{Y}|$ signatures:
 a = \Gamma_{step} * |\mathbb{Y}|
 \end{equation}
 \end{multicols}
+\vfill\null\pagebreak
 
-\subsection{Кроссчейн Musereum и Ethereum Classic}
+\subsection{Crosschain communication and Ethereum Classic}
 \label{tech-blockchain-anchoring}
 \begin{multicols}{2}
 В целях повышения безопастности и отказоустойчивости сети, Musereum периодически дублирует ключевую информацию о состоянии сети и событиях во внешний неконтролируемый нотариусами блокчейн. 
@@ -1060,10 +1088,90 @@ a = \Gamma_{step} * |\mathbb{Y}|
 
 Musereum публикует в Ethereum Classic:
 \begin{enumerate}
-	\item хеши каждого для обеспечения доказательства
-	\item факты ключевых сделок
+	\item хеши каждого n блока для обеспечения доказательства исторических данны;
+	\item факты ключевых сделок: регистрация музыкальных активов, покупка лицензий.
 \end{enumerate}
 \end{multicols}
+
+\begin{figure}[h]
+\centering
+\caption{Crosschain communication}
+\vspace{20pt}
+\begin{tikzpicture}
+\tikzset{%
+	part/.style = { rectangle, draw=black, minimum height=.7cm },
+	block/.style = { rectangle, draw=black, minimum height=3cm, minimum width=3cm, text width=3cm, text centered},
+	event/.style = { rectangle, , rounded corners, draw=black, text centered},
+	anchoring/.style = { rectangle, rounded corners, draw=black, text centered, minimum width=3cm, minimum height=1.2cm}
+}
+\node(BlockA)			[block]
+								{Musereum \linebreak Block};
+\node(BlockB)			[block, right=0.8cm of BlockA.east]
+								{Musereum \linebreak Block};
+\node(BlockC)			[block, right=0.8cm of BlockB.east]
+								{Musereum \linebreak Block};
+\node(BlockD)			[block, right=0.8cm of BlockC.east]
+								{Musereum \linebreak Block};
+								
+\node(NewAsset)		[part, below=0.2cm of BlockB.south]
+								{Asset Registration};
+\node(BuyLicense)	[part, below=0.2cm of BlockC.south]
+								{Buy License};
+\node(StateHash)		[part, below=0.2cm of BlockD.south]
+								{$K_{stateHash}$};
+\node(StorageHash)	[part, below=0.2cm of StateHash.south]
+								{$K_{storageHash}$};
+\node(ReceiptHash)	[part, below=0.2cm of StorageHash.south]
+								{$K_{receiptHash}$};
+						
+								
+\node(ETCA)				[block, below=5.1cm of BlockA.south]
+								{ETC Block};
+\node(ETCC)				[block, below=5.1cm of BlockD.south]
+								{ETC Block};			
+\node(ETCB) 			[block] at ($(ETCA)!0.5!(ETCC)$) 
+								{ETC Block};
+
+\node(AnchoringA)	[anchoring,  below=3.1cm of BlockB.south]
+								{Anchor Contract};
+								
+\node(AnchoringB)	[anchoring,  below=3.1cm of BlockD.south]
+								{Anchor Contract};
+
+
+%\draw[->] (manufacturer.south) -- ++(-.5,0) -- ++(0,-1) -|  (retailer1.north);	
+%\draw[myarrow] (manufacturer.south) -- ++(.5,0) -- ++(0,-1) -|  (retailer2.north);
+
+\draw [line]		(BlockB) -- (NewAsset);
+\draw [arrow]	(NewAsset) 	-- (AnchoringA);
+\draw [arrow] 	(AnchoringA) -| (ETCB);
+
+\draw [line]		(BlockD) --	
+						(StateHash) --
+						(StorageHash) -- 
+						(ReceiptHash);
+						
+\draw [line	]		(BlockC) -- (BuyLicense);
+						
+\draw [arrow] 	(ReceiptHash) 	-- 	(AnchoringB);
+\draw [arrow] 	(BuyLicense)		|- 	(AnchoringB);
+\draw [arrow] 	(AnchoringB)		-- 	(ETCC);
+
+
+\draw [vecArrow] 	(BlockD) -- (BlockC);
+\draw [vecArrow] 	(BlockC) -- (BlockB);
+\draw [vecArrow] 	(BlockB) -- (BlockA);
+\draw [innerWhite](BlockD) -- (BlockC);
+\draw [innerWhite](BlockC) -- (BlockB);
+\draw [innerWhite](BlockB) -- (BlockA);
+
+\draw [vecArrow] 	(ETCC) -- (ETCB);
+\draw [vecArrow]	(ETCB) -- (ETCA);
+\draw [innerWhite](ETCC) -- (ETCB);
+\draw [innerWhite](ETCB) -- (ETCA);
+							
+\end{tikzpicture}
+\end{figure}
 
 \vfill\null\pagebreak
 
@@ -1141,14 +1249,15 @@ General distribution pattern:
 \end{itemize}
 
 
-\subsection{Виртуальная машина Ethereum}
+\subsection{Ethereum VM}
 \label{tech-blockchain-evm}
-\subsection{Смарт-контракты Ethereum}
+Ethereum is an open-source, public, blockchain-based distributed computing platform featuring smart contract (scripting) functionality. It provides a decentralized Turing-complete virtual machine, the Ethereum Virtual Machine (EVM), which can execute scripts. "Gas", an internal transaction pricing mechanism, is used to mitigate spam and allocate resources on the network.
+\subsection{Ethereum Smart-contracts}
 \label{tech-blockchain-contracts}
-
+Smart contracts are deterministic exchange mechanisms controlled by digital means that can carry out the direct transaction of value between untrusted agents. They can be used to facilitate, verify, and enforce the negotiation or performance of economically-laden procedural instructions and potentially circumvent censorship, collusion, and counter-party risk. In Ethereum, smart contracts are treated as autonomous scripts or stateful decentralized applications that are stored in the Ethereum blockchain for later execution by the EVM. Instructions embedded in Ethereum contracts are paid for in ether (or more technically "gas") and can be implemented in a variety of Turing complete scripting languages.
 \subsection{Musereum rules for EVM interaction}
 \label{tech-blockchain-rules}
-\begin{multicols}{2}
+%\begin{multicols}{2}
 In order to improve security of platform participants, interaction with EVM smart contracts in Musereum differs from that in parental Ethereum network.
 
 Any member of the network can upload a smart contract to the network, but such smart contract has $P_{development}$ status and it is available for interaction with affiliated addresses of network accounts. Initially this address belongs to the account of the user who uploaded the contract.
@@ -1156,7 +1265,7 @@ Any member of the network can upload a smart contract to the network, but such s
 Smart contract interaction rules are regulated by allowance smart contract: $\rho$.
 
 Any smart contract call initially requests allowance to make the call – $\rho_{allowTx}(T_{from}, T_{to})$
-\end{multicols}
+%\end{multicols}
 \begin{align}
 a &= \rho_{stateOf}(T_{to}) \nonumber\\
 b &= \rho_{affilateWith}(T_{to}) \nonumber\\
@@ -1211,15 +1320,20 @@ The author of a smart contract must provide source code for a check and pass the
 \end{tikzpicture} 
 \end{center}
 
-\section{Децентрализованное хранилище}
+\section{Decentralized Storage}
 \label{tech-storage}
-\subsection{Обзор технологии}
+\subsection{Overview}
 \label{tech-storage-review}
-\subsection{Соглашение о хранении данных}
-\label{tech-storage-convention}
-\subsection{Система удобочитаемых наименований}
-\label{tech-storage-naming}
+\textit{InterPlanetary File System} (IPFS) is a peer-to-peer network connecting remote servers in a single global decentralized storage platform. A significant amount of storage capacity will be required to store all the compositions in a decentralized manner and this can be achieved through IPFS.
 
+Musereum is planning to utilize customized Clustered IPFS Swarm for the platform. Clustered IPFS nodes should create the necessary storage capacity for storing beats, compositions and videos, while providing faster access to them. Files stored in IPFS are divided into smaller chunks and each chunk is encrypted with keys. Based on our experience, storing files as chunks can significantly reduce download time and make them more secure.
+
+The Musereum community will be involved in storing and streaming of the compositions and gain rewards in return from emission rate of ETM tokens.
+\subsection{Naming System}
+\label{tech-storage-naming}
+Musereum is planning to utilize \textit{The Inter-Planetary Naming System} (IPNS) to provide simple way to stored files. 
+
+It allows you to store a reference to an IPFS file under the namespace of corresponding KeeperID (the hash of keeper's public key).
 
 \section{Децентрализованные приложения}
 \label{tech-apps}
@@ -1228,8 +1342,41 @@ Musereum DApps implement the code for record and storage layer as well as the in
 \subsection{Governance dApp}
 \label{tech-apps-governance}
 \begin{multicols}{2}
-Децентрализованное приложение управления списком нотариусов и проверки их прав на производство блоков.
+Musereum starts from initial ceremony to set up a list of Notaries.
+
+During the initial ceremony a master of ceremony creates a set of keys for each validator. He/She distributes them to validators one by one. Before each distribution of keys, he/she sends a transaction to a smart contract with a list of validators. That smart contract is used by consensus algorithm to determine if a validator has rights to participate in consensus and create blocks. The validator’s smart contracts are used by other DApps, e.g. Governance DApp and Payout DApp.
+
+A validator generates three keys in the Initial Ceremony DApp:
+\begin{itemize}
+	\item mining key, required to participate in consensus and create blocks.
+	\item voting key, required to create ballots and vote on ballots.
+	\item payout key, not required. Used in Payout DApp to send daily mined coins from the mining key to the payout key. If a mining node should be compromised, an attacker will get daily earnings or less.
+\end{itemize}
+
+All keys are generated on the client side and not transmitted over the Internet without a validator’s permission and willingness. When keys are generated, the validator stores them on secure local storage, e.g. saves them to a hardware wallet and the password to a password manager. The validator signs a transaction to the validator’s contract with the initial key, provided by the master of ceremony.
+
+Initial ceremony is a required procedure to start a new network based on Oracles Network’s ideas of independent validators.
 \end{multicols}
+
+\includegraphics[width=\textwidth]{initial}
+
+\begin{multicols}{2}
+Futurе changes of Notaries List will be committed through voting. Creation of voting ballot based on a request with assign form.
+
+Valid notary of the Oracles Network fills out a form in DApp providing:
+\begin{itemize}
+	\item mining key - mining key of a new or existing notary, which will be voted on
+affected key type - key type (mining, payout, or voting key) of a new or existing notary, which will be voted on
+	\item memo - brief information about notary, which will be voted on
+	\item action - add affected key to the network or remove it from the network
+\end{itemize}
+
+If the affected key type is mining key, the user will be asked to provide personal data of the notary (owner of this mining key) such as full name, physical address, U.S. state name, zip code, notary license ID, and notary license expiration date.
+
+At the final step, one transaction to create a new ballot in Oracles contract will be pushed to the blockchain to add a new ballot after the user presses “Continue” button. It should be noted, that in case of a mining key, it will be two consistent transactions: to add personal data of a notary and a new ballot to contract. User will see MetaMask popups equal to the number of transactions. After the confirmation and successful mining of the transaction by existing validators, the user will see the created ballot in the list and be able to vote on it. 
+\end{multicols}
+
+\includegraphics[width=\textwidth]{creation-ballot}
 
 \subsection{Contract Registry}
 \label{tech-apps-contracts-registry}
