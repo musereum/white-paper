@@ -151,7 +151,7 @@
 \end{table}
 
 \vfill\null\pagebreak
-\section{Доходы от распространения музыкального произведения}
+\section{Artem}
 \label{industry-distribution}
 
 \newcommand{\slice}[4]{
@@ -222,6 +222,9 @@
             xtick=data,
             nodes near coords,
             ymin=0,ymax=65,
+            width=13cm, %set bigger width
+		   height=6cm,
+		   bar width=1.5cm,
             ylabel={Доля дохода, \%},
         ]
         \addplot table[x=interval,y=carT]{\streamingPartion};
@@ -658,13 +661,14 @@ Core platform products is:
 	\item \textbf{Decentralized Content Network}: The current industry solutions  delivers their musical content from centralized content networks. In order to deliver on the promise as laid out in the business objectives, one deliverable is that of a decentralized system wherein many ecosystem participants could run nodes of the system and use consensus algorithms to synchronize
 with one another.
 	\item \textbf{Cryptocurrency}: The introduction of a cryptocurrency would enable a common exchange of value across all ecosystem participants globally. It would also serve to equalize the playing field and set a benchmark for services provided.
-	\item \textbf{Transparent Rights Registry}: 
+	\item \textbf{Transparent Rights Management} based on three core elements: musical assets, decentralized autonomous labels and licenses on smart-contracts.
 	\item \textbf{Decentralized Exchange} without moment of authority to select what we trade and when. Any registered asset could to listing associated token as a tradable active.
 	\item \textbf{Decentralized Marketplace} for the monetization of creativity through the sale of licenses.
 \end{itemize}
 \end{multicols}
 
-\section{Tools}
+\section{\hlc{Tools}}
+\label{platform-tools}
 \begin{multicols}{2}
 All of tools could be grouped by three categories:
 \begin{enumerate}
@@ -674,6 +678,299 @@ All of tools could be grouped by three categories:
 \end{enumerate}
 \end{multicols}
 
+\subsection{\hlc{Rights Management Tools}}
+\label{platform-tools-rights}
+
+
+\def\Registration{Person Registration (Author)}
+\def\RegistrationMusereum{Create ETM Wallet}
+\def\KYC{KYC (Proof of Identity)}
+\def\CreateAsset{Create Asset}
+\def\AssetTitle{Title}
+\def\AssetImage{Image}
+\def\AssetRelease{Release Date}
+\def\AssetLanguage{Language}
+\def\AssetBPM{BPM}
+\def\AssetTempo{Tempo}
+\def\AssetVocal{Vocal}
+\def\AssetMusicalKey{Musical Key}
+\def\AssetKeywords{Keywords}
+\def\AssetMoods{Moods}
+\def\AssetSimilar{Similar assets}
+\def\AssetDescription{Description}
+\def\AssetGenres{Genres}
+
+\def\AssetRegistration{Create Asset Record}
+\def\Registrator{Affilated Registrators}
+\def\RegistrationBallot{Registration Ballot}
+\def\AddAsset{Add Asset to Catalog}
+\def\CreateDAL{Create Asset DAL}
+
+\def\SetupDAL{Initial DAL Configuration}
+\def\TokenSetup{DAL Token Setup}
+\def\VotingSetup{DAL Voting Setup}
+
+\begin{figure}[h]
+\centering
+\caption{DAL creation: Process 1}
+\vspace{20pt}
+
+\begin{tikzpicture}
+\node(RegistrationMusereum) [rect, minimum width=6cm]
+						{\RegistrationMusereum};
+\node(KYC) 		[rect, minimum width=6cm, right=0.5cm of RegistrationMusereum.east]
+						{\KYC};
+\node(Registration) [above=0.5cm of RegistrationMusereum.north west, anchor=west]
+						{\Registration};
+						
+\node(RegistrationRect) [rect, rounded corners, thick, fit={(RegistrationMusereum) (KYC) (Registration)}] {};
+
+\node(AssetTitle) [rect, below=1.5cm of RegistrationMusereum.south west, anchor=north west]{\AssetTitle};
+\node(AssetImage)[rect, below=0.2cm of AssetTitle.south]{\AssetImage};
+\node(AssetRelease)[rect, below=0.2cm of AssetImage.south]{\AssetRelease}; 
+\node(AssetLanguage)[rect, right=0.2cm of AssetTitle.east]{\AssetLanguage};
+\node(AssetBPM)[rect, below=0.2cm of AssetLanguage.south]{\AssetBPM};
+\node(AssetTempo)[rect, below=0.2cm of AssetBPM.south]{\AssetTempo};
+\node(AssetVocal)[rect, right=0.2cm of AssetLanguage.east]{\AssetVocal};
+\node(AssetMusicalKey)[rect, below=0.2cm of AssetVocal.south]{\AssetMusicalKey};
+\node(AssetKeywords)[rect, below=0.2cm of AssetMusicalKey.south]{\AssetKeywords};
+\node(AssetMoods)[rect, right=0.2cm of AssetVocal.east]{\AssetMoods};
+\node(AssetSimilar)[rect, below=0.2cm of AssetMoods.south]{\AssetSimilar};
+\node(AssetGenres)[rect, below=0.2cm of AssetSimilar.south]{\AssetGenres};
+
+\path 
+	let \p1=(AssetRelease.west), \p2=(AssetGenres.east)
+	in node(AssetDescription) [
+		rect,
+		below=0.2cm of AssetRelease.south west,
+		anchor=north west,
+		minimum width=\x2-\x1-\pgflinewidth
+	] {\AssetDescription};
+	
+\node(CreateAsset) [above=0.5cm of AssetTitle.north west, anchor=west]{\CreateAsset};
+						
+\node(CreateAssetRect) [rect, rounded corners, thick, fit={(CreateAsset) (AssetDescription)}] {};
+
+
+\path 
+	let \p1=(CreateAssetRect.south west), \p2=(CreateAssetRect.south east)
+	in node(UploadProcess) [
+		rect, thick, rounded corners,
+		below=0.5cm of CreateAssetRect,
+		minimum width=\x2-\x1-\pgflinewidth,
+		text width=\x2-\x1-\pgflinewidth-40pt,
+		inner sep=10pt
+	] {\textbf{Encrypt and Upload to IPFS}};
+
+\node(AssetRegistration) [rect, below=0.5cm of UploadProcess, xshift=-4cm]
+						   {\AssetRegistration};
+\node(RegistrationBallot) [check, aspect=2, below=1cm of AssetRegistration.south]
+						   {\RegistrationBallot};
+						   
+\node(ForgetAsset) [rect, rounded corners, thick, right=1.5cm of RegistrationBallot, text width=5.5cm]
+{\textbf{Unlink hash and release keepers}};
+						   
+\node(AddAsset) [rect, below=1cm of RegistrationBallot]
+						   {\AddAsset};
+						   
+							   
+\path 
+	let \p1=(RegistrationMusereum.south west), \p2=(KYC.south east)
+	in node(RegistryCertificate) [
+		rect, thick, rounded corners,
+		below=0.5cm of AddAsset,
+		xshift=4cm,
+		minimum width=\x2-\x1-\pgflinewidth,
+		text width=\x2-\x1-\pgflinewidth-40pt,
+		inner sep=10pt
+	] {\textbf{Anchoring Right Registry Certificate to ETC Classic}};
+						   
+\path 
+	let \p1=(RegistrationMusereum.south west), \p2=(KYC.south east)
+	in node(CreateDAL) [
+		rect, thick, rounded corners,
+		below=0.5cm of RegistryCertificate,
+		minimum width=\x2-\x1-\pgflinewidth,
+		text width=\x2-\x1-\pgflinewidth-40pt,
+		inner sep=10pt
+	] {\textbf{Create and Setup Decentralized Autonomous Label}\linebreak\textit{Figure 3.2}};
+
+\draw [thick, ->] (RegistrationMusereum) -- (KYC);
+\draw [thick, ->] (RegistrationRect) -- (CreateAssetRect);
+\draw [thick, ->] (CreateAssetRect) -- (UploadProcess);
+\draw [thick, <-] (AssetRegistration.north) coordinate (p1) -- (UploadProcess.south -| p1);
+\draw [thick, ->] (AssetRegistration) -- (RegistrationBallot);
+\draw [thick, ->] (RegistrationBallot) --  node[fill=white] {fail} (ForgetAsset);
+\draw [thick, ->] (RegistrationBallot) --  node[fill=white] {success} (AddAsset);
+\draw [thick, ->] (AddAsset.south) coordinate (p1) -- (RegistryCertificate.north -| p1);
+\draw [thick, ->] (RegistryCertificate) -- (CreateDAL);
+
+\end{tikzpicture}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\caption{Create and setup Decentralized Autonomous Label}
+\vspace{20pt}
+
+\begin{tikzpicture}	
+\tikzset{%
+	mini/.style = { rectangle, draw=black, minimum height=1cm, text width=2.6cm, inner sep=0.15cm },
+	wrap/.style = {rectangle, draw=black, rounded corners, thick}
+}
+\node(ts1) [mini, yshift=15cm] {Total Supply};
+\node(ts2) [above=0.2cm of ts1.north west, anchor=south west ] {\textbf{Core Token Setup}};
+\node(ts3) [mini, right=0.2cm of ts1] {Ticker};
+\node(ts4) [mini, right=0.2cm of ts3] {Decimals};
+\node(tsr) [wrap, fit={(ts2) (ts4)}] {};
+
+\node(ih0) [mini, below=1.5cm of tsr.south west, anchor=north west, text width=1cm] {1};
+\node(ih3) [above=0.2cm of ih0.north west, anchor=south west ] {\textbf{Initial Token Holders}};
+\path 
+	let \p1=(ts1.south west), \p2=(ts4.south east)
+	in node(ih1) [mini, right=0pt of ih0, text width=\x2-\x1-\pgflinewidth-4.5cm] {address};
+\node(ih2) [mini, right=0pt of ih1] {\% of supply}; 
+
+\node(ih0) [mini, below=0pt of ih0, text width=1cm] {2};
+\path 
+	let \p1=(ts1.south west), \p2=(ts4.south east)
+	in node(ih1) [mini, right=0pt of ih0, text width=\x2-\x1-\pgflinewidth-4.5cm] {address};
+\node(ih2) [mini, right=0pt of ih1] {\% of supply}; 
+
+\node [below=0.1cm of ih1] {...};
+
+\node(ih0) [mini, below=0.5cm of ih0, text width=1cm] {$n$};
+\path 
+	let \p1=(ts1.south west), \p2=(ts4.south east)
+	in node(ih1) [mini, right=0pt of ih0, text width=\x2-\x1-\pgflinewidth-4.5cm] {address};
+\node(ih2) [mini, right=0pt of ih1] {\% of supply}; 
+
+\node(ih4) [fit={(ih3) (ih2)}] {};
+
+\node(ih5) [check, aspect=2, below=0.5cm of ih4] {ICO required for DAL?};
+	
+\path
+	let \p1=(ih0.south west), \p2=(ih5.south west)
+	in node(ih0) [mini, text width=1cm, anchor=north west, yshift=-1.2cm] at (\x1,\y2) {$n+1$};
+\path 
+	let \p1=(ts1.south west), \p2=(ts4.south east)
+	in node(ih1) [mini, right=0pt of ih0, text width=\x2-\x1-\pgflinewidth-4.5cm] {ICO Contract};
+\node(ih2) [mini, right=0pt of ih1] {\% on sale}; 
+
+\path 
+	let \p1=(ih0.south west), \p2=(ih2.south east)
+	in node(ih6) [
+		rect, thick, rounded corners,
+		below=0.5cm of ih0.south west, 
+		anchor=north west,
+		minimum width=\x2-\x1-\pgflinewidth,
+		text width=\x2-\x1-\pgflinewidth-10pt,
+		inner sep=5pt
+	] {\textbf{Create and Setup ICO}\linebreak\textit{Figure 3.3}};
+	
+\node(ihr) [wrap, fit={(ih3) (ih6)}] {};
+
+\node(vs0) [right=0.8cm of ts4.north east, anchor=north west, text width=5cm] {Making a proposal for: };
+\node(vsh) [above=0.2cm of vs0.north west, anchor=south west ] {\textbf{Charter Setup}};
+\node(vs1) [mini, below=0.2cm of vs0.south west, anchor=north west, text width=4.5cm] {Licensing};
+\path
+	let \p1=(vs1.south), \p2=(vs1.north)
+	in node(vs2) [
+		mini,
+		minimum height=\y2-\y1,
+		right=0pt of vs1
+	] {\% of supply};
+	
+\node(vs3) [mini, below=0pt of vs1, text width=4.5cm] {Charter revision};
+\path
+	let \p1=(vs3.south), \p2=(vs3.north)
+	in node(vs4) [
+		mini,
+		minimum height=\y2-\y1,
+		right=0pt of vs3
+	] {\% of supply};
+	
+\node(vs5) [mini, below=0pt of vs3, text width=4.5cm] {Voting rules};
+\path
+	let \p1=(vs5.south), \p2=(vs5.north)
+	in node(vs6) [
+		mini,
+		minimum height=\y2-\y1,
+		right=0pt of vs5
+	] {\% of supply};
+	
+	
+\node(vs7) [below=0.5cm of vs5.south west, anchor=north west, text width=5cm] {Initial voting rules};
+\node(vsA) [mini, below=0.2cm of vs7.south west, anchor=north west, text width=4.5cm] {Majority Rule};
+\path
+	let \p1=(vsA.south), \p2=(vsA.north)
+	in node(vsB) [
+		mini,
+		minimum height=\y2-\y1,
+		right=0pt of vsA
+	] {$2/3$};
+\node(vsA) [mini, below=0pt of vsA, text width=4.5cm] {Quorum};
+\path
+	let \p1=(vsA.south), \p2=(vsA.north)
+	in node(vsB) [
+		mini,
+		minimum height=\y2-\y1,
+		right=0pt of vsA
+	] {10\% of supply};
+\node(vsA) [mini, below=0pt of vsA, text width=4.5cm] {Duration};
+\path
+	let \p1=(vsA.south), \p2=(vsA.north)
+	in node(vsB) [
+		mini,
+		minimum height=\y2-\y1,
+		right=0pt of vsA
+	] {10 days};
+	
+\node(vsr) [wrap, fit={(vsh) (vsB)}] {};
+
+\path
+	let \p1=(ihr.west), \p2=(vsr.east)
+	in node(dop) [
+		wrap,
+		text centered,
+		below=0.5cm of ihr.south west,
+		anchor=north west,
+		text width=10cm,
+		minimum height=1cm,
+		minimum width=\x2-\x1-\pgflinewidth
+	] {\textbf{License Operation}\linebreak\textit{Figure 3.3}};
+	
+\path
+	let \p1=(ihr.west), \p2=(vsr.east)
+	in node(royalty) [
+		wrap,
+		text centered,
+		below=0.5cm of dop,
+		text width=10cm,
+		minimum height=1cm,
+		minimum width=\x2-\x1-\pgflinewidth
+	] {\textbf{Royalty Distribution}\linebreak\textit{Figure 3.4}};
+	
+\draw [thick, ->] (tsr) -- (ihr);
+\draw [thick, <-] (vsr.west) coordinate (p1) -- (ihr.east |- p1);
+\draw [thick, ->] (vsr.south) coordinate (p1) -- (dop.north -| p1);
+\draw [thick, ->] (dop) -- (royalty);
+\end{tikzpicture}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\caption{License creation process}
+\vspace{20pt}
+\includegraphics[width=\textwidth]{licensing}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\caption{Royalty Distribution}
+\vspace{20pt}
+\includegraphics[width=\textwidth]{royalty}
+\end{figure}
 \section{Roles}
 \label{platform-roles}
 In a nature of platform users could identify yourself with desired roles as well as delegate roles to others.
