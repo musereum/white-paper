@@ -1,6 +1,8 @@
 \documentclass[12pt]{report}
 \ProvidesPackage{musereum}
-
+\usepackage{framed}
+\usepackage{float}
+\usepackage{eurosym}
 \usepackage{graphicx}
 \graphicspath{ {images/} }
 \usepackage[T1]{fontenc}
@@ -90,53 +92,64 @@
 \tableofcontents
 \pagebreak
 
-\chapter{Введение}
+\chapter{Introduction}
 \label{overview}
 \begin{multicols}{2}
-\hlc{«Musereum»} – это мульти-блокчейн проект, созданный консорциумом блокчейн-профессионалов в сотрудничестве с экспертами в разработке программного обеспечения, юристами и профессиональными участниками музыкальной индустрии, способными применить сильные стороны указанных сфер и технологии для решения реальных бизнес-задач, а также преобразования мировой музыкальной индустрии в целом.
+Musereum is a blockchain-based project created by a consortium of blockchain professionals together with software development experts, lawyers and professional members of music industry. The expertise of the developing members allows for implementation of mentioned industries and technology to cope with realistic business challenges and transform the transactional structure of the global music industry.
 
-Проект представляет собой музыкальную платформу, сформированную на базе смарт-контрактов. Токены «Musereum» являются основополагающей единицей на платформе для построения экономических взаимоотношений между всеми участниками сети.
+The project represents a music platform based on smart contracts. Musereum tokens are key units of the platform employed to build economic relationships between all participants of the network.
 
-Мы понимаем, что изменить текущую ситуацию в индустрии, которая формировалась десятки лет, в один момент не получится, поэтому инновационные механизмы будут внедряться постепенно в коллаборации c заинтересованными сторонами процесса. 
+Since it is difficult to immediately change the current situation in the industry that has been developing for decades, that is why the innovative mechanisms will be integrated gradually in collaboration with involved parties of the process.
 
-В рамках проекта «Musereum» участники смогут создавать токены, в которые будет “упакована” доля в совместном исключительном праве на музыкальное произведение. Эмиссия таких токенов будет сопровождаться лицензированием того или иного объекта музыкального произведения и таймштампингом в публичной сети Ethereum или Ethereum Classic. Музыкальные токены будут свободно обмениваться на авторизованных биржах, позволяя музыкантам привлекать средства по модели краудинвестинга, профессиональным участникам рынка – использовать прозрачный инструмент для очистки прав на музыкальные произведения, слушателям – иметь легальную возможность напрямую поддерживать любимого автора, а инвесторам – получить новый инвестиционный инструмент.
+Within the Musereum framework, the parties will be able to create music tokens that represent shares of exclusive rights for a track. The token issuance will be corresponded with track licensing and timestamping in Ethereum or Ethereum Classic public networks. Since music tokens will be traded on authorized exchanges, musicians will be able to attract funds using the crowdfunding model. At the same time professionals will be provided with a transparent tool for rights clearing, listeners will be given a way to legally and directly support their favorite artists and a new investment vehicle will be created for investors.
 
-Результатом реализации проекта станет коренное изменение отношений, складывающихся в музыкальной сфере, а именно:
+As a result, the project implementation will lead to radical transformation of relations in music industry, that is:
 
 \begin{itemize}
-	\item создание базы данных для управления правами интеллектуальной собственности;
-	\item достижение справедливости при выплате роялти посредством децентрализации процессов;
-	\item создание музыкальной платформы для начинающих талантов;
-	\item упрощение процедуры лицензирования.
+	\item  creation of a unified database for management of intellectual property rights;
+	\item fairness of royalty payments due to decentralized processing;
+	\item creation of a music platform for promising artists;
+	\item simplification of licensing procedure.
 \end{itemize}
 \end{multicols}
 
-\chapter{Обзор индустрии}
+\chapter{Industry Overview}
 \label{industry}
-%\begin{multicols}{2}
-Уже к середине 2017 года общее потребление музыки выросло на 9,9\% по сравнению с прошлым годом. 
+\begin{multicols}{2}
+As indicated by the International Confederation of Societies of Authors and Composers (CISAC), music royalties’ collections reached \euro 8b in 2016 with digital from societies totaled \euro 0,95b in 2016, up 51\% to previous year.
 
-Аналитическая компания «Buzzanngelmusic» провела исследование музыкального рынка и пришла к следующим выводам: общий объем потребления музыкальных альбомов вырос на 9\%, а музыкальных произведений - на 29,5\%.  
-%\end{multicols}
+Music collections in Europe amounted to \euro 4,2b in 2016 (including \euro 653m in UK). Though digital music collections soared by 40\% to the previous year, its share was only 10\% across the whole EU. Meanwhile there are some countries where digital music constitutes a significant part, especially among the early adopters like Sweden where digital collections increased 118.4\% during the last 5 years to slightly less than one third of total music royalties.
+ 
+According to the UK Music, the main umbrella organization that unites all the parties involved in production of music across the United Kingdom, total Gross Value Added contribution generated by UK music industry in 2016 was \textsterling 4.4b, more than a half of which (\textsterling 2.5b) is from export. About 45\% of total GVA is the revenue that relates directly to artists - musicians, composers, lyricists and singers. Recorded music and Music Publishing amounted to \textsterling 640m and \textsterling 473m respectively while Music representatives (namely collecting societies, managers and music trade bodies) and Producers \& Studios – \textsterling 96m and \textsterling 121m. The rest \textsterling 1b is generated by live events.  Only PRS for music, which is a part of UK Music, collected more than \textsterling 620m of royalties from music copyrights in the UK in 2016. PRS Music indicated the prominent revenue growth with the highest rate of growth related to digital platforms (except for the streaming) from \textsterling 38.1m to \textsterling 80.5m (90\%) and streaming which is alone contributed \textsterling 61,5m. The rest of the amount is consisted from public performance (\textsterling 183,2m) and other categories.
+                                                                                                                                          	
+In the Unites States and Canada music collections amounted almost \euro 2b (about \$2,2b) in 2016 which is 12,5\% higher than in 2015 mostly due increase in digital (up 73,3\%). USA music royalties amounted \$1.756b, Canada - \$219m. During the last 5 years (from 2012) in total collections from digital music had grown 400.6\% from \euro 56m to \euro 278m, accounting 14.1\% of total collections of music royalties at the Northern America. There are 3 main performance rights organizations in USA: ASCAP, BMI and SESAC. The leading collection society, ASCAP (The American Society of Composers, Authors and Publishers), reported \$1.059 billion of revenue  in 2016 (including \$759m from US and more than \$300m of revenue abroad) . The second one, BMI reached \$1.13b of revenue and distributed \$1.02b in music royalties at the 2015  with digital revenues more than \$150m.  And, finally, the third significant performance rights organization in the US is SESAC (Society of European Stage Authors and Composers). It generated about \$250m of revenue in 2016 with up to \$500m collections which flow through it . All the PRO in US pay royalties to artists quarterly. ASCAP and BMI quarterly royalties are subjects to be paid within 6 months,  SESAC pays at the end of the next quarter.
+In Asia-Pacific region music collections reached \euro 1,257m in 2016 with an 11\% of Y2Y growth with digital music indicating 33,5\% of growth accounting \euro 194m or 15,4\% of total music collections. The leading country in the region is Japan which collected \euro 858m in music royalties or more than 2/3  of the total Asia-Pacific market. In terms of share of digital music collection the world number one country is Korea where total 2016Y collections reached \euro 110m and digital as the largest part of the pie accounting \euro 37m or 33,5\%, indicating 104.6\% of growth during the last 5 years (since 2012). Due a low level respect for existing rights, despite the huge music consumption market and increasing its potential, China music collections amounted only \euro 23m in 2016.
+ 
+Though music collections in Latin America \& the Caribbean have grown by 28.1\% to \euro 491m during the last 5 years and digital music boost at 1,4K\%, its share is still very low – 7,1\%.   Meanwhile in some countries digital music plays a significant role. In Mexico, being driven by streaming services and licensing of Youtube, digital revenues from music royalties have soared from \euro 386k in 2012 to \euro 24m, accounting 36,6\% of total market in 2016. Overall Africa music collections are insignificant and amounted only \euro 67m in 2016 (0,7\% of the world market).
+ 
+In terms of the market structure the most eloquent case is UK Streaming distribution, representing 58\% from each 1 US dollar to those market participants, which are involved in Recording (Label 46,4\% + Artist 11,6\%), 12\% to Songwriter and Publisher (8,4\% and 3,6\% respectively), and the rest 30\% to Digital Services Providers (streaming services). Since most of the streams relate to free users, while revenues are generated mostly from subscriptions, all streaming services remain unprofitable and carry significant losses.  
+ 
+By the middle 2017 the overall usage of music has increased by 9.9\% compared to the last year.
+According to the music market research conducted by the Buzzanglemusic company, overall usage of music albums has increased by 9\%, when for music compositions it has increased by 29,5\%.
 
-\def\Prev{2016 год}
-\def\Current{2017 год}
-\def\Grow{\% роста}
-\def\Summary{Общее потребление музыкальных произведений}
-\def\Sales{Продажи песен}
-\def\Streaming{Потоковое вещание}
-\def\VideoStreaming{Видео вещание}
-\def\Albums{Общее потребление альбомов}
-\def\AlbumsSales{Продажи альбомов}
-\def\TracksSales{Продажи песен}
+\end{multicols}
 
-\begin{table}[h]
+\def\Prev{2016}
+\def\Current{2017}
+\def\Grow{\% increase}
+\def\Summary{Overall usage of music compositions}
+\def\Sales{Track sales}
+\def\Streaming{Streaming}
+\def\VideoStreaming{Video streaming}
+\def\Albums{Overall usage of albums}
+\def\AlbumsSales{Album sales}
+
+\begin{table}[H]
 \centering
-\caption{Предзаготовленные типовые ограничения лицензий}
+\caption{Ready models of license limitations}
 \begin{tabular}{p{0.45\linewidth}rrr}%p{0.65\linewidth}cc}
 \toprule
 & \Prev & \Current & \Grow \\
-\bottomrule
 \toprule
 %\multicolumn{2}{c}{\code{EnumerateRule}} \\
 \midrule
@@ -151,7 +164,7 @@
 \end{table}
 
 \vfill\null\pagebreak
-\section{Artem}
+\section{Distribution of royalties from the use of music work}
 \label{industry-distribution}
 
 \newcommand{\slice}[4]{
@@ -172,14 +185,14 @@
   \node at (\midangle:\innerpos) {#3};
 }
 
-\def\Royalty{Авторские права}
-\def\Digital{Цифровые форматы}
-\def\Physical{Физические носители}
-\def\Sync{Синхронизация}
+\def\Royalty{Copyright}
+\def\Digital{Digital formats}
+\def\Physical{Physical media}
+\def\Sync{Synchronization}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
-\caption{Доходы от распространения музыкального произведения}
+\caption{Track distribution income}
 \begin{tikzpicture}[scale=3]
 
 \newcounter{a}
@@ -200,11 +213,11 @@
 \end{tikzpicture}
 \end{figure}
 
-Такая популярность обусловлена соответствующим ростом доходности. Стоит отметить, что наибольший доход приносят произведения, распространяемые на цифровых форматах, которые составляют ровно половину всей потребляемой музыки, в отличии от тех, например, которые распространяются посредством  физических продаж - 34\%, согласно данным 
+Such popularity is determined by related income growth. It is worth mentioning that the most profitable are the tracks distributed in digital formats that make half of all consumed music as opposed, in particular, to tracks distributed by physical sales – 34\%.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
-\caption{Доходы от потокового вещания}
+\caption{Streaming income}
 \vspace{20pt}
 \pgfplotstableread[row sep=\\,col sep=&]{
     interval & carT \\
@@ -225,19 +238,18 @@
             width=13cm, %set bigger width
 		   height=6cm,
 		   bar width=1.5cm,
-            ylabel={Доля дохода, \%},
+            ylabel={Income share, \%},
         ]
         \addplot table[x=interval,y=carT]{\streamingPartion};
     \end{axis}
 \end{tikzpicture}
 \end{figure}
 
-В 2017 году аудиостриминг достиг рекордных отметок и вырос на 58,5\%. На отдельных рынках рост доходности достигал более 300\% (Южная Африка).
-По доходности аудиостриминг является лидером в своей сфере. К примеру, несмотря на то, что видео направление привлекает 900 млн пользователей, прибыль составила всего \$553 млн, в то время как, доход от потокового вещания равен 3,904 млн, а общее количество пользователей 212 млн.
+In 2017, audio streaming reached all-time high records and increased by 58,5\%. In specific markets the income growth amounted to more than 300\% (South Africa). In terms of profitability, audio streaming is the leader in its industry. For example, although video traffic attracts 900 million users, the income has amounted only to \$553 million, whereas the streaming income makes \$3,904 million with the total 212 million users.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
-\caption{Аудио- и видео-стриминг: соотношение количества пользователей и прибыли}
+\caption{Audio and video streaming: Users and income correlation}
 \vspace{20pt}
 \pgfplotstableread[row sep=\\,col sep=&]{
     interval & users & revenue \\
@@ -251,7 +263,7 @@
             xtick=data,
             nodes near coords,
             ymin=0,ymax=4500,
-            ylabel={Доля дохода, \%},
+            ylabel={Income share, \%},
         ]
         \addplot table[x=interval,y=users]{\userRevenue};
         \addplot table[x=interval,y=revenue]{\userRevenue};
@@ -259,56 +271,53 @@
 \end{tikzpicture}
 \end{figure}	
 
-Несомненно, затраты на раскрутку одной композиции требует средств.
-В среднем инвестиции в новую запись составляют US\$498 000 - 2 000 000 (в частности, именно такие цифры подтверждают данные из США и Великобритании). В 2015 году  было инвестировано US\$4.5 млрд в A\&R и Marketing прибыли всей мировой музыкальной индустрии.
+On average, US \$498,000–US \$2,000,000 is invested in a new track (particularly these numbers are confirmed with data from the USA and the UK). In 2015, \$4.5 billion of global music industry income were invested in A\&R and Marketing.
 
-\def\InvestToRecord{Инвестиции в раскрутку новой записи}
-\def\Clients{Привлечение клиентов}
-\def\Record{Затраты на запись}
-\def\Video{Видео}
-\def\Tour{Поддержка тура}
-\def\Marketing{Маркетинг}
-\def\Sum{Итого}
+\def\InvestToRecord{New track promotion investments}
+\def\Clients{Customer acquisition}
+\def\Record{Track costs}
+\def\Video{Video}
+\def\Tour{Tour support}
+\def\Marketing{Marketing}
+\def\Sum{Total}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
-\caption{Инвестиции в раскрутку новой записи}
 \begin{tabular}{p{0.5\linewidth}r}
 \toprule
 \multicolumn{2}{c}{\InvestToRecord} \\
 \bottomrule
 \midrule
-\Clients					& US \$50.000-350.000 \\
-\Record					& US \$150.000-500.000 \\
-\Video					& US \$25.000-300.000 \\
-\Tour					& US \$50.000-150.000 \\
-\Marketing			& US \$200.000-700.000 \\
-\Sum 					& US \$475.000-2.000.000 \\
+\Clients					& US \$50,000-350,000 \\
+\Record					& US \$150,000-500,000 \\
+\Video					& US \$25,000-300,000 \\
+\Tour					& US \$50,000-150,000 \\
+\Marketing			& US \$200,000-700,000 \\
+\Sum 					& US \$475,000-2,000,000 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-На популярность музыкального произведения влияет и популярность артиста, его исполняющего, что, в наше время, напрямую связано с использованием социальных сетей. 6 из 10 наиболее понравившихся людей на Facebook, followed на Twitter, просматриваемых видео на Youtube – музыкальные исполнители.
+Music track popularity is also affected by the performing artist popularity that is nowadays directly connected to the social networking. 6 out of 10 most liked people on Facebook, followed on Twitter and watched on Youtube are artists.
 
-Также необходимо учитывать международный характер потокового вещания. 230 цифровых музыкальных сервисов предлагают доступ к 40 млн треков на территории всего ЕС. При этом, около 50\% всех популярных треков, загруженных и проигрываемых в Европе, не европейского производства.  
+It is also important to consider the international nature of streaming. 230 digital music services offer the access to 40 million tracks around the EU with approximately 50\% of all popular tracks that are downloaded and played in Europe have been created out of Europe.
 
-Наибольший процент прибыли в 2016 года, а именно, 50\%, мировому рынку музыкальной индустрии принесли именно музыкальные произведения в цифровом формате, общая сумма составила US\$15.7 млрд.
+The highest share of global music industry market income in 2016 that amounts to 50\% belongs to digital music tracks, the total sum comes to \$15.7 billion.
+ 
+IFPI claims that 50\% of track income is received by music industry participants thanks to digital formats.
+ 
+Digital platforms make the following payments:
 
-IFPI утверждает, что 50\% доходов от записи поступают субъектам музыкальной индустрии именно благодаря наличию цифровых форматов. 
-
-К примеру, цифровые платформы выплачивают следующий процент:
-
-
-\def\PayPlay{Оплата за прослушивание}
+\def\PayPlay{Royalties paid per play}
 \def\PayBuy{Оплата при покупке песни}
-\def\Platform{Музыкальная платформа}
-\def\LabelPartion{Отчисления для лейбла}
-\def\ArtistPartion{\% отчислений, попадающих артисту}
-\def\YoutubePay{отчисление осуществляется в размере \$0,001 субъекту, разместившему произведение}
+\def\Platform{Music platform}
+\def\LabelPartion{Paid to labels}
+\def\ArtistPartion{\hlc{\% shared with an artist}}
+\def\YoutubePay{\$0.001 royalty is paid to the uploader of track}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
-\caption{Выплаты платформ}
+\caption{Platform payments}
 \begin{tabular}{lrrp{0.15\linewidth}}
 \toprule
 	& \multicolumn{2}{c}{\PayPlay} \\
@@ -327,45 +336,40 @@ Youtube 						& \multicolumn{2}{p{0.48\linewidth}}{\YoutubePay} \\
 \end{tabular}
 \end{table}
 
-Но платформа и артист являются не единственными субъектами музыкальной индустрии.
-
-Поскольку схема правоотношений оказывается крайне громоздкой, конечному пользователю, желающему получить лицензию на использование музыкального произведения, зачастую приходится обращаться к еще одному профессиональному игроку на рынке – к агентству по очистке прав, которое либо урегулирует отношения между всеми правообладателями, либо просто выкупает права на музыкальное произведение.
-
-Таким образом, основными игроками музыкальной индустрии являются:
 
 \vfill\null\pagebreak
-\section{Структура музыкальной индустрии}
+\section{Music Industry Structure}
 \label{industry-structure}
 \begin{multicols}{2}
-Кажется очевидным, что центральной концепцией и итоговым продуктом, которым обусловлено само существование музыкальной индустрии, является музыка. Однако само это понятие является неоднородным, и именно благодаря этому вместо прямых отношений «Музыкант – слушатель», существовавших в каменном веке, мы имеем сложную, запутанную и не всегда эффективно работающую структуру.
+The core value and raison d’etre of the music industry is music. But since music itself is a complex object, instead of a simple “composer + artist > listener” relations, we have an entangled, complicated and rarely efficient structure.
 
-Стоит сказать, что музыка совмещает в себе два объекта:
+Each music piece comprises two separate objects:
 \begin{enumerate}
-	\item музыкальное произведение (инструкция по исполнению музыки), 
-	\item фонограмма (исполненная и сохраненная на материальном носителе музыка).
+	\item composition (instruction on how to perform music) and
+	\item sound recording (performed music recorded on a physical medium).
 \end{enumerate}
 
-В отношении каждого из этих объектов действует исключительное право, то есть, право определять порядок использования и получать вознаграждение за такое использование. Исключительным правом на музыкальное произведение обладают его авторы (композитор, автор текста), на фонограмму - исполнитель и изготовитель фонограммы. В самой простой ситуации, автор, исполнитель и изготовитель фонограммы оказываются одним человеком – однако, это редкость.
+For both the composition and the recording a separate set of exclusive rights (meaning the rights to determine how the object can be used) exists. The exclusive right for a music composition belongs to authors (composer, songwriter), while the right for a sound record is owned by the artists and record producers. It is rather uncommon for one person to hold all of the abovementioned rights.
 
-Таким образом, для использования музыки по общему правилу требуется получить разрешение авторов, исполнителей и изготовителей фонограммы,но музыканты редко самостоятельно управляют своими правами. 
+It means that to use music legally, one must obtain a permission from all the authors, artists and record producers. A further problem, however, is that musicians do not usually manage their rights personally.
 
-Исполнитель обычно обращается к звукозаписывающей компании – лейблу – и получает от него аванс в обмен на право лейбла удерживать часть роялти от дальнейшего использования музыки; зачастую при этом лейблу передаются и исключительные права на исполнение. 
+An artist usually applies to a sound recording company – a label – and receives a payment in advance, assigning a share of their recording rights to the label, so that the label can withhold a part of future royalties from performance rights that would otherwise be given to an artist.
 
-Лейблы можно разделить на два основных вида: мэйджоры (the majors) и инди-лейблы (the independents). Первые являются крупными звукозаписывающими компаниями, вторые представляют микро-, малый и средний бизнес индустрии. Несмотря на это, именно на долю последних приходится 80\% всех новых релизов,  самый крупный из них занимает всего лишь 1,5\% рынка. На мировом рынке индустрии инди-лейблы составляют 37,6\% и оцениваются в \$5.6 млрд. В среднем они работают с 40 артистами. Обоим видам лейблов потоковое вещание приносит  наибольшую долю прибыли. 
+Labels can be divided into two general types: the majors and the indie labels, or the independents. The formers are major sound recording companies, the latter represent small and medium businesses of the industry. Although independents issue 80\% of all new releases, the biggest of them holds only 1.5\% of the market. Indie labels amount to 37,6\% of the global market with total estimated revenue of about \$5.6 billion. An independent label collaborates with 40 artists on average. For both types of labels, the highest income source comes from the streaming.
 
-Право изготовителя фонограммы также обычно принадлежит лейблу, хотя может удерживаться и исполнителем. Авторы, в свою очередь, передают свои права в управление музыкальному издательству – паблишеру – занимающемуся защитой авторских прав в обмен на часть дохода от использования произведения. 
+Authors on the other hand usually assign a share of their rights, including the rights to future royalties, to music publishers in exchange for advance payments and copyright management, protection and enforcement that publishers provide.
 
-Распространением и доведением музыки до конечного пользователя занимаются дистрибьюторы (распространяющие музыку на физических носителях) и агрегаторы (распространяющие музыку в цифровом формате).
+Distribution and delivering music to end customers is carried out by distributors (who distribute music as physical media) and aggregators (who distribute music in digital formats).
 
-Поскольку даже крупные правообладатели не в состоянии отслеживать любое использование принадлежащей им музыки, в большинстве государств создаются организации по коллективному управлению правами (ОКУП). ОКУПы отслеживают случаи публичного использования произведений и взимают плату за такое использование, которая потом тем или иным способом распределяется между правообладателями; при этом обычно для каждого типа исключительных прав действует отдельный ОКУП. В некоторых странах такие организации существуют только для определенных типов прав. Кроме этого, в отдельных странах (Россия, скандинавские государства) ОКУПы управляют правами на бездоговорной основе – то есть имеют права взыскивать роялти в пользу правообладателей, не имеющих с ОКУПом никаких отношений.
+As even major rights holders are not able to keep track of all owned music usage, most of states set up collective management organizations (CMOs). CMOs trace cases of track public usage and collect payments for this kind of usage that is further distributed among rights holders; moreover, usually there is a specific CMO for every type of exclusive right. In some countries such organizations are created only for specific types of rights. Apart from that, in some countries (Russia, Nordic countries) CMOs manage the rights on non-contractual basis, i.e. they have the right to collect royalty in favor of rights holders that do not have any relations with the CMO.
 
-Таким образом, примерная структура создания ценности в музыкальной индустрии выглядит следующим образом:
+As far as the relationship pattern is rather bulky, if the end user wants to obtain a license for a music composition, they have to address one more professional party of the market – copyright clearance agency that either settles relations between all rights holders or simply buys off the right for a music composition.
 
+Thus, a value pattern in music industry can be illustrated as follows:
 \end{multicols}
-
-\begin{figure}[h]
+\vfill\null\pagebreak
+\begin{figure}[H]
 \centering
-
 \def\Author{Автор}
 \def\AuthorDesc{Создает оригинальные музыкальные произведения; может передавать права на публикацию за долю роялти составляющую не более 50\%}
 \def\Publisher{Издательство}
@@ -389,14 +393,14 @@ Youtube 						& \multicolumn{2}{p{0.48\linewidth}}{\YoutubePay} \\
 \caption{Структура создания ценности}
 \vspace{20pt}
 \begin{tikzpicture}[node distance=1.5cm]
-\node(Author) 			[rect, text width=5.1cm]
+\node(Author) 			[rect, text width=6.4cm]
 								{\textbf{\Author}\linebreak\AuthorDesc};
-\node(Publisher)		[rect, text width=5.1cm, below=0.5cm of Author]
+\node(Publisher)		[rect, text width=6.4cm, below=0.5cm of Author]
 								{\textbf{\Publisher}\linebreak\PublisherDesc};
-\node(Laws)				[rect, text width=5.1cm, below=0.5cm of Publisher]
+\node(Laws)				[rect, text width=6.4cm, below=0.5cm of Publisher]
 								{\textbf{\Laws}\linebreak\LawsDesc};
 
-\node(LawNote)		[inout, text width=5.5cm, below=0.5cm of Laws]
+\node(LawNote)		[inout, text width=6.5cm, below=0.5cm of Laws]
 								{\LawNote};
 								
 \node(LicensePlay)	[rect, text width=3.1cm, below=0.5cm of LawNote, anchor=north east, xshift=-.25cm]
@@ -406,14 +410,14 @@ Youtube 						& \multicolumn{2}{p{0.48\linewidth}}{\YoutubePay} \\
 								{\LicensePhysical};
 								
 
-\node(Artist) 			[rect, text width=5.1cm, right=3cm of Author.north east, anchor=north west]
+\node(Artist) 			[rect, text width=6.4cm, right=3cm of Author.north east, anchor=north west]
 								{\textbf{\Artist}\linebreak\ArtistDesc};
-\node(Label)				[rect, text width=5.1cm, below=0.5cm of Artist]
+\node(Label)				[rect, text width=6.4cm, below=0.5cm of Artist]
 								{\textbf{\Label}\linebreak\LabelDesc};
-\node(Distributor)		[rect, text width=5.1cm, below=0.5cm of Label]
+\node(Distributor)		[rect, text width=6.4cm, below=0.5cm of Label]
 								{\textbf{\Distributor}\linebreak\DistributorDesc};
 
-\node(LawSecondNote)	[inout, text width=5.5cm, below=0.5cm of Distributor]
+\node(LawSecondNote)	[inout, text width=6.5cm, below=0.5cm of Distributor]
 								{\LawSecondNote};
 								
 \node(Records)			[rect, text width=3.1cm, below=0.5cm of LawSecondNote.south, anchor=north east, xshift=-.25cm]
@@ -421,41 +425,12 @@ Youtube 						& \multicolumn{2}{p{0.48\linewidth}}{\YoutubePay} \\
 								
 \node(Around) 			[rect, text width=3.1cm, below=0.5cm of LawSecondNote.south, anchor=north west, xshift=.25cm]
 								{\Around};
-%\node (LoadByteCode)		[rect, text width=11.5em] 
-%										{\LoadByteCode};
-
-%\node (LoadSourceCode)	[rect, text width=11.5em, below of=LoadByteCode] 
-%										{\LoadSourceCode};
-
-%\node (ValidationEnded)	[event, text width=11.5em, below=1.5cm of LoadSourceCode]
-%										{\ValidationEnded};
-										
-%\node (aux0)[right=2cm of ValidationEnded]{};
-%\node (Invalid)					[text width=5em, above of=aux0]
-%										{$\pi_{ended} = 0$};
-
-%\node (ChangeStatus)		[rect, text width=11.5em, below of=ValidationEnded]	
-%										{\ChangeStatus};
-
-%\node (InDevelopment)		[inout, text width=11em, right=1cm of LoadByteCode]			
-%										{$\rho_{stateOf}(a) = P_{development}$};
-										
-%\node (InProduction)			[inout, text width=11em, right=1cm of ChangeStatus]			
-%										{$\rho_{stateOf}(a) = P_{development}$};
-
-%arrows
-%\draw [arrow] (LoadByteCode)				-- (LoadSourceCode);
-%\draw [arrow] (LoadByteCode)				-- (InDevelopment);
-%\draw [arrow] (LoadSourceCode) 			-- (ValidationEnded);
-%\draw [arrow] (ValidationEnded)			-- (ChangeStatus);
-%\draw [arrow] (ValidationEnded)			-| (Invalid);
-%\draw [thick]  (Invalid)  							-| (ValidationEnded);
-%\draw [arrow] (ChangeStatus)				-- (InProduction);
-
 \end{tikzpicture} 
 \end{figure}
 
-\begin{figure}[h]
+\vfill\null\pagebreak
+
+\begin{figure}[H]
 \centering
 \caption{Аудио- и видео-стриминг: соотношение количества пользователей и прибыли}
 \vspace{20pt}
@@ -480,23 +455,23 @@ Youtube 						& \multicolumn{2}{p{0.48\linewidth}}{\YoutubePay} \\
 \end{figure}	
 
 \begin{multicols}{2}
-Поскольку схема правоотношений оказывается крайне громоздкой, конечному пользователю, желающему получить лицензию на использование музыкального произведения, зачастую приходится обращаться к еще одному профессиональному игроку на рынке – к агентству по очистке прав, которое либо урегулирует отношения между всеми правообладателями, либо просто выкупает права на музыкальное произведение.
+However, the actual relations in music industry are even more complicated. Nowadays sampling is widely used in the process of music creation; considering that, it is close to impossible to create a totally original composition in an oversaturated informational environment without any adoption. The same complicated rights structure underlies every usage of a sample in a composition, that makes music licensing a difficult undertaking.
 
 \begin{itemize}
-	\item Композиторы;
-	\item Авторы текстов;
-	\item Музыканты-исполнители;
-	\item Лейблы;
-	\item Паблишеры;
-	\item Агентства по очистке прав;
-	\item Дистрибьюторы и агрегаторы;
-	\item Организации по коллективному управлению правами.
+	\item Composers;
+	\item Songwriters;
+	\item Performing artists;
+	\item Labels;
+	\item Publishers;
+	\item Clearance agencies;
+	\item Distributors and aggregators;
+	\item Collective management organizations.
 \end{itemize}
 	
-Каждое использование музыки создает поток роялти, распределяющиеся между всеми указанными игроками:
+Each usage of music creates a flow of royalty distributed among all mentioned parties:
 \end{multicols}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \caption{Аудио- и видео-стриминг: соотношение количества пользователей и прибыли}
 \vspace{20pt}
@@ -521,74 +496,74 @@ Youtube 						& \multicolumn{2}{p{0.48\linewidth}}{\YoutubePay} \\
 \end{figure}	
 
 \begin{multicols}{2}
-Однако при этом реальные отношения в отношении музыки оказываются еще сложнее. 
-	При создании современной музыки широко используется семплирование; при этом в информационно перенасыщенном пространстве невозможным становится создание абсолютно оригинального произведения, не содержащего заимствования. За каждым использованием в произведении семплом стоит такая же сложная структура прав, что делает получение лицензии на музыку фрактально сложным предприятием.
+However, the actual relations in music industry are even more complicated. Nowadays sampling is widely used in the process of music creation; considering that, it is close to impossible to create a totally original composition in an oversaturated informational environment without any adoption. The same complicated rights structure underlies every usage of a sample in a composition, that makes music licensing a difficult undertaking.
 
-Эта сложность иллюстрируется заявлением RIAA, один из членов которой для выпуска альбома был вынужден получить 1481 лицензию от 51 автора с 89 долями, одна из которых представляла собой всего 1,5 процента от общего объема прав, но была разделена между двумя паблишерами.
+This difficulty can be illustrated by a RIAA statement cited in the US Copyright Office report of 2015: one of RIAA members had released a very successful album and had to obtain for that album 1481 licenses for the release of three physical products, the 92 digital products, the 27 songs across the 51 songwriters with a total of 89 shares. One of those shares represented a 1.5 percent interest in a song, and there were two publishers for that. According to the RIAA, apart from multiple songwriter interests, one of the reasons for this explosion in licensing complexity is the increased complexity of the releases themselves — whereas in the past a record label release consisted of a disk and some liner notes, today it comprises multiple digital formats, different kinds of audiovisual presentations, and different kinds of music services.
 
-Учитывая международный характер цифрового распространения музыки, о котором упоминалось выше, процесс еще больше усложняется, так как возникает необходимость учета особенностей правового регулирования отдельных юрисдикций. Так, в США, правообладатели не имеют права на получение вознаграждения при вещании их музыки по радио.
+Due to the international nature of digital music distribution mentioned above, the process becomes even more difficult as it is necessary to consider the peculiarities of legal regulations in different jurisdictions. For example, rights holders in the USA are not entitled to receive royalty for radio broadcasting of their music, while in some jurisdictions they may be entitled to such royalties.
+
 \end{multicols}
 \vfill\null\pagebreak
 
-\section{Основные проблемы музыкальной индустрии}
+\section{Major Industry Problems}
 \label{industry-problems}
+Due to excessive complexity of relations in music industry, major problems arise.
+
+\subsection{Lack of available and trustworthy information about copyright ownership}
+
+As RIAA notes, 
+\begin{framed}
 \begin{multicols}{2}
-Чрезмерная усложненность структуры отношений в музыкальной индустрии ведет к возникновению общепризнанных проблем, которые в той или иной степени затрагивают всех участников отношений.
-
-\subsection{Отсутствие доступной и достоверной информации о принадлежности прав}
-
-Как указывает RIAA, «сложно идентифицировать и отслеживать принадлежность права на музыкальное произведение в связи с изменениями при переходе произведений и каталогов из рук в руки». Помимо необходимости отслеживания истории смены правообладателей, ситуация осложняется многослойностью музыки как объекта интеллектуальных прав – существованием отдельных прав на музыкальное произведение и аудиозапись, а также традиционной для нынешнего состояния индустрии множественностью правообладателей для каждого из таких слоев. Кроме этого, проблема заключается в отсутствии универсально принятых в индустрии идентификаторов данных. 
-
-Эта ситуация ведет к отсутствию определенности для потенциальных лицензиатов – им неясно, с кем именно надо договариваться, чтобы получить возможность использовать музыку на законных основаниях. Музыкальный рынок частично решает эту проблема появлением нового типа игроков – агентств по очистке прав – однако это решение является субоптимальным, поскольку увеличивает количество работы, вынуждая специалистов затрачивать существенные ресурсы на работу со сложно отслеживаемой историей транзакций, вместо того, чтобы отслеживать и записывать эту историю в реальном времени. Результатом является существенное повышение стоимости музыкального произведения для конечного пользователя, который вынужден из своего кармана оплачивать борьбу с такой неопределенностью. 
-
-Более того, некоторые композиторы и музыканты в связи с особо сложно отслеживаемой историей могут вообще оказаться лишены права на доведение своих произведений до конечного пользователя, как в силу отказа со стороны агентства по очистке прав, так и в результате дедлока между множественными правообладателями.
-
-В настоящее время нет единой базы данных для хранения информации об авторских правах на музыкальное произведение. В книге “Биткойн для рок-звезд” Д.А. Уоллак объясняет это так: “Корень проблемы — отсутствие одного набора данных со сведениями об авторах и правах. Сегодня эта информация распылена между многими организациями, каждая из которых считает ее своей собственностью. Это вполне понятно, если учесть, что они инвестируют в свои наборы данных серьезные деньги”.
-
-В 2011 году была предпринята попытка создать такую базу данных. При поддержке музыкальных издателей был запущен проект по составлению “Глобальной БД репертуара” (GRD). Предполагалось, что она станет центром регистрации всех звукозаписей и связанных с ними метаданных. Увы, в июле 2014 года проект был закрыт из-за претензий со стороны обществ по сбору авторских отчислений. 
-
-\subsection{Непрозрачность транзакций в индустрии}
-
-С первой проблемой неразрывно связана вторая. Даже если на определенный момент времени принадлежность прав на произведение или аудиозапись оказывается достоверно зафиксированным, отсутствуют универсальные решения, позволяющие убедиться в актуальности такой информации. Более того, в случае возникновения спора, связанного с потенциальным инфриджментом в прошлом, зачастую невозможно доказать, кто именно был надлежащим лицензиаром на конкретную дату.
-
-Отсутствие прозрачности бьет не только по лицензиатам, увеличивая для них неопределенность в отношениях с контрагентом. Невозможность отследить транзакции приводит и к невозможности конечных производителей музыкального контента эффективно защищать свои интересы при определении причитающегося им вознаграждения. Так, например, в США паблишеры не имеют права на аудит передаваемой лицензиатом информации, и вынуждены принимать расчет полученных роялти на веру. 
-
-Даже при условии честного предоставления информации конечным лицензиатом, цепочка передачи ценности оказывается слишком сложной для эффективного контроля со стороны конечного звена – автора или музыканта. Непрозрачные транзакции стимулируют посредников оставить себе как можно больше – так, например, Перри Резник, аудитор в музыкальной индустрии, сообщает о схеме, при которой лейбл в обмен на лицензию получает долю в бизнесе лицензиата, таким образом превращая движение денежных средств в  
-
-\subsection{Отсутствие эффективных средств контроля за использованием музыки}
-
-Еще одной проблемой являются сложности по определению путей и способов использования музыкальных произведений и аудиозаписей. Помимо прямого коммерческого интереса в получении роялти, авторам и музыкантам принадлежат права на контроль за путем и способом использования музыки, которые порой несут не меньшую ценность. Так, автор симфонического произведения, наполненного эмоциональным подтекстом, может быть принципиально против использования его произведения в рекламе кошачьего туалета; иногда и просто сосуществование с другими произведениями в рамках одного медиума может быть нежелательным.
-
-Вместе с тем, с увеличением количества правообладателей, определение порядка использования становится все сложнее. Помимо чисто организационных сложностей, ситуация усугубляется тем, что за рамками общего стремления к максимизации роялти цели авторов и паблишеров, музыкантов и лейблов могут существенно отличаться. Зачастую лейблу полностью передается право на определение порядка использования произведения; даже если этого и не происходит, голос первоначального автора заглушается коммерческими мотивами посредников, принимающих решения вместе с ним или за него.
-
-Отдельную проблему составляет режим принудительного лицензирования музыки. Так, в США неинтерактивные стриминговые музыкальные сервисы (к которым, в том числе, относится Pandora), могут использовать музыку без согласия правообладателей. Интерактивные сервисы должны договариваться с правообладателями о получении лицензии на использование аудиозаписи, однако в отношении авторов музыкального произведения требуется только направить уведомление о намерении использовать произведение (NOI). Эта ситуация в принципе лишает авторов контроля за стримингом своих музыкальных произведений.
-
-\subsection{Черные ящики}
-
-Все три базовых проблемы, указанные выше, в совокупности приводят к очень серьезному перекосу рынка и появлению так называемых «черных ящиков», под которыми подразумеваются огромные суммы нераспределенных роялти.
-Возникновение “черных ящиков” обусловлено следующим:
-
-причитающиеся правообладателю роялти не смогут быть выплачены, пока этот правообладатель не будет установлен. В связи с отсутствием базы данных о принадлежности прав на музыкальные произведения, сумма роялти “повисает в воздухе”.
-
-Более того,  даже если правообладатель известен, каждое звено длинной цепочки заинтересовано в том, чтобы максимально задержать выплату. К примеру, в США известны случаи массового злоупотребления при направлении NOI. Автор может так и не узнать об использовании его произведения. Слабое развитие международных коопераций паблишеров и организаций по коллективному управлению музыкальными правами приводит к тому, что при транснациональном использовании музыкальных произведений и звукозаписей, собранные роялти могут так и остаться в стране использования музыки, не дойдя до правообладателя, домицилия другого государства. 
-
-\subsection{Пиратство}
-
-Сложность и неповоротливость описанной схемы приводит к тому, что, порой, пользователю дешевле нарушить исключительное право, нежели разбираться в сложностях установления договоренностей со всеми правообладателями.
-Стоит отметить, что возможно и “этическое пиратство” как протеста против искусственно усложненной и эксплуатирующей музыкантов системы.
-По данным американского исследования профессора Питера Ди Колы, ежегодно BitTorrent используют более 1 млрд чел. Данная цифра позволяет лишь приблизительно оценить ущерб, причиняемый музыкальным пиратством. Объединенный центр Европейского союза указывает, что в 2011 году в мировом масштабе ущерб от использования пиратского контента составил 8\%, что равно примерно \$5,2 миллиардов. Однако данная организация считает, что стремиться к искоренению интернет-пиратства не нужно.
-
-\subsection{Сложности монетизации музыкального контента}
-
-Непрозрачность выплат, сложность структур и огромное количество посредников приводит к тому, что период от использования музыки до получения роялти может превышать год. При этом, как указывалось выше, риск невыплаты роялти также имеет место быть.
-
+"it is difficult to identify and keep track of musical work ownership due to changes when musical works and catalogs change hands". The situation is further complicated by existence of separate rights for compositions and records, each distributed among multiple rights holders. The problem in the industry is characterized by the lack of universally accepted data identifiers.
+ 
+This situation results in a great uncertainty for potential licensees – it is unclear from whom the license can be obtained. Rights clearing agencies mitigate this problem to some extent, but another intermediary is hardly a solution. Instead of tracking and recording the history of transactions in real time, significant resources are spent to make researches on demand. As a result, the cost of music for licensee increases – it is always the end users who pay for market inefficiencies.
+ 
+In complicated cases this uncertainty can affect the rights holders themselves – clearing the rights may be considered too expensive for the music work to be used at all.
+ 
+No universal database for IP rights in music exists at the moment. D.A. Wallach explains it in the book "Bitcoin for rock-stars" as follows: "The root of the problem is again the one we’re exploring here: the absence of a single dataset containing credits and rights information. Instead, this information is fragmented among many territorial organizations. Every entity treats its data as proprietary and intrinsically valuable. This is understandable, given that these organizations invest heavily in their datasets".
 \end{multicols}
+\end{framed}
+ 
+In 2011 there was an attempt to create such a dataset. Supported by music publishers, the Global Repertoire Database (GRD) project was announced. It was supposed to comprise all registrations of audio records and relevant metadata. In July 2014 the project was closed due to objections from copyright collectives.
+\vfill\null\pagebreak
 
-\section{Решение вышеописанных проблем проектом Musereum}
+%\begin{multicols}{2}
+\subsection{Lack of transparency of transactions in the industry}
+
+The first problem is inseparably linked to the second one. Even if the rights for a composition or a record has been correctly recorded, there are no universal solutions to prove that the information is up-to-date. Apart from that, in case of a conflict with a potential infringement in the past, it is often impossible to prove who was the real licensor at a certain date.
+ 
+Licensors are not the only party aggrieved at non-transparency as it increases the uncertainty in their relations with partners. Inability to trace the transactions leads to inability of music content creators to effectively protect their interests while defining due royalty. US publishers, for example. in the USA don’t have the right to verify the statements of account they receive from licensees.
+ 
+Even if the information submitted by the end licensee is fair, the value transmission chain is too long to be effectively monitored by the final element – an author or a musician. Non-transparent transactions are incentives for intermediaries to keep as much as possible for themselves. Referencing Spotify, as well as YouTube and Musicmaker, Perry Resnick, who conducts music audits, commented that “[m]any deals are not done unless the major labels receive a share of equity in the licensee, which also lowers the royalty rates paid for specific recordings, sometimes down to zero.”
+
+\subsection{Lack of control over the use of music}
+Another problem is determining how the music works are being used. Where and how a music work is used may be of no less importance that the amount of royalties paid for it – the author of a symphonic work may not be happy to hear it in some litter-box ad. In some cases, even the coexistence of certain music works within one medium can be undesirable.
+ 
+At the same time, due to the increase in number of rights holders for one IP asset, its management is complicated not only from the organizational point of view, but also because the interests of authors and publishers, performing artists and labels can significantly differ. In most cases the control over the use of a music work is fully assigned to the label or the publisher and may contradict the opinion of the creator.
+ 
+A separate problem is the compulsory licensing of music. US non-interactive streaming services in particular (including Pandora) can obtain compulsory licenses even without the consent of the rights holders, while interactive streaming services only need the consent of the rights holders for the use of sound recording but can inform the rights holders of the composition via issuing a note of intent (NOI). This situation essentially deprives authors of their right to control their music works.
+%\vfill\null\pagebreak
+
+\subsection{Black boxes}
+As a result of the above mentioned basic problems a significant market distortion is created along with the black boxes – huge lumps of undistributed royalty.
+ 
+Rights holders' due royalty cannot be paid prior to identification of the rights holder. And since there is no database with the universal information on the rights holders, some royalties end up in black boxes.
+ 
+And even if the rights holder is known, there is an incentive for every intermediary to delay the payment for as long as possible and receive the interest on the black box royalties. The NOI system in the USA is known to be largely abused, and the authors might never even know that their composition are being used.
+ 
+The poor state of international cooperation between publishers and collective management organizations can also result in possible withholding of the royalties collected.
+
+\subsection{Piracy}
+The complexity and clumsiness of the described pattern makes it cheaper for users to violate the exclusive right than to make clear all the complicated agreements with all rights holders. It is worth mentioning that "ethic piracy" as an outcry against artificially complicated and musician-exploiting system might also be possible. According to a research by American professor Peter DiCola, 1 billion users annually use BitTorrent. This number can help us evaluate the approximate damage caused by music piracy. The associated center of the EU has stated that in 2011 the global damage caused by pirate content amounted to 8\% that is approximately \$5,2 billion. However, according to the organization, there is no need to eradicate internet-piracy.
+
+\subsection{Lack of effective ways to monetize music}
+Non-transparent payments, structure complexity and long chains of intermediaries result in time lags between the actual use of music work and the payment made to its creator. As a result, those able to offer the creators advance payments – the majors – gain excessive market power and can impose unfair conditions on both the creators and the users. The market power of the majors make for an oligopolic market, where individual artists are forced to enter into highly restraining deals in order to get paid and be promoted.
+
+\section{Possible Solution}
 \label{industry-solution}
-Проект Musereum направлен на устранение обозначенных проблем. Мы предлагаем внедрение технического решения, позволяющего в реальном времени отслеживать и контролировать принадлежность прав на музыкальное произведение, а также автоматизировать выплату роялти с помощью токенизации музыкальных произведений и лицензиировании этих токенов смарт-контрактами. 
+Musereum project aims to solve the above-mentioned problems by tokenizing IP rights for music and therefore enabling the real time tracking their ownership, implementing automated licensing and royalties’ distribution and enabling assigning and re-assigning shares of IP rights by transferring the tokens representing such rights.
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Инвестиции в раскрутку новой записи}
 \begin{tabular}{p{0.35\linewidth}p{0.65\linewidth}}
@@ -596,25 +571,25 @@ Youtube 						& \multicolumn{2}{p{0.48\linewidth}}{\YoutubePay} \\
 Проблема & Решение \\
 \bottomrule
 \midrule
-Отсутствие доступной и достоверной информации о принадлежности прав &
-Создание проверенной базы данных, исчерпывающим образом описывающей распределение прав путем записи о соответствующих полномочиях в блокчейне. \\
+Lack of available and trustworthy information about IP ownership & 
+Creation of a verified database that comprehensively describes distribution of rights by making records about corresponding rights on the blockchain. \\
 \hline
-Непрозрачность транзакций в индустрии & 
-Любая запись в реестре позволяет отследить как выданные лицензии, так и произведенные выплаты, которые автоматически рассчитывают размер и порядок выплаты причитающихся роялти. \\
+Nontransparent transactions & 
+Any record in the ledger allows to trace all issued licenses as well as processed payments that automatically calculate the amount and the procedure for royalty payment. \\
 \hline
-Отсутствие эффективных средств контроля за исполнением музыки &
-Проект вводит автоматизированный и унифицированный механизм голосования всех правообладателей по вопросам выдачи лицензий, передачи долей в праве и прочим вопросам через создание «Децентрализованного Автономного Лейбла» \\
+Absence of effective means for control over how music is being used &
+Introduction of automated voting mechanism for the rights holders to control licensing of their assets and other matters related to them. \\
 \hline
-“Черные ящики” & 
-За счет прозрачности транзакций, непосредственному распределению роялти конечным правообладателям и доступности информации о принадлежности прав отпадут условия для формирования черных ящиков. \\
+Black boxes & 
+Transparent transactions, direct distribution of royalties to rights holders and availability of data on rights ownership eradicate the conditions for creation of black boxes. \\
 \hline
-Пиратство &
-Использование смарт-контрактов для лицензирования музыки само по себе не может решить проблему пиратства, однако снизит транзакционные издержки легального доступа к музыке и исключит этические барьеры для законного получения лицензий. Кроме этого, проект Soundchain DAPP, который будет развиваться на базе проекта Musereum, позволит конечным слушателям получать бесплатный доступ к музыке, что само по себе существенно снизит экономическую мотивацию для нарушения исключительных прав. \\
+Piracy &
+By reducing the transactional fees for obtaining legal access to music and providing for the transparent royalties’ distribution, the project will undermine both the economic (complexity and inflated prices) and the ethical (unfair distributions of royalties) reasons for piracy. Furthermore, the Soundchain project developed on top of the Musereum project will allow end users to get free access to music, further reducing the economical motivation for the IP violation. \\
 \hline
-Сложности монетизации музыкального контента &
-Автоматизация выдачи лицензий и снижение издержек на очистку прав приведет к росту доходов правообладателей от коммерческого использования их музыки, облегчит процедуру лицензирования и снимет существенную часть административных барьеров.
+Complicated monetization of music content &
+Automated licensing and reduction of costs for rights clearance will boost the growth of rights holders' income from the commercial use of their music by simplify licensing procedures and eliminating most of administrative barriers.
 
-Техническая возможность учета принадлежности и передачи долей в исключительном праве в реальном времени открывает для правообладателя возможность проводить краудинвестинговые кампании, вместо того, чтобы на невыгодных условиях в обмен на аванс отдавать существенную часть права лейблу или паблишеру. Это позволит фанатам напрямую материально поддерживать любимых авторов и исполнителей через процедуру  ICO музыкальных треков. Потенциальные лицензиаты получат дополнительный инструмент для оценки возможной коммерческой привлекательности \\
+Furthermore, tokenization of IP rights will provide rights holders with the opportunity to crowd fund themselves via the ICO model instead of assigning the right to a label or a publisher for an advanced payment. \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -627,7 +602,7 @@ Youtube 						& \multicolumn{2}{p{0.48\linewidth}}{\YoutubePay} \\
 \def\n{Нет}
 \def\o{--}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Инвестиции в раскрутку новой записи}
 \begin{tabular}{p{0.2\linewidth}ccccccc}
@@ -710,7 +685,7 @@ All of tools could be grouped by three categories:
 \def\TokenSetup{DAL Token Setup}
 \def\VotingSetup{DAL Voting Setup}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \caption{DAL creation: Process 1}
 \vspace{20pt}
@@ -808,7 +783,7 @@ All of tools could be grouped by three categories:
 \end{tikzpicture}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \caption{Create and setup Decentralized Autonomous Label}
 \vspace{20pt}
@@ -958,14 +933,14 @@ All of tools could be grouped by three categories:
 \end{tikzpicture}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \caption{License creation process}
 \vspace{20pt}
 \includegraphics[width=\textwidth]{licensing}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \caption{Royalty Distribution}
 \vspace{20pt}
@@ -1390,7 +1365,7 @@ Musereum публикует в Ethereum Classic:
 \end{enumerate}
 \end{multicols}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \caption{Crosschain communication}
 \vspace{20pt}
@@ -1506,7 +1481,7 @@ General distribution pattern:
 \def\Development{Platform Development}
 \def\Infrastructure{Infrastructure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \caption{Block reward distribution}
 \vspace{20pt}
@@ -2243,7 +2218,7 @@ f_z(a, b) = ||\{\top: a_{items}[i]_{fitWith}(b) = \top\}|| > 0
 \end{equation}
 
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Предзаготовленные типовые ограничения лицензий}
 \begin{tabular}{p{0.2\linewidth}p{0.65\linewidth}cc}
@@ -2333,4 +2308,137 @@ When calculating, label ratio takes into account:
 %\subsection{Decentralized Marketplace}
 %\label{tech-apps-marketplace}
 %\end{multicols}
+
+\chapter{Risks}
+\begin{multicols}{2}
+\label{risks}
+
+An acquisition of the ETM tokens involves a high degree of risk. Each potential purchaser of ETM tokens should carefully consider the following information about these risks before he decides to buy the ETM tokens. If any of the following risks actually occurs, the ETM platform and the value of the ETM tokens could be materially adversely affected.
+
+Risks and uncertainties described below in this White Paper may not be the only ones token holders face.
+
+Additional risks and uncertainties may also materially adversely affect on the ETM Platform or the value of the ETM tokens.
+
+\section{Risks connected to the value of ETM tokens}
+\label{risks-value}
+\subsection{No Rights, Functionality or Features}
+\label{risks-value-rights}
+The Tokens do not have any rights, uses, purpose, attributes, functionalities or features, express or implied, including, without limitation, any uses, purpose, attributes, functionalities or features on the Musereum network.
+
+Company Parties do not guarantee and are not representing in any way to Buyer that the Tokens have any rights, uses, purpose, attributes, functionalities or features.
+
+\subsection{Lack of Development of Market for ETM tokens}
+\label{risks-value-lack}
+Because there has been no prior public trading market for the Tokens, the Token sale may not result in an active or liquid market for the Tokens, and their price may be highly volatile. Even if the Tokens are tradable in a secondary market, in practice, there may not be enough active buyers and sellers or the bid-ask spreads may be too wide. The Token holders may not be able to exit their token holdings easily. In the worst-case scenario where no secondary market develops, a Token holder may not be able to liquidate his/her token holdings at all. The exchanges or platforms that facilitate secondary trading of the Tokens may not be regulated by the applicable laws.
+
+\subsection{Risks Relating to Highly Speculative Traded Price}
+\label{risks-value-speculative}
+The valuation of digital tokens in a secondary market is usually not transparent, and highly speculative. The Tokens do not hold any ownership rights to Company’s assets and, therefore, are not backed by any tangible asset. Traded price of the Tokens can fluctuate greatly within a short period of time. There is a high risk that a Token holder could lose his/her entire contribution amount. In the worst-case scenario, the Tokens could be rendered worthless.
+
+\subsection{ETM Tokens May Have No Value}
+\label{risks-value-no-value}
+The ETM tokens may have no value and there is no guarantee or representation of liquidity for the ETM tokens. Company is not and shall not be responsible for or liable for the market value of the ETM tokens, the transferability and/or liquidity of the ETM tokens and/or the availability of any market for the ETM tokens through third parties or otherwise.
+
+\subsection{Tokens are Non-Refundable}
+\label{risks-value-non-refundable}
+Company is not obliged to provide the Token holders with a refund related to the Tokens for any reason, and the Token holders will not receive money or other compensation in lieu of the refund. No promises of future performance or price are or will be made in respect to the Tokens, including no promise of inherent value, no promise of continuing payments, and no guarantee that the Tokens will hold any particular value. Therefore, the recovery of spent resources may be impossible or may be subject to foreign laws or regulations, which may not be the same as the private law of the Token holder
+
+\section{Blockchain and software risks}
+\label{risks-block}
+
+\subsection{Blockchain Delay Risk}
+\label{risks-block-delay}
+On the Bitcoin and Ethereum blockchains, timing of block production is determined by proof of work so block production can occur at random times. For example, the Cryptocurrency transferred in the final seconds of a distribution period during the Token Presale or the Token Sale may not get included for that period. Buyer acknowledges and understands that the Bitcoin or Ethereum blockchain may not include the Buyer’s transaction at the time Buyer expects and Buyer may not receive the Tokens in this regard.
+
+\subsection{Blockchain Congestion Risk}
+\label{risks-block-congestion}
+The Bitcoin and Ethereum blockchains are prone to periodic congestion during which transactions can be delayed or lost. Individuals may also intentionally spam the respective network in an attempt to gain an advantage in purchasing cryptographic tokens. Buyer acknowledges and understands that Bitcoin or Ethereum block producers may not include Buyer’s transaction when Buyer wants or Buyer’s transaction may not be included at all.
+
+\subsection{\hlc{Risk of Software Weaknesses}}
+\label{risks-block-weaknesses}
+The concept of token smart contract which creates the mechanism of creation and distribution of the ACE Tokens (“Token Smart Contract”), the underlying software application and software platform (i.e. the Ethereum blockchain) are still in an early development stage and unproven. There is no representation and warranty that the process for creating the ACE tokens will be uninterrupted or error-free. There is an inherent risk that the software could contain weaknesses, vulnerabilities or bugs causing, inter alia, the complete loss of the cryptocurrency and/or the ACE
+tokens.
+
+\subsection{Risk of New Technology}
+The Platform, the Tokens and all of the matters set forth in this White Paper are new and untested. The Platform and the Tokens might not be capable of completion, creation, implementation or adoption. It is possible that no blockchain utilizing the Platform will be ever launched. Buyer of Tokens should not rely on the Platform,
+the Token Smart Contract or the ability to receive tokens associated with the Platform in the future. Even if the Platform is completed, implemented and adopted, it might not function as intended, and any Tokens may not have functionality that is desirable or valuable. Also, technology is changing rapidly, so the Platform and the Tokens may become outdated.
+
+\section{Security Risks}
+
+\subsection{Risk of Loss of Private Keys}
+The Tokens purchased by Buyer may be held by Buyer in Buyer’s digital wallet or vault, which requires a private key, or a combination of private keys, for access. Accordingly, loss of requisite private keys associated with such Buyer’s digital wallet or vault storing the Tokens will result in loss of such Tokens, access to Buyer’s Token balance and/or any initial balances in blockchains created by third parties. Moreover, any third party that gains access to such private keys, including by gaining access to login credentials of a hosted wallet or vault service the buyer uses, may
+be able to misappropriate the Buyer’s Tokens. Company Parties are not responsible for any such losses.
+
+\subsection{Lack of ETM Token Security}
+The Tokens may be subject to expropriation and or/theft. Hackers or other malicious groups or organizations may attempt to interfere with the Token Smart Contract or the Tokens in a variety of ways, including, but not limited to, malware attacks, denial of service attacks, consensus-based attacks, Sybil attacks, smurfing and spoofing.
+Furthermore, because the Ethereum platform rests on open source software, there is the risk that Ethereum smart contracts may contain intentional or unintentional bugs or weaknesses which may negatively affect the Tokens or result in the loss of Tokens, the loss of ability to access or control the Tokens. In the event of such a software bug or weakness, there may be no remedy and holders of the Tokens are not guaranteed any remedy, refund or compensation.
+
+\subsection{Risk of Ethereum Mining Attacks}
+The blockchain used for the Token Smart Contract is susceptible to mining attacks, including double-spend attacks, majority mining power attacks, “selfish-mining” attacks, and race condition attacks. Any successful attacks present a risk to the Token Smart Contract, expected proper execution and sequencing of the Token transactions, and expected proper execution and sequencing of contract computations.
+
+\subsection{Failure to Map a Public Key to Buyer’s Account}
+Failure of buyer of the ACE tokens to map a public key to such buyer’s account may result in third parties being unable to recognize buyer’s ACE token balance on the Ethereum blockchain when and if they configure the initial balances of a new blockchain based upon the ACE platform.
+
+\subsection{Risk of Incompatible Wallet Service}
+The wallet or wallet service provider used for the acquisition and storage of the ACE tokens has to be technically compatible with the ACE tokens. The failure to assure this may have the result that buyer of the ACE tokens will not gain access to his ACE tokens.
+
+\section{Risks relating to network development}
+\subsection{Risk Related to Reliance on Third Parties}
+Even if completed, the Platform will rely, in whole or partly, on third parties to adopt and implement it and to continue to develop, supply, and otherwise support it. There is no assurance or guarantee that those third parties will complete their work, properly carry out their obligations, or otherwise meet anyone’s needs, all of might have a material adverse effect on the Platform.
+
+\subsection{Dependence of Musereum on Senior Management Team}
+The ability of the Musereum project team which is responsible for maintaining competitive position of the Platform is dependent to a large degree on the services of a respective senior management team. The loss or diminution in the services of members of respective senior management team or an inability to attract, retain and maintain additional senior management personnel could have a material adverse effect on the Platform. Competition for personnel with relevant expertise is intense due to the small number of qualified individuals, and this situation seriously affects the ability to retain its existing senior management and attract additional qualified senior management personnel, which could have a significant adverse impact on the Platform.
+
+\subsection{Dependence of Musereum Platform on Various Factors}
+The development of the Platform may be abandoned for a number of reasons, including lack of interest from the public, lack of funding, lack of commercial success or prospects, or departure of key personnel.
+
+\subsection{Lack of Interest to the Musereum Platform}
+Even if the Platform is finished and adopted and launched, the ongoing success of the Platform relies on the interest and participation of third parties like developers. There can be no assurance or guarantee that there will be sufficient interest or participation in the Platform.
+
+\subsection{Changes to the Musereum Platform}
+The Platform is still under development and may undergo significant changes over time. Although Company Parties intend for the Platform to have the features and specifications set forth in this White Paper, changes to such features and specifications can be made for any number of reasons, any of which may mean that the Platform does not meet expectations of buyer of the Tokens.
+
+\subsection{Risk associated with Other Applications}
+The Platform may give rise to other, alternative projects, promoted by unaffiliated third parties, under which the Token will have no intrinsic value.
+
+\subsection{Risk of an Unfavorable Fluctuation of Cryptocurrency Value}
+The proceeds of the sale of the Tokens will be denominated in cryptocurrency, and may be converted into other cryptographic and fiat currencies. If the value of cryptocurrencies fluctuates unfavorably during or after the Token Presale or the Token Sale, Company Parties may not be able to fund development, or may not be able to develop or maintain the Platform in the manner that it intended.
+
+\section{Risks arising in course of company parties' business}
+\subsection{Risk of Conflicts of Interest}
+Any Company Party may be engaged in transactions with related parties, including respective majority shareholder, companies controlled by him or in which he owns an interest, and other affiliates, and may continue to do so in the future. Conflicts of interest may arise between any Company Party’s affiliates and respective Company Party, potentially resulting in the conclusion of transactions on terms not determined by market forces.
+
+\subsection{Risks Related to Invalidation of Company Parties Transactions}
+Company Parties have taken a variety of actions relating to its business that, if successfully challenged for not complying with applicable legal requirements, could be invalidated or could result in the imposition of liabilities on respective Company Party. Since applicable legislation may subject to many different interpretations, respective Company Party may not be able to successfully defend any challenge brought against such transactions, and the invalidation of any such transactions or imposition of any such liability may, individually or in the aggregate, have a
+material adverse effect on the Platform.
+
+\subsection{Risk Arising from Emerging Markets}
+Company Parties or some of them may operate on emerging markets. Emerging markets are subject to greater risks than more developed markets, including significant legal, economic and political risks. Emerging markets are subject to greater risk than more developed markets, including in some cases significant legal, economic and political risks. Emerging economies are subject to rapid change and that the information set out in this White Paper may become outdated relatively quickly.
+
+\section{Govermental Risks}
+\subsection{Uncertain Regulatory Framework}
+The regulatory status of cryptographic tokens, digital assets, and blockchain technology is unclear or unsettled in many jurisdictions. It is difficult to predict how or whether governmental authorities will regulate such technologies. It is likewise difficult to predict how or whether any governmental authority may make changes to existing laws, regulations and/or rules that will affect cryptographic tokens, digital assets, blockchain technology and its applications. Such changes could negatively impact the Tokens in various ways, including, for example, through a determination that the tokens are regulated financial instruments that require registration. Company may cease the distribution of the tokens, the development of the Platform or cease operations in a jurisdiction in the event that governmental actions make it unlawful or commercially undesirable to continue to do so.
+
+\subsection{Failure to Obtain, Maintain or Renew Licenses and Permits}
+Although as of the date of starting of the Token Presale there are no statutory requirements obliging Company of the Tokens to receive any licenses and permits necessary for carrying out of its activity, there is the risk that such statutory requirements may be adopted in the future and may relate to any of Company Parties. In this case, Company Parties’ business will depend on the continuing validity of such licenses and permits and its compliance with their terms. Regulatory authorities will exercise considerable discretion in the timing of license issuance and
+renewal and the monitoring of licensees’ compliance with license terms. Requirements which may be imposed by these authorities and which may require any of Company Party to comply with numerous standards, recruit qualified personnel, maintain necessary technical equipment and quality control systems, monitor our operations, maintain appropriate filings and, upon request, submit appropriate information to the licensing authorities, may be costly and time-consuming and may result in delays in the commencement or continuation of operation of the
+Platform. Further, private individuals and the public at large possess rights to comment on and otherwise engage in the licensing process, including through intervention in courts and political pressure. Accordingly, the licenses any
+Company Party may need may not be issued or renewed, or if issued or renewed, may not be issued or renewed in a timely fashion, or may involve requirements which restrict any Company Party’s ability to conduct its operations or to do so profitably.
+
+\subsection{Risk of Government Action}
+The industry in which Company Parties operate is new, and may be subject to heightened oversight and scrutiny, including investigations or enforcement actions. There can be no assurance that governmental authorities will not examine the operations of Company Parties and/or pursue enforcement actions against them. All of this may subject Company Parties to judgments, settlements, fines or penalties, or cause Company Parties to restructure their operations and activities or to cease offering certain products or services, all of which could harm Company Parties’ reputation or lead to higher operational costs, which may, in turn, have a material adverse effect on the Tokens and/or the development of the Platform.
+
+\subsection{Risk of Burdensomeness of Applicable Laws, Regulations and Standards}
+Failure to comply with existing laws and regulations or the findings of government inspections or increased governmental regulation of Company Parties operations, could result in substantial additional compliance costs or various sanctions, which could materially adversely affect Company Parties business and the Platform. Company Parties operations and properties are subject to regulation by various government entities and agencies, in connection with ongoing compliance with existing laws, regulations and standards. Regulatory authorities exercise
+considerable discretion in matters of enforcement and interpretation of applicable laws, regulations and standards.
+
+Respective authorities have the right to, and frequently do, conduct periodic inspections of any Company Party’s operations and properties throughout the year. Any such future inspections may conclude that any Company Party has violated laws, decrees or regulations, and it may be unable to refute such conclusions or remedy the violations.
+
+Any Company Party’s failure to comply with existing laws and regulations or the findings of government inspections may result in the imposition of fines or penalties or more severe sanctions or in requirements that respective Company Party cease certain of its business activities, or in criminal and administrative penalties applicable to respective officers. Any such decisions, requirements or sanctions, or any increase in governmental regulation of our operations, could increase Company Parties costs and materially adversely affect Company Parties business
+and the Platform.
+
+\subsection{Unlawful or Arbitrary Government Action}
+Governmental authorities may have a high degree of discretion and, at times, act selectively or arbitrarily, without hearing or prior notice, and sometimes in a manner that is contrary a law or influenced by political or commercial considerations. Moreover, the government also has the power in certain circumstances, by regulation or government act, to interfere with the performance of, nullify or terminate contracts. Unlawful, selective or arbitrary governmental actions have reportedly included the denial or withdrawal of licenses, sudden and unexpected tax audits, criminal prosecutions and civil actions. Federal and local government entities have also used common defects in matters surrounding the Token Sale as pretexts for court claims and other demands to invalidate or to void any related transaction, often for political purposes. In this environment, Company Parties competitors may receive preferential treatment from the government, potentially giving them a competitive advantage over Company Parties.
+
+\end{multicols}
 \end{document}
