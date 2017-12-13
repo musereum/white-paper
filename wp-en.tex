@@ -40,13 +40,13 @@
 %--------------------------------------
 \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[russian]{babel}
+%\usepackage[russian]{babel}
 %--------------------------------------
  
 %Hyphenation rules
 %--------------------------------------
 \usepackage{hyphenat}
-\hyphenation{ма-те-ма-ти-ка вос-ста-нав-ли-вать}
+%\hyphenation{ма-те-ма-ти-ка вос-ста-нав-ли-вать}
 %--------------------------------------
 
 \usepackage{multicol}
@@ -70,7 +70,6 @@
 \tikzstyle{innerWhite} = [semithick, white,line width=1.4pt, shorten >= 4.5pt]
 \pgfplotsset{
 	axisPlot/.style={
-	    legend cell align={left},
 	    scaled ticks=false,
 		ymajorgrids=true,
 		xmajorgrids=false,
@@ -78,6 +77,7 @@
 		xlabel near ticks,
 		width=13cm,
 		height=7.5cm,
+	    legend cell align={left},
 		legend style={at={(0,-0.20)}, anchor=north west, draw=none}
 	}
 }
@@ -101,7 +101,63 @@
 \date{\today}
 
 \begin{document}
-\maketitle
+\begin{titlepage}
+	\centering
+	
+	\scshape % Use small caps for all text on the title page
+	\vspace*{\baselineskip} % White space at the top of the page
+	
+	\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % Thick horizontal rule
+	\rule{\textwidth}{0.4pt} % Thin horizontal rule
+	
+	\vspace{0.75\baselineskip} % Whitespace above the title
+	
+	{\LARGE\textbf{MUSEREUM}} % Title
+	
+	\vspace{0.75\baselineskip} % Whitespace below the title
+	
+	\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal rule
+	\rule{\textwidth}{1.6pt} % Thick horizontal rule
+	
+	\vspace{2\baselineskip} % Whitespace after the title block
+	
+	%------------------------------------------------
+	%	Subtitle
+	%------------------------------------------------
+	
+	Official Whitepaper % Subtitle or further description
+	
+	\vspace*{3\baselineskip} % Whitespace under the subtitle
+	
+	
+	%------------------------------------------------
+	%	Editor(s)
+	%------------------------------------------------
+	
+	Edited By
+	
+	\vspace{0.5\baselineskip} % Whitespace before the editors
+	
+	{\scshape\Large Artem Abaev \\ Dan Reitman \\ Aler Denisov \\ Gleb Cohen \\} % Editor list
+	
+	% \vspace{0.5\baselineskip} % Whitespace below the editor list
+	
+	% \textit{The University of California \\ Berkeley} % Editor affiliation
+	
+	\vfill % Whitespace between editor names and publisher logo
+	
+	%------------------------------------------------
+	%	Publisher
+	%------------------------------------------------
+		
+	\vspace{0.3\baselineskip} % Whitespace under the publisher logo
+	
+	2017 % Publication year
+	
+	{\large Musereum Team} % Publisher
+
+\end{titlepage}
+%\maketitle
 \pagebreak
 \tableofcontents
 \pagebreak
@@ -161,18 +217,18 @@ According to the music market research conducted by the Buzzanglemusic company, 
 \begin{table}[H]
 \centering
 \caption{Ready models of license limitations}
-\begin{tabular}{p{0.45\linewidth}rrr}%p{0.65\linewidth}cc}
+\begin{tabular}{p{0.4\linewidth}rrr}%p{0.65\linewidth}cc}
 \toprule
 & \Prev & \Current & \Grow \\
 \toprule
 %\multicolumn{2}{c}{\code{EnumerateRule}} \\
 \midrule
-\Summary 			& 1,167,384,931 		& 1,512,049,118 		& 29.5\% \\
-\Sales 					& 410,920,611 			& 313,305,154 			& -23.8\% \\
-\Streaming 			& 113,469,648,006 	& 179,811,594,535 	& 58.5\% \\
-\VideoStreaming 	& 95,696,158,924 	& 101,531,507,971		& 6.1\% \\
-\Albums 				& 266,565,904 		& 292,986,056 		& 9.9\% \\
-\AlbumsSales 		& 86,029,972 			& 74,093,472	 		& -13.9\% \\
+\Summary 			& \texttt{1,167,384,931} 		& \texttt{1,512,049,118} 		& \texttt{29.50\%} \\
+\Sales 					& \texttt{410,920,611} 			& \texttt{313,305,154} 			& \texttt{-23.80\%} \\
+\Streaming 			& \texttt{113,469,648,006} 	& \texttt{179,811,594,535} 	& \texttt{58.50\%} \\
+\VideoStreaming 	& \texttt{95,696,158,924} 	& \texttt{101,531,507,971}		& \texttt{6.10\%} \\
+\Albums 				& \texttt{266,565,904} 		& \texttt{292,986,056} 		& \texttt{9.90\%} \\
+\AlbumsSales 		& \texttt{86,029,972} 			& \texttt{74,093,472}	 		& \texttt{-13.90\%} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -244,17 +300,23 @@ Such popularity is determined by related income growth. It is worth mentioning t
     }\streamingPartion
 \begin{tikzpicture}
     \begin{axis}[
+            width=13cm,
+		   height=6cm,
+		   bar width=1cm,
+            ylabel near ticks,
+            xlabel near ticks,
+            nodes near coords,
+            major grid style={line width=.2pt,draw=gray!50},
+		   ymajorgrids=true,
+  		   domain=0:2*pi,
             ybar,
             symbolic x coords={2011,2012,2013,2014,2015,2016},
             xtick=data,
-            nodes near coords,
             ymin=0,ymax=65,
-            width=13cm, %set bigger width
-		   height=6cm,
 		   bar width=1.5cm,
             ylabel={Income share, \%},
         ]
-        \addplot table[x=interval,y=carT]{\streamingPartion};
+        \addplot [black, fill=black!20] table[x=interval,y=carT]{\streamingPartion};
     \end{axis}
 \end{tikzpicture}
 \end{figure}
@@ -262,25 +324,42 @@ Such popularity is determined by related income growth. It is worth mentioning t
 In 2017, audio streaming reached all-time high records and increased by 58,5\%. In specific markets the income growth amounted to more than 300\% (South Africa). In terms of profitability, audio streaming is the leader in its industry. For example, although video traffic attracts 900 million users, the income has amounted only to \$553 million, whereas the streaming income makes \$3,904 million with the total 212 million users.
 
 \begin{figure}[H]
+\def\streamingSubscription{Streaming subscriptions}
+\def\videoStreaming{Video streaming}
 \centering
 \caption{Audio and video streaming: Users and income correlation}
 \vspace{20pt}
 \pgfplotstableread[row sep=\\,col sep=&]{
     interval & users & revenue \\
-    1 & 250 & 3950 \\
-    2 & 920 & 550 \\
+    \streamingSubscription & 250 & 3950 \\
+    \videoStreaming & 920 & 550 \\
     }\userRevenue
 \begin{tikzpicture}
     \begin{axis}[
+            width=13cm,
+		   height=10cm,
+		   bar width=2.2cm,
+            ylabel near ticks,
+            xlabel near ticks,
+            nodes near coords,
+            major grid style={line width=.2pt,draw=gray!50},
+		   ymajorgrids=true,
+  		   domain=0:2*pi,
             ybar,
-            symbolic x coords={1,2},
+            symbolic x coords={\streamingSubscription,\videoStreaming},
             xtick=data,
             nodes near coords,
             ymin=0,ymax=4500,
             ylabel={Income share, \%},
+            enlarge x limits={abs=3cm},
+   	       legend cell align={left},
+		   legend style={at={(0,-0.20)}, anchor=north west, draw=none}
         ]
-        \addplot table[x=interval,y=users]{\userRevenue};
-        \addplot table[x=interval,y=revenue]{\userRevenue};
+        \addplot [ black, fill=black!40 ] table[x=interval,y=users]{\userRevenue};
+        \addplot [ black, fill=black!20 ] table[x=interval,y=revenue]{\userRevenue};
+        
+		\addlegendentry{Users}
+		\addlegendentry{Royalty, US~\$000,000}
     \end{axis}
 \end{tikzpicture}
 \end{figure}	
@@ -297,17 +376,19 @@ On average, US \$498,000–US \$2,000,000 is invested in a new track (particular
 
 \begin{table}[H]
 \centering
-\begin{tabular}{p{0.5\linewidth}r}
+\begin{tabular}{p{0.5\linewidth}rr}
 \toprule
-\multicolumn{2}{c}{\InvestToRecord} \\
+\multicolumn{3}{c}{\textbf{\InvestToRecord}, US~\$000} \\
 \bottomrule
 \midrule
-\Clients					& US \$50,000-350,000 \\
-\Record					& US \$150,000-500,000 \\
-\Video					& US \$25,000-300,000 \\
-\Tour					& US \$50,000-150,000 \\
-\Marketing			& US \$200,000-700,000 \\
-\Sum 					& US \$475,000-2,000,000 \\
+\textbf{Type of investment}					& \textbf{min} & \textbf{max} \\
+\midrule
+\Clients					& \texttt{50} & \texttt{350} \\
+\Record					& \texttt{150} & \texttt{500} \\
+\Video					& \texttt{25} & \texttt{300} \\
+\Tour					& \texttt{50} & \texttt{150} \\
+\Marketing			& \texttt{200} & \texttt{700} \\
+\Sum 					& \texttt{475} & \texttt{2,000} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -326,26 +407,27 @@ Digital platforms make the following payments:
 \def\PayBuy{Оплата при покупке песни}
 \def\Platform{Music platform}
 \def\LabelPartion{Paid to labels}
-\def\ArtistPartion{\hlc{\% shared with an artist}}
+\def\ArtistPartion{Shared with an artist}
 \def\YoutubePay{\$0.001 royalty is paid to the uploader of track}
 
 \begin{table}[H]
 \centering
 \caption{Platform payments}
-\begin{tabular}{lrrp{0.15\linewidth}}
+%\vspace(20pt}
+\begin{tabular}{lrr}
 \toprule
-	& \multicolumn{2}{c}{\PayPlay} \\
-	\Platform & 
-	\multicolumn{1}{p{0.22\linewidth}}{\LabelPartion} &
-	\multicolumn{1}{p{0.22\linewidth}}{\ArtistPartion} \\
+	& \multicolumn{2}{c}{\textbf{\PayPlay}} \\
+	\textbf{\Platform} & 
+	\textbf{\LabelPartion}, US~\$ &
+	\textbf{\ArtistPartion}, \% \\
 \bottomrule
 \midrule
-Apple Music / iTunes		& US \$0.0013 	& 12\% \\
-Zune								& US \$0.028 	& 11\% \\
-Napster						& US \$0.016 	& 11-12\% \\
-Rhapsody						& US \$0.013 	& 11-12\% \\
-Spotify							& US \$0.005 	& 11-12\% \\
-Youtube 						& \multicolumn{2}{p{0.48\linewidth}}{\YoutubePay} \\
+Apple Music / iTunes		& \texttt{0.0013} 	& \texttt{12} \\
+Zune								& \texttt{0.0280} 	& \texttt{11} \\
+Napster						& \texttt{0.0160} 	& \texttt{11–12} \\
+Rhapsody						& \texttt{0.0130} 	& \texttt{11–12} \\
+Spotify							& \texttt{0.0050} 	& \texttt{11-12} \\
+Youtube 						& \multicolumn{2}{p{0.55\linewidth}}{\YoutubePay} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -384,27 +466,29 @@ Thus, a value pattern in music industry can be illustrated as follows:
 \vfill\null\pagebreak
 \begin{figure}[H]
 \centering
-\def\Author{Автор}
-\def\AuthorDesc{Создает оригинальные музыкальные произведения; может передавать права на публикацию за долю роялти составляющую не более 50\%}
-\def\Publisher{Издательство}
-\def\PublisherDesc{Лицензирует каталог музыкальных произведений для воспроизведения и механического использования; собирает и распределяет роялти между авторами}
-\def\Laws{Правовое общество}
-\def\LawsDesc{Отслеживает и оценивает каждое использование композиций; собирает и распределяет роялти между авторами и издательствами}
-\def\LawNote{Право на музыкальное произведение принадлежит автору или издательству; Использование в рамках воспроизведения отслеживается правовым обществом}
-\def\LicensePlay{Лицензия на воспроизведение}
-\def\LicensePhysical{Механическая лицензия}
+\def\Author{Author}
+\def\AuthorDesc{Creates originals music compositions; they can transfer the publishing right for a royalty share not exceeding 50\%}
+\def\Publisher{Publisher}
+\def\PublisherDesc{Licenses music composition catalogue for playback and mechanical use; collects and distributes royalty between authors and publishers}
+\def\Laws{Copyright collectives}
+\def\LawsDesc{track and evaluate every use of a composition; it collects
+and distributes royalty between authors and publishers}
+\def\LawNote{Music composition right belongs to the author or a publisher; the playback usage is traced by a copyright collective}
+\def\LicensePlay{Playback license}
+\def\LicensePhysical{Mechanical license}
 
-\def\Artist{Записывающий исполнитель}
-\def\ArtistDesc{Основные и бэк-исполнители, участвующие в звукозаписи в обмен на роялти с продаж}
-\def\Label{Лейбл}
-\def\LabelDesc{Спонсирует, записывает и продвигает аудиозаписи}
-\def\Distributor{Агрегатор / Дистрибьютер}
-\def\DistributorDesc{Распространяет цифровые аудиозаписи онлайн или физические продукты через магазин}
-\def\LawSecondNote{Право на аудиозапись принадлежит автору или лейблу; продажи отслеживают лейблом, агрегатором или дистрибьютером}
-\def\Records{Аудиозаписи}
-\def\Around{Смежные права}
+\def\Artist{Recording artist}
+\def\ArtistDesc{Front and back artists participating in audio recording in
+exchange for sales royalty}
+\def\Label{Label}
+\def\LabelDesc{Sponsors, records and promotes audio records}
+\def\Distributor{Aggregator/Distributor }
+\def\DistributorDesc{Distributes digital tracks online or physical media}
+\def\LawSecondNote{The composition right belongs to the author or a label; sales are traced by a label, aggregator or distributor}
+\def\Records{Audio records}
+\def\Around{Associated rights}
 
-\caption{Структура создания ценности}
+\caption{Value creation structure}
 \vspace{20pt}
 \begin{tikzpicture}[node distance=1.5cm]
 \node(Author) 			[rect, text width=6.4cm]
@@ -455,15 +539,25 @@ Thus, a value pattern in music industry can be illustrated as follows:
     }\userRevenue
 \begin{tikzpicture}
     \begin{axis}[
+            width=13cm,
+		   height=10cm,
+		   bar width=1cm,
+            ylabel near ticks,
+            xlabel near ticks,
+            nodes near coords,
+            major grid style={line width=.2pt,draw=gray!50},
+		   ymajorgrids=true,
+  		   domain=0:2*pi,
             ybar,
             symbolic x coords={1,2},
             xtick=data,
             nodes near coords,
             ymin=0,ymax=4500,
             ylabel={Доля дохода, \%},
+            enlarge x limits={abs=3cm}
         ]
-        \addplot table[x=interval,y=users]{\userRevenue};
-        \addplot table[x=interval,y=revenue]{\userRevenue};
+        \addplot [ black, fill=black!20 ] table[x=interval,y=users]{\userRevenue};
+        \addplot [ black, fill=black!20 ] table[x=interval,y=revenue]{\userRevenue};
     \end{axis}
 \end{tikzpicture}
 \end{figure}	
@@ -665,6 +759,15 @@ The information on the price distribution for the assets is presented below.
     }\streamingPartion
 \begin{tikzpicture}
     \begin{axis}[
+            width=13cm,
+		   height=10cm,
+		   bar width=1cm,
+            ylabel near ticks,
+            xlabel near ticks,
+            nodes near coords,
+            major grid style={line width=.2pt,draw=gray!50},
+		   xmajorgrids=true,
+  		   domain=0:2*pi,
             xbar,
             symbolic y coords={
             	{500–1,000},
@@ -674,18 +777,9 @@ The information on the price distribution for the assets is presented below.
             	{0–50}
             },
             ytick=data,
-            nodes near coords,
             xmin=0,xmax=100,
-            width=13cm, %set bigger width
-		   height=10cm,
-		   bar width=1cm,
             xlabel={Part of Total assets, \%},
             ylabel={25\% of Asset Rights Price, US \$ 000},
-            ylabel near ticks,
-            xlabel near ticks,
-            major grid style={line width=.2pt,draw=gray!50},
-		   xmajorgrids=true,
-  		   domain=0:2*pi,
         ]
         \addplot[
         		fill=black!20
@@ -1149,7 +1243,7 @@ With 40\% HODL and Celebrity indexes &
 \texttt{45.00} & \texttt{280.00} & \texttt{1,772.00} & \texttt{4,330.00} & \texttt{24,656.00} \\
 
 \midrule
-\multicolumn{6}{c}{\textbf{Annual subsidies to Soundchain Foundation to pay out PPP royalties}, US~\$000,000} \\
+\multicolumn{6}{c}{\textbf{Subsidies to Soundchain Foundation to pay out PPP royalties}, US~\$000,000} \\
 \midrule
 
 Without indexes applied & 
@@ -1166,7 +1260,28 @@ With 40\% HODL and Celebrity indexes &
 
 \chapter{Platform Overview}
 \label{platform}
-%\begin{multicols}{2}
+
+The project will create a five-sided market with the following parties:
+ 
+\begin{enumerate}
+	\item The creators and other rights holders who upload their music to the platform and receive music tokens, representing the shares of IP rights for the uploaded music;
+	\item The investors, who buy music tokens from the creators for ETM tokens and become the co-owners of the uploaded assets themselves;
+	\item The businesses, who purchase licenses for commercial use of uploaded music at the licensing marketplace for ETM tokens, therefore generating royalty flow for creators and investors;
+	\item The industry professionals, who offer their services to all other participants of the network at the service marketplace and agree to get paid for such services in ETM tokens;
+	\item The fans, non-commercial users who get free access to the uploaded music via the Soundchain player, providing listening statistics for the Pay-per-Play royalties to be distributed among the rights holders ang helping to promote their favourite music.
+\end{enumerate}
+
+\begin{figure}[H] 
+\centering
+\caption{Royalty Distribution}
+\vspace{20pt}
+\includegraphics[width=\textwidth]{musereum-scheme}
+\end{figure}
+
+Every participant may have several roles at the platform – for example, a sound engineer may upload their own music as a creator, buy music tokens to support his fellow musicians, purchase collaboration licenses for their next projects, offer services at the service marketplace, listening to Madonna via the Soundchain player all along.
+
+Furthermore, Musereum technology allows for the third-party developers to upload their own dApps within our system and create their own models of value creation for the industry.We try to create an infrastructure for different dapps to seamlessly run on top of Musereum blockchain, interacting with the Musereum IP database and utilizing ETM tokens to transfer value within the dapps and between them.
+
 Musereum Platform is a system of digital products to solve core industry problem which described above.
 
 Core platform products is:
@@ -1179,6 +1294,14 @@ with one another.
 	\item \textbf{Transparent Rights Management} based on three core elements: musical assets, decentralized autonomous labels and licenses on smart-contracts.
 	\item \textbf{Decentralized Exchange} without moment of authority to select what we trade and when. Any registered asset could to listing associated token as a tradable active.
 	\item \textbf{Decentralized Marketplace} for the monetization of creativity through the sale of licenses.
+	\item \textbf{Soundchain} One of the core dapps running on top of Musereum blockchain is the Soundchain. While the basic scenario of interacting with Musereum platform is the uploading of the music by the creator and tokenizing it, selling music tokens to investors and generating a royalty flow by licensing the music via the marketplace, the Soundchain will provide the participants with an alternative monetization model, at the same time letting them access the public with their music.
+ 
+The Soundchain will comprise the streaming platform with the player interacting with the Pay-per-Play smart-contract. While the access to the uploaded music will be free to stream for every non-commercial user of the Soundchain player, the smart-contract will pay out a small royalty to the rights holders for every unique stream of their music. The PPP royalty rates will vary within the range of US \$0.01 to US \$2.00 equivalent in ETM, with the exact rate determined by several factors, the main one being the total price of licenses sold for the asset at the licensing marketplace.
+ 
+The PPP royalties will be paid out of the Soundchain Foundation, to which 70\% of newly generated ETM tokens will be transferred - about 17.5 million ETM annually.
+ 
+Soundchain would benefit the Musereum ecosystem in several ways. First of all, by subsidizing artists, we will attract more creators to the platform by providing them with a viable alternative to the existing streaming services. By allowing free streaming we will attract general public to the platform, and the statistics gathered this way will help rights holders to demonstrate the value of their music to potential business users of our platform. It will also serve as a promotion tool for musicians to acquire new audience, and will provide listeners with a convenient interface to directly acquire a commercial license or buy music tokens from the rights holders.
+
 \end{itemize}
 %\end{multicols}
 
@@ -1330,7 +1453,7 @@ All of tools could be grouped by three categories:
 
 \begin{tikzpicture}	
 \tikzset{%
-	mini/.style = { rectangle, draw=black, minimum height=1cm, text width=2.6cm, inner sep=0.15cm },
+	mini/.style = { rectangle, draw=black, minimum height=1cm, text width=2.4cm, inner sep=0.15cm },
 	wrap/.style = {rectangle, draw=black, rounded corners, thick}
 }
 \node(ts1) [mini, yshift=15cm] {Total Supply};
@@ -1339,17 +1462,17 @@ All of tools could be grouped by three categories:
 \node(ts4) [mini, right=0.2cm of ts3] {Decimals};
 \node(tsr) [wrap, fit={(ts2) (ts4)}] {};
 
-\node(ih0) [mini, below=1.5cm of tsr.south west, anchor=north west, text width=1cm] {1};
+\node(ih0) [mini, below=1.5cm of ts1.south west, anchor=north west, text width=1cm] {1};
 \node(ih3) [above=0.2cm of ih0.north west, anchor=south west ] {\textbf{Initial Token Holders}};
 \path 
 	let \p1=(ts1.south west), \p2=(ts4.south east)
-	in node(ih1) [mini, right=0pt of ih0, text width=\x2-\x1-\pgflinewidth-4.5cm] {address};
+	in node(ih1) [mini, right=0pt of ih0, text width=\x2-\x1-\pgflinewidth-4.4cm] {address};
 \node(ih2) [mini, right=0pt of ih1] {\% of supply}; 
 
 \node(ih0) [mini, below=0pt of ih0, text width=1cm] {2};
 \path 
 	let \p1=(ts1.south west), \p2=(ts4.south east)
-	in node(ih1) [mini, right=0pt of ih0, text width=\x2-\x1-\pgflinewidth-4.5cm] {address};
+	in node(ih1) [mini, right=0pt of ih0, text width=\x2-\x1-\pgflinewidth-4.4cm] {address};
 \node(ih2) [mini, right=0pt of ih1] {\% of supply}; 
 
 \node [below=0.1cm of ih1] {...};
@@ -1357,7 +1480,7 @@ All of tools could be grouped by three categories:
 \node(ih0) [mini, below=0.5cm of ih0, text width=1cm] {$n$};
 \path 
 	let \p1=(ts1.south west), \p2=(ts4.south east)
-	in node(ih1) [mini, right=0pt of ih0, text width=\x2-\x1-\pgflinewidth-4.5cm] {address};
+	in node(ih1) [mini, right=0pt of ih0, text width=\x2-\x1-\pgflinewidth-4.4cm] {address};
 \node(ih2) [mini, right=0pt of ih1] {\% of supply}; 
 
 \node(ih4) [fit={(ih3) (ih2)}] {};
@@ -1369,7 +1492,7 @@ All of tools could be grouped by three categories:
 	in node(ih0) [mini, text width=1cm, anchor=north west, yshift=-1.2cm] at (\x1,\y2) {$n+1$};
 \path 
 	let \p1=(ts1.south west), \p2=(ts4.south east)
-	in node(ih1) [mini, right=0pt of ih0, text width=\x2-\x1-\pgflinewidth-4.5cm] {ICO Contract};
+	in node(ih1) [mini, right=0pt of ih0, text width=\x2-\x1-\pgflinewidth-4.35cm] {ICO Contract};
 \node(ih2) [mini, right=0pt of ih1] {\% on sale}; 
 
 \path 
@@ -1387,7 +1510,7 @@ All of tools could be grouped by three categories:
 
 \node(vs0) [right=0.8cm of ts4.north east, anchor=north west, text width=5cm] {Making a proposal for: };
 \node(vsh) [above=0.2cm of vs0.north west, anchor=south west ] {\textbf{Charter Setup}};
-\node(vs1) [mini, below=0.2cm of vs0.south west, anchor=north west, text width=4.5cm] {Licensing};
+\node(vs1) [mini, below=0.2cm of vs0.south west, anchor=north west, text width=4.2cm] {Licensing};
 \path
 	let \p1=(vs1.south), \p2=(vs1.north)
 	in node(vs2) [
@@ -1396,7 +1519,7 @@ All of tools could be grouped by three categories:
 		right=0pt of vs1
 	] {\% of supply};
 	
-\node(vs3) [mini, below=0pt of vs1, text width=4.5cm] {Charter revision};
+\node(vs3) [mini, below=0pt of vs1, text width=4.2cm] {Charter revision};
 \path
 	let \p1=(vs3.south), \p2=(vs3.north)
 	in node(vs4) [
@@ -1405,7 +1528,7 @@ All of tools could be grouped by three categories:
 		right=0pt of vs3
 	] {\% of supply};
 	
-\node(vs5) [mini, below=0pt of vs3, text width=4.5cm] {Voting rules};
+\node(vs5) [mini, below=0pt of vs3, text width=4.2cm] {Voting rules};
 \path
 	let \p1=(vs5.south), \p2=(vs5.north)
 	in node(vs6) [
@@ -1416,7 +1539,7 @@ All of tools could be grouped by three categories:
 	
 	
 \node(vs7) [below=0.5cm of vs5.south west, anchor=north west, text width=5cm] {Initial voting rules};
-\node(vsA) [mini, below=0.2cm of vs7.south west, anchor=north west, text width=4.5cm] {Majority Rule};
+\node(vsA) [mini, below=0.2cm of vs7.south west, anchor=north west, text width=4.2cm] {Majority Rule};
 \path
 	let \p1=(vsA.south), \p2=(vsA.north)
 	in node(vsB) [
@@ -1424,15 +1547,15 @@ All of tools could be grouped by three categories:
 		minimum height=\y2-\y1,
 		right=0pt of vsA
 	] {$2/3$};
-\node(vsA) [mini, below=0pt of vsA, text width=4.5cm] {Quorum};
+\node(vsA) [mini, below=0pt of vsA, text width=4.2cm] {Quorum};
 \path
 	let \p1=(vsA.south), \p2=(vsA.north)
 	in node(vsB) [
 		mini,
 		minimum height=\y2-\y1,
 		right=0pt of vsA
-	] {10\% of supply};
-\node(vsA) [mini, below=0pt of vsA, text width=4.5cm] {Duration};
+	] {10\%};
+\node(vsA) [mini, below=0pt of vsA, text width=4.2cm] {Duration};
 \path
 	let \p1=(vsA.south), \p2=(vsA.north)
 	in node(vsB) [
@@ -1981,19 +2104,19 @@ a = \Gamma_{step} * |\mathbb{Y}|
 \subsection{Crosschain communication and Ethereum Classic}
 \label{tech-blockchain-anchoring}
 %\begin{multicols}{2}
-В целях повышения безопастности и отказоустойчивости сети, Musereum периодически дублирует ключевую информацию о состоянии сети и событиях во внешний неконтролируемый нотариусами блокчейн. 
+To increase the security and fault tolerance of the network, Musereum periodically duplicates key information about the network and core-events in an external blockchain that is not controlled by notaries.
 
-В качестве блокчейна для хранения ключевой информации выбрана сеть Ethereum Classic, по следующим причинам:
+As an anchoring blockchain for storing key information, the Ethereum Classic network was chosen, for the following reasons:
 \begin{itemize}
-	\item Общая капитализация сети – \$1,811,306,656
-	\item Стоимость атаки 51\% на сеть составляет более \$40,000,000
-	\item Permission-less консенсус – PoW.
+	\item Total market cap – US~\$1,811,306,656.00
+	\item The cost of 51\% attack on the network is more than US~\$40,000,000
+	\item Permission-less consensus – Proof-of-Word.
 \end{itemize}
 
-Musereum публикует в Ethereum Classic:
+Musereum duplicates to the Ethereum Classic:
 \begin{enumerate}
-	\item хеши каждого n блока для обеспечения доказательства исторических данны;
-	\item факты ключевых сделок: регистрация музыкальных активов, покупка лицензий.
+	\item Hashes of each $n$-block to provide proof of historical data;
+	\item The facts of key transactions: the registration of musical assets, the purchase of licenses.
 \end{enumerate}
 %\end{multicols}
 
@@ -2004,7 +2127,7 @@ Musereum публикует в Ethereum Classic:
 \begin{tikzpicture}
 \tikzset{%
 	part/.style = { rectangle, draw=black, minimum height=.7cm },
-	block/.style = { rectangle, draw=black, minimum height=3cm, minimum width=3cm, text width=3cm, text centered},
+	block/.style = { rectangle, draw=black, minimum height=2.5cm, minimum width=2.5cm, text width=2.4cm, text centered},
 	event/.style = { rectangle, , rounded corners, draw=black, text centered},
 	anchoring/.style = { rectangle, rounded corners, draw=black, text centered, minimum width=3cm, minimum height=1.2cm}
 }
@@ -2076,8 +2199,6 @@ Musereum публикует в Ethereum Classic:
 							
 \end{tikzpicture}
 \end{figure}
-
-\vfill\null\pagebreak
 
 \subsection{Block Generation Reward}
 \label{tech-blockchain-reward}
@@ -2167,7 +2288,7 @@ Musereum is planning to utilize \textit{The Inter-Planetary Naming System} (IPNS
 
 It allows you to store a reference to an IPFS file under the namespace of corresponding KeeperID (the hash of keeper's public key).
 
-\section{Децентрализованные приложения}
+\section{Decentralized Applications}
 \label{tech-apps}
 Musereum DApps implement the code for record and storage layer as well as the interaction interface code. The protocol allows DApps to interact.
 
@@ -2581,7 +2702,7 @@ License-derived smart contract to limit the use
 \end{itemize}
 %\end{multicols}
 \vfill\null\pagebreak
-\subsubsection{Смарт-контракт DALRegistry}
+\subsubsection{DALRegistry smart contract}
 \label{tech-apps-dal-registry}
 The ledger of registered autonomous labels is required to keep record and provide access to the label for the manager of associated musical asset.
 
@@ -2630,7 +2751,7 @@ Returns set of events created by license decentralized label.
 \code{event RemoveLabelLicense(address indexed label, address indexed license)} – ($\delta^R_{RemoveLicense}$)\hfill\null\linebreak
 Returns subset $\delta^R_{NewLicense}$ for licenses removed from sale.
 
-\subsubsection{Смарт-контракт DALContract}
+\subsubsection{DALContract smart contract}
 \label{tech-apps-dal-label}
 %\begin{multicols}{2}
 Smart contract for managing musical asset. Asset and associated entities are managed through proposing an offer for voting with preliminary distribution of \code{VotingRightsToken}among all community participants based on the balance of associated \code{DALToken}.
@@ -2648,7 +2769,7 @@ Thus, sole label ownership is equal to 100.0000000 tokens, the minimal vote in t
 	\item Cession of tokens to other platform participants by exchanging for ETM or other tokens
 \end{enumerate}
 %\end{multicols}
-\subsubsection{Смарт-контракт DALToken}
+\subsubsection{DALToken smart contract}
 \label{tech-apps-dal-token}
 %\begin{multicols}{2}
 Decentralized label token is a \hyperref[tech-blockchain-contracts]{ERC-20} compatible token.
@@ -2695,10 +2816,10 @@ This method allows to calculate royalty only when it is required by business log
 
 If rights are transferred to a third party (token transfer), it triggers automatic calculation algorithm of available royalty for the current and the future holder.
 %\end{multicols}
-\subsubsection{Голосование за принятие решений}
-\label{tech-apps-dal-voting}
-\subsubsection{Устал децентрализованного лейбла}
-\label{tech-apps-dal-charter}
+%\subsubsection{Голосование за принятие решений}
+%\label{tech-apps-dal-voting}
+%\subsubsection{Устал децентрализованного лейбла}
+%\label{tech-apps-dal-charter}
 \subsubsection{Продажа лицензий и смарт-контракт DALAssetLicense}
 \label{tech-apps-dal-license}
 %\begin{multicols}{2}
@@ -2707,7 +2828,6 @@ If rights are transferred to a third party (token transfer), it triggers automat
 Musereum licensing has the capability to conduct the following types of licensing.
 
 Sale of license for commercial use of associated musical asset is the primary task of a decentralized label, at that receiving royalty is the basic motivation for existence.
-Все лицензии выпускаются в виде экземпляря смарт-контракта \code{DALAssetLicense} через интерфей усправления \code{DALContract}. 
 
 All licenses are issued as \hlc{an instance} of \code{DALAssetLicense} smart-contract through \code{DALContract} management interface.
 The task of \code{DALAssetLicense} root contract is to define the nature of license, acquisition rules and  limitations of use. \code{DALAssetLicense} is a container that provides holder with an unlimited license for commercial use, at that limitations are described in derivative smart contracts:
@@ -2730,7 +2850,7 @@ It is an abstract smart contract defining the limitation of a parental license; 
 Final limitation can be selected from ready options or it can be created by a decentralized label for a certain license.
 %\end{multicols}
 
-\textbf{Сравнение ограничений}
+\textbf{Rules compare}
 \begin{equation}
 \begin{aligned}
 a = \theta'(original), \quad b = \theta'(target) \\
@@ -2779,10 +2899,10 @@ f_z(a, b) = ||\{\top: a_{items}[i]_{fitWith}(b) = \top\}|| > 0
 
 \begin{table}[H]
 \centering
-\caption{Предзаготовленные типовые ограничения лицензий}
+\caption{Types of Rules}
 \begin{tabular}{p{0.2\linewidth}p{0.65\linewidth}cc}
 \toprule
-Наименование & Описание \\
+Code Name & Description \\
 \bottomrule
 \toprule
 \multicolumn{2}{c}{\code{EnumerateRule}} \\
@@ -2809,12 +2929,12 @@ f_z(a, b) = ||\{\top: a_{items}[i]_{fitWith}(b) = \top\}|| > 0
 \end{tabular}
 \end{table}
 
-\subsubsection{Устав децентрализованного лейбла}
-\label{tech-apps-dal-charter}
+%\subsubsection{Устав децентрализованного лейбла}
+%\label{tech-apps-dal-charter}
 %\subsection{Fundraising dApp}
 %\label{tech-apps-fundraising}
 %\begin{multicols}{2}
-Любой \hyperref[tech-apps-dal]{децентрализованный лейбл} 
+%Любой \hyperref[tech-apps-dal]{децентрализованный лейбл} 
 %\end{multicols}
 \subsection{Soundchain}
 \label{tech-apps-soundchain}
@@ -2880,114 +3000,114 @@ Additional risks and uncertainties may also materially adversely affect on the E
 
 \section{Risks connected to the value of ETM tokens}
 \label{risks-value}
-\subsection{No Rights, Functionality or Features}
+\subsection*{No Rights, Functionality or Features}
 \label{risks-value-rights}
 The Tokens do not have any rights, uses, purpose, attributes, functionalities or features, express or implied, including, without limitation, any uses, purpose, attributes, functionalities or features on the Musereum network.
 
 Company Parties do not guarantee and are not representing in any way to Buyer that the Tokens have any rights, uses, purpose, attributes, functionalities or features.
 
-\subsection{Lack of Development of Market for ETM tokens}
+\subsection*{Lack of Development of Market for ETM tokens}
 \label{risks-value-lack}
 Because there has been no prior public trading market for the Tokens, the Token sale may not result in an active or liquid market for the Tokens, and their price may be highly volatile. Even if the Tokens are tradable in a secondary market, in practice, there may not be enough active buyers and sellers or the bid-ask spreads may be too wide. The Token holders may not be able to exit their token holdings easily. In the worst-case scenario where no secondary market develops, a Token holder may not be able to liquidate his/her token holdings at all. The exchanges or platforms that facilitate secondary trading of the Tokens may not be regulated by the applicable laws.
 
-\subsection{Risks Relating to Highly Speculative Traded Price}
+\subsection*{Risks Relating to Highly Speculative Traded Price}
 \label{risks-value-speculative}
 The valuation of digital tokens in a secondary market is usually not transparent, and highly speculative. The Tokens do not hold any ownership rights to Company’s assets and, therefore, are not backed by any tangible asset. Traded price of the Tokens can fluctuate greatly within a short period of time. There is a high risk that a Token holder could lose his/her entire contribution amount. In the worst-case scenario, the Tokens could be rendered worthless.
 
-\subsection{ETM Tokens May Have No Value}
+\subsection*{ETM Tokens May Have No Value}
 \label{risks-value-no-value}
 The ETM tokens may have no value and there is no guarantee or representation of liquidity for the ETM tokens. Company is not and shall not be responsible for or liable for the market value of the ETM tokens, the transferability and/or liquidity of the ETM tokens and/or the availability of any market for the ETM tokens through third parties or otherwise.
 
-\subsection{Tokens are Non-Refundable}
+\subsection*{Tokens are Non-Refundable}
 \label{risks-value-non-refundable}
 Company is not obliged to provide the Token holders with a refund related to the Tokens for any reason, and the Token holders will not receive money or other compensation in lieu of the refund. No promises of future performance or price are or will be made in respect to the Tokens, including no promise of inherent value, no promise of continuing payments, and no guarantee that the Tokens will hold any particular value. Therefore, the recovery of spent resources may be impossible or may be subject to foreign laws or regulations, which may not be the same as the private law of the Token holder
 
 \section{Blockchain and software risks}
 \label{risks-block}
 
-\subsection{Blockchain Delay Risk}
+\subsection*{Blockchain Delay Risk}
 \label{risks-block-delay}
 On the Bitcoin and Ethereum blockchains, timing of block production is determined by proof of work so block production can occur at random times. For example, the Cryptocurrency transferred in the final seconds of a distribution period during the Token Presale or the Token Sale may not get included for that period. Buyer acknowledges and understands that the Bitcoin or Ethereum blockchain may not include the Buyer’s transaction at the time Buyer expects and Buyer may not receive the Tokens in this regard.
 
-\subsection{Blockchain Congestion Risk}
+\subsection*{Blockchain Congestion Risk}
 \label{risks-block-congestion}
 The Bitcoin and Ethereum blockchains are prone to periodic congestion during which transactions can be delayed or lost. Individuals may also intentionally spam the respective network in an attempt to gain an advantage in purchasing cryptographic tokens. Buyer acknowledges and understands that Bitcoin or Ethereum block producers may not include Buyer’s transaction when Buyer wants or Buyer’s transaction may not be included at all.
 
-\subsection{\hlc{Risk of Software Weaknesses}}
+\subsection*{\hlc{Risk of Software Weaknesses}}
 \label{risks-block-weaknesses}
 The concept of token smart contract which creates the mechanism of creation and distribution of the ACE Tokens (“Token Smart Contract”), the underlying software application and software platform (i.e. the Ethereum blockchain) are still in an early development stage and unproven. There is no representation and warranty that the process for creating the ACE tokens will be uninterrupted or error-free. There is an inherent risk that the software could contain weaknesses, vulnerabilities or bugs causing, inter alia, the complete loss of the cryptocurrency and/or the ACE
 tokens.
 
-\subsection{Risk of New Technology}
+\subsection*{Risk of New Technology}
 The Platform, the Tokens and all of the matters set forth in this White Paper are new and untested. The Platform and the Tokens might not be capable of completion, creation, implementation or adoption. It is possible that no blockchain utilizing the Platform will be ever launched. Buyer of Tokens should not rely on the Platform,
 the Token Smart Contract or the ability to receive tokens associated with the Platform in the future. Even if the Platform is completed, implemented and adopted, it might not function as intended, and any Tokens may not have functionality that is desirable or valuable. Also, technology is changing rapidly, so the Platform and the Tokens may become outdated.
 
 \section{Security Risks}
 
-\subsection{Risk of Loss of Private Keys}
+\subsection*{Risk of Loss of Private Keys}
 The Tokens purchased by Buyer may be held by Buyer in Buyer’s digital wallet or vault, which requires a private key, or a combination of private keys, for access. Accordingly, loss of requisite private keys associated with such Buyer’s digital wallet or vault storing the Tokens will result in loss of such Tokens, access to Buyer’s Token balance and/or any initial balances in blockchains created by third parties. Moreover, any third party that gains access to such private keys, including by gaining access to login credentials of a hosted wallet or vault service the buyer uses, may
 be able to misappropriate the Buyer’s Tokens. Company Parties are not responsible for any such losses.
 
-\subsection{Lack of ETM Token Security}
+\subsection*{Lack of ETM Token Security}
 The Tokens may be subject to expropriation and or/theft. Hackers or other malicious groups or organizations may attempt to interfere with the Token Smart Contract or the Tokens in a variety of ways, including, but not limited to, malware attacks, denial of service attacks, consensus-based attacks, Sybil attacks, smurfing and spoofing.
 Furthermore, because the Ethereum platform rests on open source software, there is the risk that Ethereum smart contracts may contain intentional or unintentional bugs or weaknesses which may negatively affect the Tokens or result in the loss of Tokens, the loss of ability to access or control the Tokens. In the event of such a software bug or weakness, there may be no remedy and holders of the Tokens are not guaranteed any remedy, refund or compensation.
 
-\subsection{Risk of Ethereum Mining Attacks}
+\subsection*{Risk of Ethereum Mining Attacks}
 The blockchain used for the Token Smart Contract is susceptible to mining attacks, including double-spend attacks, majority mining power attacks, “selfish-mining” attacks, and race condition attacks. Any successful attacks present a risk to the Token Smart Contract, expected proper execution and sequencing of the Token transactions, and expected proper execution and sequencing of contract computations.
 
-\subsection{Failure to Map a Public Key to Buyer’s Account}
+\subsection*{Failure to Map a Public Key to Buyer’s Account}
 Failure of buyer of the ACE tokens to map a public key to such buyer’s account may result in third parties being unable to recognize buyer’s ACE token balance on the Ethereum blockchain when and if they configure the initial balances of a new blockchain based upon the ACE platform.
 
-\subsection{Risk of Incompatible Wallet Service}
+\subsection*{Risk of Incompatible Wallet Service}
 The wallet or wallet service provider used for the acquisition and storage of the ACE tokens has to be technically compatible with the ACE tokens. The failure to assure this may have the result that buyer of the ACE tokens will not gain access to his ACE tokens.
 
 \section{Risks relating to network development}
-\subsection{Risk Related to Reliance on Third Parties}
+\subsection*{Risk Related to Reliance on Third Parties}
 Even if completed, the Platform will rely, in whole or partly, on third parties to adopt and implement it and to continue to develop, supply, and otherwise support it. There is no assurance or guarantee that those third parties will complete their work, properly carry out their obligations, or otherwise meet anyone’s needs, all of might have a material adverse effect on the Platform.
 
-\subsection{Dependence of Musereum on Senior Management Team}
+\subsection*{Dependence of Musereum on Senior Management Team}
 The ability of the Musereum project team which is responsible for maintaining competitive position of the Platform is dependent to a large degree on the services of a respective senior management team. The loss or diminution in the services of members of respective senior management team or an inability to attract, retain and maintain additional senior management personnel could have a material adverse effect on the Platform. Competition for personnel with relevant expertise is intense due to the small number of qualified individuals, and this situation seriously affects the ability to retain its existing senior management and attract additional qualified senior management personnel, which could have a significant adverse impact on the Platform.
 
-\subsection{Dependence of Musereum Platform on Various Factors}
+\subsection*{Dependence of Musereum Platform on Various Factors}
 The development of the Platform may be abandoned for a number of reasons, including lack of interest from the public, lack of funding, lack of commercial success or prospects, or departure of key personnel.
 
-\subsection{Lack of Interest to the Musereum Platform}
+\subsection*{Lack of Interest to the Musereum Platform}
 Even if the Platform is finished and adopted and launched, the ongoing success of the Platform relies on the interest and participation of third parties like developers. There can be no assurance or guarantee that there will be sufficient interest or participation in the Platform.
 
-\subsection{Changes to the Musereum Platform}
+\subsection*{Changes to the Musereum Platform}
 The Platform is still under development and may undergo significant changes over time. Although Company Parties intend for the Platform to have the features and specifications set forth in this White Paper, changes to such features and specifications can be made for any number of reasons, any of which may mean that the Platform does not meet expectations of buyer of the Tokens.
 
-\subsection{Risk associated with Other Applications}
+\subsection*{Risk associated with Other Applications}
 The Platform may give rise to other, alternative projects, promoted by unaffiliated third parties, under which the Token will have no intrinsic value.
 
-\subsection{Risk of an Unfavorable Fluctuation of Cryptocurrency Value}
+\subsection*{Risk of an Unfavorable Fluctuation of Cryptocurrency Value}
 The proceeds of the sale of the Tokens will be denominated in cryptocurrency, and may be converted into other cryptographic and fiat currencies. If the value of cryptocurrencies fluctuates unfavorably during or after the Token Presale or the Token Sale, Company Parties may not be able to fund development, or may not be able to develop or maintain the Platform in the manner that it intended.
 
 \section{Risks arising in course of company parties' business}
-\subsection{Risk of Conflicts of Interest}
+\subsection*{Risk of Conflicts of Interest}
 Any Company Party may be engaged in transactions with related parties, including respective majority shareholder, companies controlled by him or in which he owns an interest, and other affiliates, and may continue to do so in the future. Conflicts of interest may arise between any Company Party’s affiliates and respective Company Party, potentially resulting in the conclusion of transactions on terms not determined by market forces.
 
-\subsection{Risks Related to Invalidation of Company Parties Transactions}
+\subsection*{Risks Related to Invalidation of Company Parties Transactions}
 Company Parties have taken a variety of actions relating to its business that, if successfully challenged for not complying with applicable legal requirements, could be invalidated or could result in the imposition of liabilities on respective Company Party. Since applicable legislation may subject to many different interpretations, respective Company Party may not be able to successfully defend any challenge brought against such transactions, and the invalidation of any such transactions or imposition of any such liability may, individually or in the aggregate, have a
 material adverse effect on the Platform.
 
-\subsection{Risk Arising from Emerging Markets}
+\subsection*{Risk Arising from Emerging Markets}
 Company Parties or some of them may operate on emerging markets. Emerging markets are subject to greater risks than more developed markets, including significant legal, economic and political risks. Emerging markets are subject to greater risk than more developed markets, including in some cases significant legal, economic and political risks. Emerging economies are subject to rapid change and that the information set out in this White Paper may become outdated relatively quickly.
 
 \section{Govermental Risks}
-\subsection{Uncertain Regulatory Framework}
+\subsection*{Uncertain Regulatory Framework}
 The regulatory status of cryptographic tokens, digital assets, and blockchain technology is unclear or unsettled in many jurisdictions. It is difficult to predict how or whether governmental authorities will regulate such technologies. It is likewise difficult to predict how or whether any governmental authority may make changes to existing laws, regulations and/or rules that will affect cryptographic tokens, digital assets, blockchain technology and its applications. Such changes could negatively impact the Tokens in various ways, including, for example, through a determination that the tokens are regulated financial instruments that require registration. Company may cease the distribution of the tokens, the development of the Platform or cease operations in a jurisdiction in the event that governmental actions make it unlawful or commercially undesirable to continue to do so.
 
-\subsection{Failure to Obtain, Maintain or Renew Licenses and Permits}
+\subsection*{Failure to Obtain, Maintain or Renew Licenses and Permits}
 Although as of the date of starting of the Token Presale there are no statutory requirements obliging Company of the Tokens to receive any licenses and permits necessary for carrying out of its activity, there is the risk that such statutory requirements may be adopted in the future and may relate to any of Company Parties. In this case, Company Parties’ business will depend on the continuing validity of such licenses and permits and its compliance with their terms. Regulatory authorities will exercise considerable discretion in the timing of license issuance and
 renewal and the monitoring of licensees’ compliance with license terms. Requirements which may be imposed by these authorities and which may require any of Company Party to comply with numerous standards, recruit qualified personnel, maintain necessary technical equipment and quality control systems, monitor our operations, maintain appropriate filings and, upon request, submit appropriate information to the licensing authorities, may be costly and time-consuming and may result in delays in the commencement or continuation of operation of the
 Platform. Further, private individuals and the public at large possess rights to comment on and otherwise engage in the licensing process, including through intervention in courts and political pressure. Accordingly, the licenses any
 Company Party may need may not be issued or renewed, or if issued or renewed, may not be issued or renewed in a timely fashion, or may involve requirements which restrict any Company Party’s ability to conduct its operations or to do so profitably.
 
-\subsection{Risk of Government Action}
+\subsection*{Risk of Government Action}
 The industry in which Company Parties operate is new, and may be subject to heightened oversight and scrutiny, including investigations or enforcement actions. There can be no assurance that governmental authorities will not examine the operations of Company Parties and/or pursue enforcement actions against them. All of this may subject Company Parties to judgments, settlements, fines or penalties, or cause Company Parties to restructure their operations and activities or to cease offering certain products or services, all of which could harm Company Parties’ reputation or lead to higher operational costs, which may, in turn, have a material adverse effect on the Tokens and/or the development of the Platform.
 
-\subsection{Risk of Burdensomeness of Applicable Laws, Regulations and Standards}
+\subsection*{Risk of Burdensomeness of Applicable Laws, Regulations and Standards}
 Failure to comply with existing laws and regulations or the findings of government inspections or increased governmental regulation of Company Parties operations, could result in substantial additional compliance costs or various sanctions, which could materially adversely affect Company Parties business and the Platform. Company Parties operations and properties are subject to regulation by various government entities and agencies, in connection with ongoing compliance with existing laws, regulations and standards. Regulatory authorities exercise
 considerable discretion in matters of enforcement and interpretation of applicable laws, regulations and standards.
 
@@ -2996,7 +3116,7 @@ Respective authorities have the right to, and frequently do, conduct periodic in
 Any Company Party’s failure to comply with existing laws and regulations or the findings of government inspections may result in the imposition of fines or penalties or more severe sanctions or in requirements that respective Company Party cease certain of its business activities, or in criminal and administrative penalties applicable to respective officers. Any such decisions, requirements or sanctions, or any increase in governmental regulation of our operations, could increase Company Parties costs and materially adversely affect Company Parties business
 and the Platform.
 
-\subsection{Unlawful or Arbitrary Government Action}
+\subsection*{Unlawful or Arbitrary Government Action}
 Governmental authorities may have a high degree of discretion and, at times, act selectively or arbitrarily, without hearing or prior notice, and sometimes in a manner that is contrary a law or influenced by political or commercial considerations. Moreover, the government also has the power in certain circumstances, by regulation or government act, to interfere with the performance of, nullify or terminate contracts. Unlawful, selective or arbitrary governmental actions have reportedly included the denial or withdrawal of licenses, sudden and unexpected tax audits, criminal prosecutions and civil actions. Federal and local government entities have also used common defects in matters surrounding the Token Sale as pretexts for court claims and other demands to invalidate or to void any related transaction, often for political purposes. In this environment, Company Parties competitors may receive preferential treatment from the government, potentially giving them a competitive advantage over Company Parties.
 
 %\end{multicols}
