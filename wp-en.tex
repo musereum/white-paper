@@ -1,3 +1,6 @@
+\def\VERSION{0.9.1}
+
+
 \documentclass[12pt]{report}
 \ProvidesPackage{musereum}
 \usepackage{framed}
@@ -52,7 +55,7 @@
 \usepackage{multicol}
 \setlength{\columnsep}{1.2cm}
 
-\newcommand{\hlc}[1]{\colorbox{yellow!25}{#1}}
+\newcommand{\hlc}[1]{\colorbox{white!25}{#1}}
 
 \usepackage[a4paper, total={6.5in, 8.7in}]{geometry}
 
@@ -126,7 +129,7 @@
 	
 	Official Whitepaper % Subtitle or further description
 	
-	\small{ver.0.9.0}
+	\small{ver.\VERSION}
 	
 	\vspace*{3\baselineskip} % Whitespace under the subtitle
 	
@@ -234,7 +237,7 @@ According to the music market research conducted by the Buzzanglemusic company, 
 \end{tabular}
 \end{table}
 
-\vfill\null\pagebreak
+%\vfill\null\pagebreak
 \section{Distribution of royalties from the use of music work}
 \label{industry-distribution}
 
@@ -434,7 +437,7 @@ Youtube 						& \multicolumn{2}{p{0.55\linewidth}}{\YoutubePay} \\
 \end{table}
 
 
-\vfill\null\pagebreak
+%\vfill\null\pagebreak
 \section{Music Industry Structure}
 \label{industry-structure}
 %\begin{multicols}{2}
@@ -464,7 +467,7 @@ As far as the relationship pattern is rather bulky, if the end user wants to obt
 
 Thus, a value pattern in music industry can be illustrated as follows:
 %\end{multicols}
-\vfill\null\pagebreak
+%\vfill\null\pagebreak
 \begin{figure}[H]
 \centering
 \def\Author{Author}
@@ -527,42 +530,6 @@ exchange for sales royalty}
 \end{tikzpicture} 
 \end{figure}
 
-\vfill\null\pagebreak
-
-\begin{figure}[H]
-\centering
-\caption{Аудио- и видео-стриминг: соотношение количества пользователей и прибыли}
-\vspace{20pt}
-\pgfplotstableread[row sep=\\,col sep=&]{
-    interval & users & revenue \\
-    1 & 250 & 3950 \\
-    2 & 920 & 550 \\
-    }\userRevenue
-\begin{tikzpicture}
-    \begin{axis}[
-            width=13cm,
-		   height=10cm,
-		   bar width=1cm,
-            ylabel near ticks,
-            xlabel near ticks,
-            nodes near coords,
-            major grid style={line width=.2pt,draw=gray!50},
-		   ymajorgrids=true,
-  		   domain=0:2*pi,
-            ybar,
-            symbolic x coords={1,2},
-            xtick=data,
-            nodes near coords,
-            ymin=0,ymax=4500,
-            ylabel={Доля дохода, \%},
-            enlarge x limits={abs=3cm}
-        ]
-        \addplot [ black, fill=black!20 ] table[x=interval,y=users]{\userRevenue};
-        \addplot [ black, fill=black!20 ] table[x=interval,y=revenue]{\userRevenue};
-    \end{axis}
-\end{tikzpicture}
-\end{figure}	
-
 %\begin{multicols}{2}
 However, the actual relations in music industry are even more complicated. Nowadays sampling is widely used in the process of music creation; considering that, it is close to impossible to create a totally original composition in an oversaturated informational environment without any adoption. The same complicated rights structure underlies every usage of a sample in a composition, that makes music licensing a difficult undertaking.
 
@@ -577,34 +544,7 @@ However, the actual relations in music industry are even more complicated. Nowad
 	\item Collective management organizations.
 \end{itemize}
 	
-Each usage of music creates a flow of royalty distributed among all mentioned parties:
-%\end{multicols}
-
-\begin{figure}[H]
-\centering
-\caption{Аудио- и видео-стриминг: соотношение количества пользователей и прибыли}
-\vspace{20pt}
-\pgfplotstableread[row sep=\\,col sep=&]{
-    interval & users & revenue \\
-    1 & 250 & 3950 \\
-    2 & 920 & 550 \\
-    }\userRevenue
-\begin{tikzpicture}
-    \begin{axis}[
-            ybar,
-            symbolic x coords={1,2},
-            xtick=data,
-            nodes near coords,
-            ymin=0,ymax=4500,
-            ylabel={Доля дохода, \%},
-        ]
-        \addplot table[x=interval,y=users]{\userRevenue};
-        \addplot table[x=interval,y=revenue]{\userRevenue};
-    \end{axis}
-\end{tikzpicture}
-\end{figure}	
-
-%\begin{multicols}{2}
+%Each usage of music creates a flow of royalty distributed among all mentioned parties:
 However, the actual relations in music industry are even more complicated. Nowadays sampling is widely used in the process of music creation; considering that, it is close to impossible to create a totally original composition in an oversaturated informational environment without any adoption. The same complicated rights structure underlies every usage of a sample in a composition, that makes music licensing a difficult undertaking.
 
 This difficulty can be illustrated by a RIAA statement cited in the US Copyright Office report of 2015: one of RIAA members had released a very successful album and had to obtain for that album 1481 licenses for the release of three physical products, the 92 digital products, the 27 songs across the 51 songwriters with a total of 89 shares. One of those shares represented a 1.5 percent interest in a song, and there were two publishers for that. According to the RIAA, apart from multiple songwriter interests, one of the reasons for this explosion in licensing complexity is the increased complexity of the releases themselves — whereas in the past a record label release consisted of a disk and some liner notes, today it comprises multiple digital formats, different kinds of audiovisual presentations, and different kinds of music services.
@@ -612,7 +552,7 @@ This difficulty can be illustrated by a RIAA statement cited in the US Copyright
 Due to the international nature of digital music distribution mentioned above, the process becomes even more difficult as it is necessary to consider the peculiarities of legal regulations in different jurisdictions. For example, rights holders in the USA are not entitled to receive royalty for radio broadcasting of their music, while in some jurisdictions they may be entitled to such royalties.
 
 %\end{multicols}
-\vfill\null\pagebreak
+%\vfill\null\pagebreak
 
 \section{Major Industry Problems}
 \label{industry-problems}
@@ -634,7 +574,7 @@ No universal database for IP rights in music exists at the moment. D.A. Wallach 
 \end{framed}
  
 In 2011 there was an attempt to create such a dataset. Supported by music publishers, the Global Repertoire Database (GRD) project was announced. It was supposed to comprise all registrations of audio records and relevant metadata. In July 2014 the project was closed due to objections from copyright collectives.
-\vfill\null\pagebreak
+%\vfill\null\pagebreak
 
 %\begin{multicols}{2}
 \subsection{Lack of transparency of transactions in the industry}
@@ -838,7 +778,7 @@ Musereum project aims to solve the above-mentioned problems by tokenizing IP rig
 
 \begin{table}[H]
 \centering
-\caption{Инвестиции в раскрутку новой записи}
+\caption{ETM Emission summary}
 %\begin{tabular}{p{0.35\linewidth}p{0.65\linewidth}}
 \begin{tabular}{
 r
@@ -1034,7 +974,7 @@ US \$500,000 – US \$1,000,000 & \texttt{2} & \texttt{1.51\%} \\
 \end{table}
 \end{figure}
 
-\vfill\null\pagebreak
+%\vfill\null\pagebreak
 
 The average price of an asset at RoyaltyExchange.com is US \$61,000 (US \$8,000,000/132 lots). A limiting factor for the possible price of asset is the auction model of sale, which enables only one buyer to purchase each asset. Although auction model enhances competition between possible buyers, it ultimately limits the maximum possible price for the asset by introducing the minimum price per buyer and enforcing a take-it-or-leave-it decision making. This creates an entry barrier for possible buyers who may be interested in buying the type of asset offered, but on a smaller scale. Connected to this is another limiting factor – even a greater entry barrier exists for those buyers who wish to not only buy out one asset, but build a portfolio of assets enabling to mitigate the risks connected with it.
 
@@ -1970,7 +1910,7 @@ r =&\ \mathcal{O}(\{asset, index\} \ \cup \ a)
 \end{align}
 %\end{multicols}
 
-\pagebreak
+%\pagebreak
 \section{Platform architecture}
 \label{tech-arch}
 %\begin{multicols}{2}
@@ -2125,7 +2065,7 @@ Creating a node for an additional access point is not limited and available for 
 	\item Stakeholders can create a personal local copy of the network without necessity to trust third parties
 \end{itemize}
 %\end{multicols}
-\pagebreak
+%\pagebreak
 \subsection{Interaction interface layer}
 \label{tech-arch-interfaces}
 %\begin{multicols}{2}
@@ -2323,7 +2263,7 @@ Minimal time for receiving $|\mathbb{Y}|$ signatures:
 a = \Gamma_{step} * |\mathbb{Y}|
 \end{equation}
 %\end{multicols}
-\vfill\null\pagebreak
+%\vfill\null\pagebreak
 
 \subsection{Crosschain communication and Ethereum Classic}
 \label{tech-blockchain-anchoring}
@@ -2722,7 +2662,7 @@ In order to create a voting, the offer initiator must create a valid \code{Ballo
 \end{tikzpicture} 
 \end{center}
 
-\subsubsection{Смарт-контракт Ballot}
+\subsubsection{Ballot smart contract}
 \label{tech-apps-voting-ballot}
 %\begin{multicols}{2}
 An abstract smart contract describing the requirements for final implementation of voting offers.
@@ -2877,11 +2817,11 @@ Associated dictionary of asset types.
 \end{cases}, \quad i \in \alpha^{types}
 \end{equation}
 
-\subsubsection{Смарт-контракт AssetRegistryBallot}
+\subsubsection{AssetRegistryBallot smart contract}
 \label{tech-apps-assets-regballot}
 Implementation of \code{Ballot} smart-contract to vote for accepting assets in Musereum ledger.
 
-\subsubsection{Смарт-контракт AssetUnregistryBallot}
+\subsubsection{AssetUnregistryBallot smart contract}
 \label{tech-apps-assets-unregballot}
 Implementation of \code{Ballot} smart-contract to vote for excluding assets from Musereum ledger.
 
@@ -2925,7 +2865,7 @@ License smart contract for commercial use
 License-derived smart contract to limit the use 
 \end{itemize}
 %\end{multicols}
-\vfill\null\pagebreak
+%\vfill\null\pagebreak
 \subsubsection{DALRegistry smart contract}
 \label{tech-apps-dal-registry}
 The ledger of registered autonomous labels is required to keep record and provide access to the label for the manager of associated musical asset.
@@ -3044,7 +2984,7 @@ If rights are transferred to a third party (token transfer), it triggers automat
 %\label{tech-apps-dal-voting}
 %\subsubsection{Устал децентрализованного лейбла}
 %\label{tech-apps-dal-charter}
-\subsubsection{Продажа лицензий и смарт-контракт DALAssetLicense}
+\subsubsection{DALAssetLicense smart contract}
 \label{tech-apps-dal-license}
 %\begin{multicols}{2}
 %Лицензии на базе смарт-контрактов привязываются к токенам трека и определяют характер использования композиции и ценовую политику, включая различные ценовые настройки в зависимости от географии использования. Коммерческие лицензии обладают сроком действия, задаваемым администратором. Перевыпуск лицензии по окончанию срока создается автоматически с теми же параметрами и отправляется запрос/уведомление акционерам трека. Если акционеры в течение определенного периода выразили свое несогласие, то администратор перевыпускает лицензии с другими параметрами. Консенсус достигается при согласии 51% держателей токенов на трек. Смарт-лицензия состоит из четырех элементов: юридического и простого текста, кода смарт-контракта, механизма API для чтения метаданных и встраивания продаж на сторонние платформы. Смарт-лицензии распределяют роялти между держателями токенов трека. 
