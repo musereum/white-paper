@@ -112,9 +112,8 @@
 	
 	\vspace{0.75\baselineskip} % Whitespace above the title
 	
-	{\LARGE\textbf{MUSEREUM}} % Title
-	
-	\vspace{0.75\baselineskip} % Whitespace below the title
+	{\Huge\textbf{MUSEREUM}} % Title
+%	\vspace{0.2\baselineskip} % Whitespace below the title
 	
 	\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal rule
 	\rule{\textwidth}{1.6pt} % Thick horizontal rule
@@ -126,6 +125,8 @@
 	%------------------------------------------------
 	
 	Official Whitepaper % Subtitle or further description
+	
+	\small{ver.0.9.0}
 	
 	\vspace*{3\baselineskip} % Whitespace under the subtitle
 	
@@ -671,12 +672,225 @@ Non-transparent payments, structure complexity and long chains of intermediaries
 \label{industry-solution}
 Musereum project aims to solve the above-mentioned problems by tokenizing IP rights for music and therefore enabling the real time tracking their ownership, implementing automated licensing and royalties’ distribution and enabling assigning and re-assigning shares of IP rights by transferring the tokens representing such rights.
 
+
+
+\begin{figure}[H]
+\centering
+\caption{Inflation Rate}
+\vspace{20pt}
+\pgfplotstableread[row sep=\\,col sep=&]{
+ year & seconds & inflation & blocks & supply & emission \\
+ 2018 &  31536000 &  10.091  &  6307200 &  275228800 &  25228800 \\
+ 2019 &  31536000 &  9.166  &  12614400 &  300457600 &  25228800 \\
+ 2020 &  31622400 &  8.419  &  18938880 &  325755520 &  25297920 \\
+ 2021 &  31536000 &  7.744  &  25246080 &  350984320 &  25228800 \\
+ 2022 &  31536000 &  7.188  &  31553280 &  376213120 &  25228800 \\
+ 2023 &  31536000 &  6.705  &  37860480 &  401441920 &  25228800 \\
+ 2024 &  31622400 &  6.301  &  44184960 &  426739840 &  25297920 \\
+ 2025 &  31536000 &  5.911  &  50492160 &  451968640 &  25228800 \\
+ 2026 &  31536000 &  5.581  &  56799360 &  477197449 &  25228800 \\
+ 2027 &  31536000 &  5.286  &  63106560 &  502426240 &  25228800 \\
+ 2028 &  31622400 &  5.035  &  69431040 &  527724160 &  25297920 \\
+ 2029 &  31536000 &  4.780  &  75738240 &  552952960 &  25228800 \\
+ 2030 &  31536000 &  4.562  &  82045440 &  578181760 &  25228800 \\
+ 2031 &  31536000 &  4.363  &  88352640 &  603410560 &  25228800 \\
+ 2032 &  31622400 &  4.192  &  94677120 &  628708480 &  25297920 \\
+ 2033 &  31536000 &  4.012  &  100984320 &  653937280 &  25228800 \\
+ 2034 &  31536000 &  3.857  &  107291520 &  679166080 &  25228800 \\ 
+ 2035 &  31536000 &  3.714  &  113598720 &  704394880 &  25228800 \\
+ 2036 &  31622400 &  3.591  &  119923200 &  729692800 &  25297920 \\
+ 2037 &  31536000 &  3.458  &  126230400 &  754921600 &  25228800 \\
+ 2038 &  31536000 &  3.341  &  132537600 &  780150400 &  25228800 \\
+    }\salesCount
+\begin{tikzpicture}
+    \begin{axis}[
+    		axisPlot,
+    		width=15cm,
+		ymin=3, ymax=15,
+		symbolic x coords={
+			2018,
+			2019,
+			2020,
+			2021,
+			2022,
+			2023,
+			2024,
+			2025,
+			2026,
+			2027,
+			2028,
+			2029,
+			2030,
+			2031,
+			2032,
+			2033,
+			2034,
+			2035,
+			2036,
+			2037,
+			2038
+		},
+    x tick label style = {font = \small, text width = 1.7cm, align = center, rotate = 70, anchor = north east},
+         xtick=data,
+		ylabel={Number of campaigns, per year}
+        ]
+        
+	    \path[name path=a] (axis cs:2018,0) -- (axis cs:2038,0);
+        
+		\addplot[
+			thick, color=black, mark=*, name path=p]
+		 table[
+			x=year,
+			y=inflation
+		]{\salesCount};
+		\addplot [
+			thick,
+			fill=black,
+			fill opacity=0.2
+		] fill between[
+			of=p and a
+    		];
+    \end{axis}
+\end{tikzpicture}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\caption{Inflation Rate}
+\vspace{20pt}
+\pgfplotstableread[row sep=\\,col sep=&]{
+ year & seconds & inflation & blocks & supply & emission \\
+ 2018 &  31536000 &  10.091  &  6307200 &  275.228800 &  25228800 \\
+ 2019 &  31536000 &  9.166  &  12614400 &  300.457600 &  25228800 \\
+ 2020 &  31622400 &  8.419  &  18938880 &  325.755520 &  25297920 \\
+ 2021 &  31536000 &  7.744  &  25246080 &  350.984320 &  25228800 \\
+ 2022 &  31536000 &  7.188  &  31553280 &  376.213120 &  25228800 \\
+ 2023 &  31536000 &  6.705  &  37860480 &  401.441920 &  25228800 \\
+ 2024 &  31622400 &  6.301  &  44184960 &  426.739840 &  25297920 \\
+ 2025 &  31536000 &  5.911  &  50492160 &  451.968640 &  25228800 \\
+ 2026 &  31536000 &  5.581  &  56799360 &  477.197449 &  25228800 \\
+ 2027 &  31536000 &  5.286  &  63106560 &  502.426240 &  25228800 \\
+ 2028 &  31622400 &  5.035  &  69431040 &  527.724160 &  25297920 \\
+ 2029 &  31536000 &  4.780  &  75738240 &  552.952960 &  25228800 \\
+ 2030 &  31536000 &  4.562  &  82045440 &  578.181760 &  25228800 \\
+ 2031 &  31536000 &  4.363  &  88352640 &  603.410560 &  25228800 \\
+ 2032 &  31622400 &  4.192  &  94677120 &  628.708480 &  25297920 \\
+ 2033 &  31536000 &  4.012  &  100984320 &  653.937280 &  25228800 \\
+ 2034 &  31536000 &  3.857  &  107291520 &  679.166080 &  25228800 \\ 
+ 2035 &  31536000 &  3.714  &  113598720 &  704.394880 &  25228800 \\
+ 2036 &  31622400 &  3.591  &  119923200 &  729.692800 &  25297920 \\
+ 2037 &  31536000 &  3.458  &  126230400 &  754.921600 &  25228800 \\
+ 2038 &  31536000 &  3.341  &  132537600 &  780.150400 &  25228800 \\
+    }\salesCount
+\begin{tikzpicture}
+    \begin{axis}[
+    		axisPlot,
+    		width=15cm,
+    		scaled ticks=false,
+		ymin=200, ymax=1000,
+		symbolic x coords={
+			2018,
+			2019,
+			2020,
+			2021,
+			2022,
+			2023,
+			2024,
+			2025,
+			2026,
+			2027,
+			2028,
+			2029,
+			2030,
+			2031,
+			2032,
+			2033,
+			2034,
+			2035,
+			2036,
+			2037,
+			2038
+		},
+    x tick label style = {font = \small, text width = 1.7cm, align = center, rotate = 70, anchor = north east},
+         xtick=data,
+		ylabel={Issues total supply, 000,000~ETM}
+        ]
+        
+	    \path[name path=a] (axis cs:2018,0) -- (axis cs:2038,0);
+        
+		\addplot[
+			thick, color=black, mark=*, name path=p]
+		 table[
+			x=year,
+			y=supply
+		]{\salesCount};
+		\addplot [
+			thick,
+			fill=black,
+			fill opacity=0.2
+		] fill between[
+			of=p and a
+    		];
+    \end{axis}
+\end{tikzpicture}
+\end{figure}
+
 \begin{table}[H]
 \centering
 \caption{Инвестиции в раскрутку новой записи}
+%\begin{tabular}{p{0.35\linewidth}p{0.65\linewidth}}
+\begin{tabular}{
+r
+p{0.16\linewidth}
+p{0.16\linewidth}
+p{0.16\linewidth}
+p{0.16\linewidth}
+p{0.16\linewidth}
+}
+\toprule
+Year & 
+\scriptsize{Amount of seconds in a year} & 
+\scriptsize{Percent of inflation} & 
+\scriptsize{Amount of blocks} & 
+\scriptsize{Total number ETM tokens in the end of the year} & 
+\scriptsize{Total ETM emission in a year} \\
+\bottomrule
+\midrule
+\texttt{2018} & \texttt{31,536,000} & \texttt{10.091\%} & \texttt{6,307,200} & \texttt{275,228,800} & \texttt{<25,228,800} \\
+\texttt{2019} & \texttt{31,536,000} & \texttt{9.166\%} & \texttt{12,614,400} & \texttt{300,457,600} & \texttt{<25,228,800} \\
+\texttt{2020} & \texttt{31,622,400} & \texttt{8.419\%} & \texttt{18,938,880} & \texttt{325,755,520} & \texttt{<25,297,920} \\
+\texttt{2021} & \texttt{31,536,000} & \texttt{7.744\%} & \texttt{25,246,080} & \texttt{350,984,320} & \texttt{<25,228,800} \\
+\texttt{2022} & \texttt{31,536,000} & \texttt{7.188\%} & \texttt{31,553,280} & \texttt{376,213,120} & \texttt{<25,228,800} \\
+\texttt{2023} & \texttt{31,536,000} & \texttt{6.705\%} & \texttt{37,860,480} & \texttt{401,441,920} & \texttt{<25,228,800} \\
+\texttt{2024} & \texttt{31,622,400} & \texttt{6.301\%} & \texttt{44,184,960} & \texttt{426,739,840} & \texttt{<25,297,920} \\
+\texttt{2025} & \texttt{31,536,000} & \texttt{5.911\%} & \texttt{50,492,160} & \texttt{451,968,640} & \texttt{<25,228,800} \\
+\texttt{2026} & \texttt{31,536,000} & \texttt{5.581\%} & \texttt{56,799,360} & \texttt{477,197,449} & \texttt{<25,228,800} \\
+\texttt{2027} & \texttt{31,536,000} & \texttt{5.286\%} & \texttt{63,106,560} & \texttt{502,426,240} & \texttt{<25,228,800} \\
+\texttt{2028} & \texttt{31,622,400} & \texttt{5.035\%} & \texttt{69,431,040} & \texttt{527,724,160} & \texttt{<25,297,920} \\
+\texttt{2029} & \texttt{31,536,000} & \texttt{4.780\%} & \texttt{75,738,240} & \texttt{552,952,960} & \texttt{<25,228,800} \\
+\texttt{2030} & \texttt{31,536,000} & \texttt{4.562\%} & \texttt{82,045,440} & \texttt{578,181,760} & \texttt{<25,228,800} \\
+\texttt{2031} & \texttt{31,536,000} & \texttt{4.363\%} & \texttt{88,352,640} & \texttt{603,410,560} & \texttt{<25,228,800} \\
+\texttt{2032} & \texttt{31,622,400} & \texttt{4.192\%} & \texttt{94,677,120} & \texttt{628,708,480} & \texttt{<25,297,920} \\
+\texttt{2033} & \texttt{31,536,000} & \texttt{4.012\%} & \texttt{100,984,320} & \texttt{653,937,280} & \texttt{<25,228,800} \\
+\texttt{2034} & \texttt{31,536,000} & \texttt{3.857\%} & \texttt{107,291,520} & \texttt{679,166,080} & \texttt{<25,228,800} \\ 
+\texttt{2035} & \texttt{31,536,000} & \texttt{3.714\%} & \texttt{113,598,720} & \texttt{704,394,880} & \texttt{<25,228,800} \\
+\texttt{2036} & \texttt{31,622,400} & \texttt{3.591\%} & \texttt{119,923,200} & \texttt{729,692,800} & \texttt{<25,297,920} \\
+\texttt{2037} & \texttt{31,536,000} & \texttt{3.458\%} & \texttt{126,230,400} & \texttt{754,921,600} & \texttt{<25,228,800} \\
+\texttt{2038} & \texttt{31,536,000} & \texttt{3.341\%} & \texttt{132,537,600} & \texttt{780,150,400} & \texttt{<25,228,800} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+\begin{table}[H]
+\centering
+\caption{Possible solutions}
+\vspace{20pt}
 \begin{tabular}{p{0.35\linewidth}p{0.65\linewidth}}
 \toprule
-Проблема & Решение \\
+Problem & Solution \\
 \bottomrule
 \midrule
 Lack of available and trustworthy information about IP ownership & 
@@ -702,38 +916,48 @@ Furthermore, tokenization of IP rights will provide rights holders with the oppo
 \end{tabular}
 \end{table}
 
-Таким образом, проект «Musereum» является мощным правовым механизмом управления различными типами прав в музыкальной индустрии. 
+%Таким образом, проект «Musereum» является мощным правовым механизмом управления различными типами прав в музыкальной индустрии. 
 
-Действующие музыкальные платформы, использующие Blockchain-технологии, также не имеют преимуществ, содержащихся в проекте «Musereum».
+%Действующие музыкальные платформы, использующие Blockchain-технологии, также не имеют преимуществ, содержащихся в проекте «Musereum».
 
-\def\y{\textbf{Да}}
-\def\n{Нет}
+\def\y{\textbf{Yes}}
+\def\n{No}
 \def\o{--}
 
 \begin{table}[H]
 \centering
-\caption{Инвестиции в раскрутку новой записи}
-\begin{tabular}{p{0.2\linewidth}ccccccc}
+\caption{Platform features compare to competitors}
+\vspace{20pt}
+\begin{tabular}{p{0.35\linewidth}ccccccc}
 \toprule
-Возможности & Soundchain & Ujo Music & Musicoin & Token FM & Jaak & PeerTracks & Opus \\
+Features & \scriptsize{Soundchain} & \scriptsize{Ujo Music} & \scriptsize{Musicoin} & \scriptsize{Token FM} & \scriptsize{Jaak} & \scriptsize{PeerTracks} & \scriptsize{Opus} \\
 \bottomrule
 \midrule
-Свой блокчейн 						& \y & \y & \y & \n & \n & \y & \n \\
-Токенизация прав на треки 	& \y & \n & \n & \n & \n & \n & \n \\
-Бланкетные лицензии на смарт-контрактах & \y & \n & \n & \n & \n & \n & \n \\
-Коллективное управление & \y & \n & \n & \n & \n & \n & \n \\
-Инвестирование в музыку 	& \y & \n & \n & \n & \n & \n & \n \\
-Децентрализованное хранение файлов 	& \y & \y & \y & \o & \o & \y & \y \\
-Децентрализованное хранение метаданных & \y & \y & \y & \o & \o & \y & \y \\
-Шифрование контента & \y & \n & \n & \o & \o & \o & \y \\
-Вторичный рынок прав на музыку 	& \y & \n & \n & \n & \n & \n & \n \\
-Фандрайзинг для музыкантов & \y & \n & \n & \n & \n & \n & \n \\
+Own blockchain 						& \y & \y & \y & \n & \n & \y & \n \\
+\midrule
+Right tokenization of tracks 	& \y & \n & \n & \n & \n & \n & \n \\
+\midrule
+Licenses on smart contracts & \y & \n & \n & \n & \n & \n & \n \\
+\midrule
+Collective	management & \y & \n & \n & \n & \n & \n & \n \\
+\midrule
+Investment in music & \y & \n & \n & \n & \n & \n & \n \\
+\midrule
+Decentralized data storage	& \y & \y & \y & \o & \o & \y & \y \\
+\midrule
+Decentralized metadata & \y & \y & \y & \o & \o & \y & \y \\
+\midrule
+Content encryption & \y & \n & \n & \o & \o & \o & \y \\
+\midrule
+Marketplace of music rights & \y & \n & \n & \n & \n & \n & \n \\
+\midrule
+Fundraising for musicians & \y & \n & \n & \n & \n & \n & \n \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 
-\chapter{Crypto–Economy Model}
+\chapter{Crypto–Economy Aspect}
 \label{finance}
 The basic concept of the Soundchain project is to provide the users of the Soundchain platform with free access to the uploaded music, while paying to the rights holders of that music with ETM tokens for every unique play via the PPP smart-contract. The ETM tokens that are used to pay to the rights holders are generated by the Musereum network and are kept by the Soundchain Foundation.
 
@@ -764,7 +988,7 @@ The information on the price distribution for the assets is presented below.
 		   bar width=1cm,
             ylabel near ticks,
             xlabel near ticks,
-            nodes near coords,
+%            nodes near coords,
             major grid style={line width=.2pt,draw=gray!50},
 		   xmajorgrids=true,
   		   domain=0:2*pi,
@@ -817,7 +1041,6 @@ The average price of an asset at RoyaltyExchange.com is US \$61,000 (US \$8,000,
 Assets at the Musereum platform will be sold via the crowd sale model, where the number of buyers is only limited by the total supply of music tokens. We believe that elimination of entry barriers, and increasing the number of possible buyers for an asset and will contribute to more value offered, higher demand and ultimately higher average prices for an asset on our platform. Considering this, we assume that the average total price of each asset on our platform will be not less than US \$80,000. Gramatik has become the first example of the crowd sale model for IP rights - he has attracted 2.5 million dollars in the ETH crypto currency within 24 hours by selling tokens, representing the rights to all his future royalties.
 
 We have dedicated about 2 weeks to contact artists, and of 20 artists reached, 8 have agreed to upload their music works to the demo of our platform and 3 have expressed their interest in selling shares of their IP rights via the platform. In 2018 we are planning to a marketing campaign to promote this new and cost-effective model of music works monetization among independent labels, authors, singers and our potential partners in industry – digital service providers, collection societies, producers, etc. According to our estimates, this will lead to at least 200 successful music token sale campaigns, with average amount of contributions equivalent to US \$80,000 per campaign and a further boost in 2019 due to attraction of new users, that will shift from existing time-consuming and costly ways of monetization. A minimum rate of growth of 30\% is assumed after 2020. 
-
 
 \begin{figure}[H]
 \centering
@@ -1363,7 +1586,7 @@ All of tools could be grouped by three categories:
 						
 \node(RegistrationRect) [rect, rounded corners, thick, fit={(RegistrationMusereum) (KYC) (Registration)}] {};
 
-\node(AssetTitle) [rect, below=1.5cm of RegistrationMusereum.south west, anchor=north west]{\AssetTitle};
+\node(AssetTitle) [rect, below=1.3cm of RegistrationMusereum.south west, anchor=north west]{\AssetTitle};
 \node(AssetImage)[rect, below=0.2cm of AssetTitle.south]{\AssetImage};
 \node(AssetRelease)[rect, below=0.2cm of AssetImage.south]{\AssetRelease}; 
 \node(AssetLanguage)[rect, right=0.2cm of AssetTitle.east]{\AssetLanguage};
@@ -1394,21 +1617,21 @@ All of tools could be grouped by three categories:
 	let \p1=(CreateAssetRect.south west), \p2=(CreateAssetRect.south east)
 	in node(UploadProcess) [
 		rect, thick, rounded corners,
-		below=0.5cm of CreateAssetRect,
+		below=0.25cm of CreateAssetRect,
 		minimum width=\x2-\x1-\pgflinewidth,
 		text width=\x2-\x1-\pgflinewidth-40pt,
 		inner sep=10pt
 	] {\textbf{Encrypt and Upload to IPFS}};
 
-\node(AssetRegistration) [rect, below=0.5cm of UploadProcess, xshift=-4cm]
+\node(AssetRegistration) [rect, below=0.25cm of UploadProcess, xshift=-4cm]
 						   {\AssetRegistration};
-\node(RegistrationBallot) [check, aspect=2, below=1cm of AssetRegistration.south]
+\node(RegistrationBallot) [check, aspect=3, below=0.25cm of AssetRegistration.south]
 						   {\RegistrationBallot};
 						   
 \node(ForgetAsset) [rect, rounded corners, thick, right=1.5cm of RegistrationBallot, text width=5.5cm]
 {\textbf{Unlink hash and release keepers}};
 						   
-\node(AddAsset) [rect, below=1cm of RegistrationBallot]
+\node(AddAsset) [rect, below=0.8cm of RegistrationBallot]
 						   {\AddAsset};
 						   
 							   
@@ -1416,7 +1639,7 @@ All of tools could be grouped by three categories:
 	let \p1=(RegistrationMusereum.south west), \p2=(KYC.south east)
 	in node(RegistryCertificate) [
 		rect, thick, rounded corners,
-		below=0.5cm of AddAsset,
+		below=0.25cm of AddAsset,
 		xshift=4cm,
 		minimum width=\x2-\x1-\pgflinewidth,
 		text width=\x2-\x1-\pgflinewidth-40pt,
@@ -1427,7 +1650,7 @@ All of tools could be grouped by three categories:
 	let \p1=(RegistrationMusereum.south west), \p2=(KYC.south east)
 	in node(CreateDAL) [
 		rect, thick, rounded corners,
-		below=0.5cm of RegistryCertificate,
+		below=0.25cm of RegistryCertificate,
 		minimum width=\x2-\x1-\pgflinewidth,
 		text width=\x2-\x1-\pgflinewidth-40pt,
 		inner sep=10pt
@@ -1485,11 +1708,12 @@ All of tools could be grouped by three categories:
 
 \node(ih4) [fit={(ih3) (ih2)}] {};
 
-\node(ih5) [check, aspect=2, below=0.5cm of ih4] {ICO required for DAL?};
+%\node(ih5) [check, aspect=2, below=0.5cm of ih4] {ICO required for DAL?};
+\node(ih5) [below=0.65cm of ih4] {\textbf{ICO required for DAL?}};
 	
 \path
 	let \p1=(ih0.south west), \p2=(ih5.south west)
-	in node(ih0) [mini, text width=1cm, anchor=north west, yshift=-1.2cm] at (\x1,\y2) {$n+1$};
+	in node(ih0) [mini, text width=1cm, anchor=north west, yshift=-0.35cm] at (\x1,\y2) {$n+1$};
 \path 
 	let \p1=(ts1.south west), \p2=(ts4.south east)
 	in node(ih1) [mini, right=0pt of ih0, text width=\x2-\x1-\pgflinewidth-4.35cm] {ICO Contract};
