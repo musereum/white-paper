@@ -1,0 +1,246 @@
+\def\VERSION{0.0.1.1}
+
+
+\documentclass[12pt]{report}
+\ProvidesPackage{musereum}
+\usepackage{framed}
+\usepackage{float}
+\usepackage{eurosym}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage[T1]{fontenc}
+\usepackage{titlesec, blindtext, color}
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+\titlespacing*{\chapter}{0pt}{-35pt}{40pt}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+\usepackage{multirow}
+
+\usepackage{tikz}
+\usetikzlibrary{calc,trees,positioning,arrows,chains,fit,shapes.geometric,%
+    decorations.pathreplacing,decorations.pathmorphing,shapes,%
+    decorations.markings,%	
+    matrix,shapes.symbols}
+
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+%\hypersetup{
+%    colorlinks=true,
+%    linkcolor=blue,
+%    filecolor=magenta,      
+%    urlcolor=cyan,
+%}
+%Russian-specific packages
+%--------------------------------------
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+%\usepackage[russian]{babel}
+%--------------------------------------
+ 
+%Hyphenation rules
+%--------------------------------------
+\usepackage{hyphenat}
+%\hyphenation{ма-те-ма-ти-ка вос-ста-нав-ли-вать}
+%--------------------------------------
+
+\usepackage{multicol}
+\setlength{\columnsep}{1.2cm}
+
+\newcommand{\hlc}[1]{\colorbox{white!25}{#1}}
+
+\usepackage[a4paper, total={6.5in, 8.7in}]{geometry}
+
+\tikzstyle{event} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black]
+\tikzstyle{inout} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black]
+\tikzstyle{rect} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black]
+\tikzstyle{check} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{line} = [thick]
+\tikzstyle{vecArrow} = [thick, decoration={markings,mark=at position
+   1 with {\arrow[semithick]{open triangle 60}}},
+   double distance=1.4pt, shorten >= 5.5pt,
+   preaction = {decorate},
+   postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
+\tikzstyle{innerWhite} = [semithick, white,line width=1.4pt, shorten >= 4.5pt]
+\pgfplotsset{
+	axisPlot/.style={
+	    scaled ticks=false,
+		ymajorgrids=true,
+		xmajorgrids=false,
+		ylabel near ticks,
+		xlabel near ticks,
+		width=13cm,
+		height=7.5cm,
+	    legend cell align={left},
+		legend style={at={(0,-0.20)}, anchor=north west, draw=none}
+	}
+}
+
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+%\usepackage{musereum}
+\usepackage{import}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.65em}
+\renewcommand{\baselinestretch}{1.1}
+
+\definecolor{light-gray}{gray}{0.95}
+\def\code#1{\colorbox{light-gray}{\texttt{#1}}}
+
+\title{Musereum}
+\author{Artem Aler Dan}
+\date{\today}
+
+\begin{document}
+\begin{titlepage}
+	\centering
+	
+	\scshape % Use small caps for all text on the title page
+	\vspace*{\baselineskip} % White space at the top of the page
+	
+	\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % Thick horizontal rule
+	\rule{\textwidth}{0.4pt} % Thin horizontal rule
+	
+	\vspace{0.75\baselineskip} % Whitespace above the title
+	
+	{\Huge\textbf{MUSEREUM FAQ}} % Title
+%	\vspace{0.2\baselineskip} % Whitespace below the title
+	
+	\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal rule
+	\rule{\textwidth}{1.6pt} % Thick horizontal rule
+	
+	\vspace{1.5\baselineskip} % Whitespace after the title block
+	
+	%------------------------------------------------
+	%	Subtitle
+	%------------------------------------------------
+	
+	Official Whitepaper % Subtitle or further description
+	
+	\small{ver.\VERSION}
+	
+	\vspace*{3.5\baselineskip} % Whitespace under the subtitle
+	
+	
+	%------------------------------------------------
+	%	Editor(s)
+	%------------------------------------------------
+	
+	Edited By
+	
+	\vspace{0.5\baselineskip} % Whitespace before the editors
+	
+	{\scshape\Large Artem Abaev \\ Dan Reitman \\ Aler Denisov \\ } % Editor list
+	
+	% \vspace{0.5\baselineskip} % Whitespace below the editor list
+	
+	% \textit{The University of California \\ Berkeley} % Editor affiliation
+	
+	\vfill % Whitespace between editor names and publisher logo
+	
+	%------------------------------------------------
+	%	Publisher
+	%------------------------------------------------
+		
+	\vspace{0.3\baselineskip} % Whitespace under the publisher logo
+	
+	2017 % Publication year
+	
+	{\large Musereum Team} % Publisher
+
+\end{titlepage}
+%\maketitle
+\pagebreak
+\tableofcontents
+\pagebreak
+
+\chapter{The Project}
+\label{project}
+
+\section{What are you doing?}
+\label{project-doing}
+We are developing a blockchain platform with transparent and easy instruments of tracking and transferring ownership rights for music and licensing it for both personal and business use. This platform will serve as a core element of a wider blockchain ecosystem of music industry that will unite players and almost all other participants of the market to reduce their costs and achieve greater transparency of interactions by the means of blockchain technology.
+
+\section{Who are you?}
+\label{project-who}
+We are the team of professionals from different branches of music industry who got sick of the inefficiency in the sphere that we love. We have analysts, traders, lawyers, developers and licensing professionals on board. You can read more about us at our website.
+
+\section{Who are the users of your platform?}
+\label{project-users}
+Our goal is to create value for the industry as a whole, but at the first stage our main users will be musicians and minor rightsholders, who will upload their music to our system as well as fans and investors who will buy shares in music tracks and albums. Also, we will involve brands, marketing agencies and other business users interested in obtaining licenses from the rightsholders via our marketplace.
+
+\section{How do you plan to earn money?}
+\label{project-money}
+Musereum itself is a not-for-profit project – it is a gift to the community and music industry. We reserve 10\% of the tokens generated initially for the team to create additional incentive, so that our salaries will depend upon the success of the project.
+
+\section{What makes you better than, say, Songtradr.com or Ujo Music?}
+\label{project-competitors}
+We start with a different approach. Songtradr is limited to the licensing platform, Ujo provides a streaming platform. We offer a full-scale solution for the industry as a whole. This makes us different - we provide a one-stop solution for everyone involved. Songtradr, Ujo and practically any other start-up in the music industry need not to be our competitors – they can use our infrastructure.
+
+\section{How do you plan to attract industry players to your platform?}
+\label{project-attract}
+We will start with offering them a better solution for their needs – a cheaper, faster and a more convenient one. Some will come to us, some will shrug and move on. Once the critical mass is acquired, we become a standard alternative to the traditional methods within the industry. Another step - and we are the traditional method.
+
+\section{What will labels, publishers, etc. do after launching your project? Will they lost their job?}
+\label{project-labels}
+No, of course they won’t. We understand that it is impossible to change the landscape of the industry immediately, and we welcome all of the players to join our ecosystem. We will provide them with the convenient and scalable instrument, so that they could better adapt to the changing environment. Most of the market players understand that as music industry changes they ought to adapt these changes to improve their business otherwise they risk to get out of the market.
+
+\section{How do you fit into the music industry ecosystem?}
+\label{project-industry}
+\textit{The short answer} — we are trying to become the music industry ecosystem.
+
+\textit{The long answer} — we start with creating a platform for registration, assigning and licensing IP rights in music. It may seem a pretty narrow scope, but it allows us to connect the opposing points of the value chain directly: the creator and the consumer. It does not eliminate the intermediaries by itself – most of them provide meaningful services and add some value to the chain – but it allows the most independent musicians to opt out of traditional transactional model and take care of every aspect by themselves.
+We, however, expect that a majority of creators would at some point need the help of professionals – a manager's wisdom, a music producer's skills, connections of a promotional agency. We will allow these professional to deliver their skills to the market through our platform – and that will in turn allow musicians to not be restrained and to get everything they need in a one place for a one currency – the ETM token.
+
+\chapter{The blockchain}
+\label{blockchain}
+
+\section{Do we really need a blockchain solution for this?}
+\label{blockchain-solution}
+We do, actually. International IP rights management is very susceptible to political issues, so a system designed for this purpose needs to be truly independent – to the extent not achievable by centralized solutions. Although such a system is not thought to attract hacker attacks as much as systems oriented at anonymous markets (think SilkRoad), it needs to be tamper-proof, so that even being shut down in any jurisdiction it will keep the records to be usable in other countries.
+
+Furthermore, utilizing Ethereum-based blockchain allows third- party developer teams to build and integrate their own solutions to the market demands.
+
+\section{Why are you launching your own blockchain? Are you not happy with Ethereum?}
+\label{blockchain-ethereum}
+Ethereum is great, but it has limitations on the number of transactions within it. Furthermore, PoW may be considered necessary in the trustless anonymous environment of public general-purpose blockchain, but it is an overshot for our purposes - it is too slow and expensive. The most sensitive and valuable information, however, will be duplicated into the public blockchain of Ethereum Classic.
+
+\section{Who are "validators"? Why do you need them? Are they like miners?}
+\label{blockchain-validators}
+In order to run a blockchain, you need somebody to verify your transactions. In public blockchains these are the miners - they may be anonymous, but we trust them because they have economic incentive to work with the majority. This trust, however, comes at a cost - a PoW blockchain is an expensive solution, and it may be an overshot for our purposes.
+
+We use PoA consensus method - our transactions will be verified by trusted public persons. Their economic motivation is more traditional than in the PoW, their stack is their reputation and legal responsibility. These individuals are validators.
+
+To become a validator a one must prove his good standing and legal status - that is why we require our candidates to have a license of a public notary in one of selected jurisdictions. This proves the existence and the identity of the candidate, as well as the amount of his reputational stack.
+
+\section{Can I trust your validators? How will validators be punished if they break rules?}
+\label{blockchain-trust}
+You don't need to trust each validator, but it is unreasonable for them to sabotage the network from the economic point of view. On the individual level this is ensured by the structure of the network - if an individual validator starts tempering with the transactions, he will be excluded by the majority and will lose the income generated by the system. Suffer from a reputational damage might be even more significant (information about this event will become public) since we will engage those notaries who really know a value their reputation.
+
+On the other hand, if the majority would try to sabotage the network, legal mechanisms will play its role, and such validators would be liable for all the damages, including the reputational damage to the system. Being legal professionals, they have an incentive to act in bona fide.
+
+\section{Are users entitled to compensation if validators act opportunistically and it causes damages?}
+\label{blockchain-compensation}
+Yes, validators are liable for the damages caused by their failure to act in bona fide, and can be sued for any damages resulting from such a failure.
+
+\section{Can I become a miner/validator myself?}
+\label{blockchain-miner}
+Our blockchain is a permissioned one - we have formal requirements for a candidate who wants to join our network. The main condition for becoming a validator is having and being able to demonstrate a valid license of a public notary in the USA. In the future we plan to give this opportunity to other licensed professionals in another jurisdiction, but for now being a licensed notary public in the United States is necessary.
+
+Another condition is a basic level of understanding of what we do, as well as having a stable internet connection and modern hardware.
+
+You can apply to become validator at http://validator.musereum.org
+
+\end{document}
